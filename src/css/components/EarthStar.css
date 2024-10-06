@@ -1,0 +1,142 @@
+.section-banner {
+    height: 10vw;
+    width: 10vw;
+    position: absolute;
+}
+
+
+@media screen and (max-width: 1000px) {
+
+    .section-banner {
+        height: 10vh;
+        width: 10vh;
+    }
+}
+
+@keyframes earthRotate {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 100vh 0;
+    }
+}
+
+@media scren and (max-width: 1000px) {
+    @keyframes earthRotate {
+        0% {
+            background-position: 0 0;
+        }
+
+        100% {
+            background-position: 50vw 0;
+        }
+    }
+
+}
+
+.curved-corner-star {
+    display: flex;
+    position: relative;
+}
+
+.curved-corner-bottomleft,
+.curved-corner-bottomright,
+.curved-corner-topleft,
+.curved-corner-topright {
+    width: 0.6vh;
+    height: 0.8vh;
+    overflow: hidden;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+
+
+.curved-corner-bottomleft:before,
+.curved-corner-bottomright:before,
+.curved-corner-topleft:before,
+.curved-corner-topright:before {
+    content: "";
+    display: block;
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.curved-corner-bottomleft:before {
+    bottom: 0;
+    left: 0;
+    box-shadow: -0.5vh 0.5vh 0 0 var(--star-color);
+}
+
+.curved-corner-bottomright:before {
+    bottom: 0;
+    right: 0;
+    box-shadow: 0.5vh 0.5vh 0 0 var(--star-color);
+}
+
+.curved-corner-topleft:before {
+    top: 0;
+    left: 0;
+    box-shadow: -0.5vh -0.5vh 0 0 var(--star-color);
+}
+
+.curved-corner-topright:before {
+    top: 0;
+    right: 0;
+    box-shadow: 0.5vh -0.5vh 0 0 var(--star-color);
+}
+
+@keyframes twinkling {
+
+    0%,
+    100% {
+        opacity: 0.1;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.ring {
+    width: 15vw;
+    height: 15vw;
+    border-radius: 50%;
+    transform: rotateX(20deg) rotateY(-15deg);
+    position: absolute;
+    display: block;
+    border: 0.2vw solid rgba(28, 3, 48, 0.987);
+    filter: drop-shadow(0 0 10vw white);
+    -webkit-animation: ring-rotating 120s infinite alternate;
+    animation: ring-rotating 12s infinite alternate;
+    mix-blend-mode: luminosity;
+}
+
+@media screen and (max-width: 1000px) {
+    .ring {
+        width: 15vh;
+        height: 15vh;
+        border: 0.2vh solid rgba(28, 3, 48, 0.987);
+        filter: drop-shadow(0 0 10vh white);
+    }
+}
+
+
+
+@keyframes ring-rotating {
+    0% {
+        transform: rotateX(321deg) rotateY(-147deg);
+    }
+
+    10% {
+        transform: rotateX(192deg) rotateY(55deg);
+    }
+
+    20% {
+        transform: rotateX(214deg) rotateY(267deg);
+    }
+}

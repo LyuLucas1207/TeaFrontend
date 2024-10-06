@@ -1,0 +1,471 @@
+body, html {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Sidebar 样式 */
+.admin-home_sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 280px;
+    background: var(--admin-sidebar-bg-color);
+    z-index: 100;
+    transition: all 0.5s ease;
+}
+
+.admin-home_sidebar-close {
+    width: 78px;
+}
+
+.admin-home_logo-details {
+    margin-top: 5px;
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.admin-home_logo-details i {
+    font-size: 30px;
+    color: var(--admin-sidebar-icon-color);
+    height: 50px;
+    min-width: 78px;
+    text-align: center;
+    line-height: 50px;
+}
+
+.admin-home_logo_name {
+    font-size: 22px;
+    color: var(--admin-sidebar-icon-color);
+    font-weight: 600;
+    transition: 0.3s ease;
+    transition-delay: 0.1s;
+}
+
+.admin-home_sidebar-close .admin-home_logo_name {
+    transition-delay: 0s;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.admin-home_nav-links {
+    height: 100%;
+    padding: 30px 0 150px 0;
+    overflow: auto;
+}
+
+.admin-home_sidebar-close .admin-home_nav-links {
+    overflow: visible;
+}
+
+.admin-home_nav-links::-webkit-scrollbar {
+    display: none;
+}
+
+.admin-home_nav-links li {
+    position: relative;
+    list-style: none;
+    transition: all 0.4s ease;
+}
+
+.admin-home_nav-links li:hover {
+    background: var(--admin-sidebar-hover-bg-color);
+}
+
+.admin-home_nav-links li .admin-home_iocn-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.admin-home_sidebar-close .admin-home_iocn-link {
+    display: block;
+}
+
+.admin-home_nav-links li i {
+    height: 50px;
+    min-width: 78px;
+    text-align: center;
+    line-height: 50px;
+    color: var(--admin-sidebar-icon-color);
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.admin-home_arrow {
+    transition: transform 0.3s ease;
+}
+
+.admin-home_rotate {
+    transform: rotate(-180deg);
+}
+
+.admin-home_sidebar-close .admin-home_arrow {
+    display: none;
+}
+
+.admin-home_nav-links li button {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    width: 100%;
+    background-color: inherit;
+    border: none;
+    flex-direction: row;
+    justify-content: start;
+}
+
+.admin-home_nav-links li button span {
+    width: 50%;
+    display: block;
+    text-align: left;
+}
+
+.admin-home_link_name {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--admin-sidebar-link-name-color);
+    transition: all 0.4s ease;
+}
+
+.admin-home_sidebar-close .admin-home_link_name {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.admin-home_sub-menu {
+    min-width: max-content;
+    padding: 8px 8px 14px 80px;
+    background: var(--admin-sidebar-submenu-bg-color);
+    display: none;
+}
+
+.admin-home_nav-links li.showMenu .admin-home_sub-menu {
+    display: block;
+}
+
+.admin-home_sub-menu button {
+    color: var(--admin-sidebar-submenu-text-color);
+    font-size: 15px;
+    padding: 5px 0;
+    white-space: nowrap;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.admin-home_sub-menu button:hover {
+    opacity: 1;
+}
+
+.admin-home_sidebar-close .admin-home_sub-menu {
+    position: absolute;
+    left: 100%;
+    top: -10px;
+    margin-top: 0;
+    padding: 10px 20px;
+    border-radius: 0 6px 6px 0;
+    opacity: 0;
+    display: block;
+    pointer-events: none;
+    transition: 0s;
+}
+
+.admin-home_sidebar-close .admin-home_nav-links li:hover .admin-home_sub-menu {
+    top: 0;
+    opacity: 1;
+    pointer-events: auto;
+    transition: all 0.4s ease;
+}
+
+.admin-home_blank {
+    opacity: 1;
+    pointer-events: auto;
+    padding: 3px 20px 6px 16px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.admin-home_profile-details {
+    position: fixed;
+    bottom: 0;
+    width: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--admin-sidebar-profile-bg-color);
+    padding: 6px 0;
+    transition: all 0.5s ease;
+}
+
+.admin-home_sidebar-close .admin-home_profile-details {
+    background: none;
+}
+
+.admin-home_profile-content {
+    display: flex;
+    align-items: center;
+}
+
+.admin-home_profile-details img {
+    height: 52px;
+    width: 52px;
+    object-fit: cover;
+    border-radius: 16px;
+    margin: 0 14px 0 12px;
+    background: var(--admin-sidebar-profile-bg-color);
+    transition: all 0.5s ease;
+}
+
+.admin-home_sidebar-close .admin-home_profile-details img {
+    padding: 1px;
+}
+
+.admin-home_profile_name,
+.admin-home_job {
+    text-align: right;
+    color: var(--admin-sidebar-profile-text-color);
+    font-size: 18px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.admin-home_job {
+    font-size: 12px;
+}
+
+/* 内容和卡片样式 */
+.admin-home_home-section {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    align-items: left;
+    background: var(--admin-content-bg-color);
+    height: 100vh;
+    left: 280px;
+    width: calc(100% - 280px);
+    transition: all 0.5s ease;
+}
+
+.admin-home_sidebar-close~.admin-home_home-section {
+    left: 78px;
+    width: calc(100% - 78px);
+}
+
+.admin-home_home-content {
+    margin-top: 8px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: inherit;
+    border: none;
+}
+
+.admin-home_home-content .bx-menu,
+.admin-home_home-content {
+    color: var(--admin-sidebar-text-color);
+    font-size: 35px;
+}
+
+.admin-home_home-content .bx-menu {
+    margin: 0 15px;
+    cursor: pointer;
+}
+
+.admin-home_home-content {
+    font-size: 26px;
+    font-weight: 600;
+}
+
+/* 项目卡片样式 */
+.admin-home_infor {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    color: var(--admin-card-text-color);
+}
+
+.admin-home_project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .admin-home_project-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+}
+
+.admin-home_project-card {
+    background-color: var(--admin-card-bg-color);
+    border: 1px solid var(--admin-card-border-color);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px var(--admin-card-shadow);
+    transition: transform 0.3s ease;
+}
+
+.admin-home_project-card:hover {
+    transform: scale(1.05);
+}
+
+.admin-home_project-card h2 {
+    font-size: 1.8em;
+    color: var(--admin-card-text-color);
+    margin-bottom: 10px;
+}
+
+.admin-home_project-card p {
+    font-size: 1em;
+    color: var(--admin-card-text-color);
+    margin-bottom: 15px;
+}
+
+.admin-home_project-card button {
+    padding: 10px 15px;
+    background-color: var(--admin-button-bg-color);
+    color: var(--admin-sidebar-icon-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.admin-home_project-card button:hover {
+    background-color: var(--admin-button-hover-bg-color);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .admin-home_sidebar {
+        width: 173.33px;
+    }
+
+    .admin-home_sidebar-close {
+        width: 52px;
+    }
+
+    .admin-home_logo-details {
+        height: 40px;
+    }
+
+    .admin-home_logo-details i {
+        font-size: 20px;
+        height: 33.33px;
+        min-width: 52px;
+        line-height: 33.33px;
+    }
+
+    .admin-home_logo_name {
+        font-size: 14.67px;
+    }
+
+    .admin-home_nav-links {
+        padding: 20px 0 100px 0;
+    }
+
+    .admin-home_nav-links li i {
+        height: 33.33px;
+        min-width: 52px;
+        line-height: 33.33px;
+        font-size: 13.33px;
+    }
+    .admin-home_link_name {
+        font-size: 14.67px;
+    }
+
+    .admin-home_sub-menu {
+
+        padding: 4px 4px 9.33px 53.33px;
+    }
+    .admin-home_sub-menu button {
+        font-size: 13px;
+        padding: 3.33px 0;
+    }
+
+    .admin-home_sidebar-close .admin-home_sub-menu {
+        padding: 6.67px 13.33px;
+    }
+
+    .admin-home_profile-details {
+        width: 173.33px;
+        padding: 4px 0;
+    }
+
+    .admin-home_profile-details img {
+        height: 34.67px;
+        width: 34.67px;
+        margin: 0 9.33px 0 8px;
+    }
+
+    .admin-home_profile_name,
+    .admin-home_job {
+        font-size: 12px;
+    }
+
+    .admin-home_job {
+        font-size: 8px;
+    }
+
+    .admin-home_home-section {
+        left: 173.33px;
+        width: calc(100% - 173.33px);
+    }
+
+    .admin-home_sidebar-close~.admin-home_home-section {
+        left: 52px;
+        width: calc(100% - 52px);
+    }
+
+    .admin-home_home-content {
+        height: 40px;
+    }
+
+    .admin-home_home-content .bx-menu,
+    .admin-home_home-content {
+        font-size: 23.33px;
+    }
+
+    .admin-home_home-content .bx-menu {
+        margin: 0 10px;
+    }
+
+    .admin-home_home-content {
+        font-size: 17.33px;
+    }
+
+    .admin-home_infor {
+        padding: 13.33px;
+    }
+
+    .admin-home_project-grid {
+        gap: 13.33px;
+    }
+
+    .admin-home_project-card {
+        padding: 13.33px;
+        border-radius: 5.33px;
+        box-shadow: 0 1.33px 5.33px var(--admin-card-shadow);
+    }
+
+    .admin-home_project-card h2 {
+        font-size: 1.2em;
+        margin-bottom: 6.67px;
+    }
+
+    .admin-home_project-card p {
+        font-size: 0.67em;
+        margin-bottom: 10px;
+    }
+
+    .admin-home_project-card button {
+        padding: 6.67px 10px;
+        border-radius: 3.33px;
+    }
+}

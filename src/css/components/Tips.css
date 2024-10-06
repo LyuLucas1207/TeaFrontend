@@ -1,0 +1,234 @@
+.tips_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: max-content;
+}
+
+.tips_toggle-switch {
+    position: relative;
+    width: 80px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+}
+
+@media screen and (max-width: 1000px) {
+    .tips_toggle-switch {
+        width: 50px;
+        height: 20px;
+    }
+}
+
+.tips_switch-label {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--background-inverse-color);
+    border-radius: 25px;
+    cursor: pointer;
+    border: 3px solid var(--background-inverse-color);
+}
+
+@media screen and (max-width: 1000px) {
+    .tips_switch-label {
+        margin-top: 10px;
+        border: 2px solid var(--background-inverse-color);
+    }
+}
+
+.tips_checkbox {
+    display: none;
+}
+
+.tips_slider {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+}
+
+@media screen and (max-width: 1000px) {
+    .tips_slider {
+        border-radius: 20px;
+    }
+}
+
+.tips_checkbox:checked~.tips_slider {
+    background-color: var(--content-bg-color);
+}
+
+.tips_slider::before {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 2px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    -webkit-box-shadow: inset 12px -4px 0px 0px var(--content-bg-color);
+    box-shadow: inset 12px -4px 0px 0px var(--content-bg-color);
+    background-color: var(--background-inverse-color);
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+}
+
+@media screen and (max-width: 1000px) {
+    .tips_slider::before {
+        top: 1.2px;
+        left: 0.5px;
+        width: 18px;
+        height: 18px;
+        border-radius: 60%;
+    }
+}
+
+.tips_checkbox:checked~.tips_slider::before {
+    -webkit-transform: translateX(50px);
+    -ms-transform: translateX(50px);
+    transform: translateX(50px);
+    background-color: var(--background-inverse-color);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+@media screen and (max-width: 1000px) {
+    .tips_checkbox:checked~.tips_slider::before {
+        -webkit-transform: translateX(30px);
+        -ms-transform: translateX(30px);
+        transform: translateX(30px);
+    }
+}
+
+.tips_button {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.tips_faq-button {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: none;
+    background-color: #ffe53b;
+    background-image: linear-gradient(147deg, #150000 0%, #ff2525 74%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.151);
+    position: relative;
+    margin: 0 5px;
+}
+
+@media screen and (max-width: 1000px) {
+    .tips_faq-button {
+        width: 15px;
+        height: 15px;
+        margin: 0 5px;
+    }
+}
+
+.tips_faq-button svg {
+    height: 1.2em;
+    fill: white;
+}
+
+@media screen and (max-width: 1000px) {
+    .tips_faq-button svg {
+        height: 0.8em;
+    }
+}
+
+.tips_faq-button:hover svg {
+    animation: tips_jello-vertical 0.7s both;
+}
+
+@keyframes tips_jello-vertical {
+    0% {
+        transform: scale3d(1, 1, 1);
+    }
+
+    30% {
+        transform: scale3d(0.75, 1.25, 1);
+    }
+
+    40% {
+        transform: scale3d(1.25, 0.75, 1);
+    }
+
+    50% {
+        transform: scale3d(0.85, 1.15, 1);
+    }
+
+    65% {
+        transform: scale3d(1.05, 0.95, 1);
+    }
+
+    75% {
+        transform: scale3d(0.95, 1.05, 1);
+    }
+
+    100% {
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+.tips_tooltip {
+    position: absolute;
+    width: 80px;
+    top: -20px;
+    opacity: 0;
+    background-color: #ffe53b;
+    background-image: linear-gradient(147deg, #2f0303 0%, #ff2525 74%);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition-duration: 0.2s;
+    pointer-events: none;
+    letter-spacing: 0.5px;
+    font-size: 0.8rem;
+}
+
+@media screen and (max-width: 1000px) {
+    .tips_tooltip {
+        width: 60px;
+        font-size: 0.6rem;
+    }
+}
+
+.tips_tooltip::before {
+    position: absolute;
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: #ff2525;
+    background-size: 1000%;
+    background-position: center;
+    transform: rotate(45deg);
+    bottom: -15%;
+    transition-duration: 0.3s;
+}
+
+.tips_faq-button:hover .tips_tooltip {
+    top: -40px;
+    opacity: 1;
+    transition-duration: 0.3s;
+}
+
+@media screen and (max-width: 1000px) {
+    .tips_faq-button:hover .tips_tooltip {
+        top: -30px;
+    }
+}

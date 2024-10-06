@@ -1,0 +1,156 @@
+@font-face {
+    font-family: 'AlimamaFangYuan';
+    src: url('../fonts/AlimamaFangYuanTiVF-Thin-2.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'HongLeiXingShuJianTi';
+    src: url('../fonts/HongLeiXingShuJianTi-2.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MaoKenWangXingYuan';
+    src: url('../fonts/MaoKenWangXingYuan-2.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SmileySans';
+    src: url('../fonts/SmileySans-Oblique-2.ttf') format('truetype');
+    font-weight: normal;
+    font-style: oblique;
+}
+
+@font-face {
+    font-family: 'YouSheYuFeiTeJianKangTi';
+    src: url('../fonts/YouSheYuFeiTeJianKangTi-2.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    scrollbar-width: none;
+    /* 隐藏 Firefox 中的滚动条 */
+    -ms-overflow-style: none;
+    /* 隐藏 IE 和旧版 Edge 中的滚动条 */
+}
+
+*::-webkit-scrollbar {
+    display: none;
+    /* 隐藏 Chrome, Safari 和新版 Edge 中的滚动条 */
+}
+
+body {
+    margin: 0;
+    font-family: "AlimamaFangYuan", "YouSheYuFeiTeJianKangTi", "HongLeiXingShuJianTi", "AlimamaFangYuan", "SmileySans", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* 默认的 light 主题 */
+body {
+    --background-color: #f0f2f5;
+    --contract-bg-color: #050505;
+    --text-color: #333;
+    --subtitle-color: #555;
+    --title-color: #ff4757;
+    --link-bg-color: #ff0037;
+    --link-hover-bg-color: #0056b3;
+    --link-text-color: #fff;
+    --content-bg-color: rgba(255, 255, 255, 0.9);
+
+    --login-background-color: #f0f2f5;
+    --login-background-inverse-color:#1e1e1e;
+    --login-contract-bg-color: #f5eeeee4;
+    --login-text-color: #333;
+    --login-subtitle-color: #555;
+    --login-title-color: #ff4757;
+    --login-link-bg-color: #ff0037;
+    --login-link-hover-bg-color: #0056b3;
+    --login-link-text-color: #fff;
+    --login-content-bg-color: rgba(255, 255, 255, 0.9);
+    --login-shadow-dark: rgba(0, 0, 0, 0.2);
+    --login-shadow-light: rgba(34, 32, 32, 0.1);
+
+    --star-color: #ffffff00;
+
+    --admin-sidebar-bg-color: #11101d;
+    --admin-sidebar-hover-bg-color: #1d1b31;
+    --admin-sidebar-text-color: #1a1919;
+    --admin-sidebar-icon-color: #fff;
+    --admin-sidebar-link-name-color: #fff;
+    --admin-sidebar-submenu-bg-color: #1d1b31;
+    --admin-sidebar-submenu-text-color: #fff;
+    --admin-sidebar-profile-bg-color: #1d1b31;
+    --admin-sidebar-profile-text-color: #fff;
+
+    --admin-content-bg-color: #E4E9F7;
+
+    --admin-button-bg-color: #166b22;
+    --admin-button-hover-bg-color: #0056b3;
+    --admin-card-bg-color: #f9f9f9;
+    --admin-card-border-color: #ddd;
+    --admin-card-text-color: #666;
+    --admin-card-shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark 主题 */
+body.dark-theme {
+    --background-color: #0f0f0f;
+    --contract-bg-color: #f3ecec;
+    --text-color: #f0f2f5;
+    --subtitle-color: #ccc;
+    --title-color: #ff4757;
+    --link-bg-color: #ff0037;
+    --link-hover-bg-color: #ff4757;
+    --link-text-color: #fff;
+    --content-bg-color: rgba(50, 50, 50, 0.9);
+
+    --login-background-color: #1e1e1e;
+    --login-background-inverse-color:#f0f2f5;
+    --login-contract-bg-color: #fffafab3;
+    --login-text-color: #f0f2f5;
+    --login-subtitle-color: #ccc;
+    --login-title-color: #ff4756af;
+    --login-link-bg-color: #8e011f;
+    --login-link-hover-bg-color: #ff47569a;
+    --login-link-text-color: #fff;
+    --login-content-bg-color: rgba(50, 50, 50, 0.9);
+    --login-shadow-dark: rgba(210, 210, 210, 0.2);
+    --login-shadow-light: rgba(255, 255, 255, 0.1);
+
+    --star-color: #f0f2f5;
+
+    --admin-sidebar-bg-color: #1c1b1b;
+    --admin-sidebar-hover-bg-color: #464343;
+    --admin-sidebar-text-color: #f0f2f5;
+    --admin-sidebar-icon-color: #f0f2f5;
+    --admin-sidebar-link-name-color: #f0f2f5;
+    --admin-sidebar-submenu-bg-color: #2b2929;
+    --admin-sidebar-submenu-text-color: #f0f2f5;
+    --admin-sidebar-profile-bg-color: #222222;
+    --admin-sidebar-profile-text-color: #f0f2f5;
+    
+    --admin-content-bg-color: #1e1e1e;
+
+    --admin-button-bg-color: #8e011f;
+    --admin-button-hover-bg-color: #ff4757;
+    --admin-card-bg-color: #454444;
+    --admin-card-border-color: #b3afaf;
+    --admin-card-text-color: #ccc;
+    --admin-card-shadow: rgba(152, 147, 147, 0.2);
+}
+
+#admin_home-root,
+#admin-root,
+#root {
+    width: 100vw;
+    height: 100vh;
+}

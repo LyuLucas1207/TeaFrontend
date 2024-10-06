@@ -1,0 +1,223 @@
+.ans_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+}
+
+
+.ans_loader {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: -0.65em;
+}
+
+.ans_load1 {
+    position: absolute;
+    content: "";
+    margin-right: 1em;
+    height: 1.2em;
+    width: 1.2em;
+    border-radius: 5px;
+    background-color: var(--contract-bg-color);
+    box-shadow: 0 1px 7px rgba(0, 0, 0, 0.3);
+}
+
+.ans_load2 {
+    position: absolute;
+    margin-right: 1em;
+    content: "";
+    height: 1.2em;
+    width: 1.2em;
+    border-radius: 5px;
+    background-color: var(--contract-bg-color);
+    animation: 2s ans_flow2 infinite;
+}
+
+.ans_load3 {
+    position: absolute;
+    margin-right: 1em;
+    content: "";
+    height: 1.2em;
+    width: 1.2em;
+    border-radius: 5px;
+    background-color: var(--contract-bg-color);
+    animation: 2s ans_flow3 infinite;
+}
+
+.ans_load4 {
+    position: absolute;
+    margin-right: 1em;
+    content: "";
+    height: 1.2em;
+    width: 1.2em;
+    border-radius: 5px;
+    background-color: var(--contract-bg-color);
+    animation: 2s ans_flow4 infinite;
+}
+
+.ans_load5 {
+    position: absolute;
+    margin-right: 1em;
+    content: "";
+    height: 1.2em;
+    width: 1.2em;
+    border-radius: 5px;
+    background-color: var(--contract-bg-color);
+    animation: 2s ans_flow5 infinite;
+}
+
+.ans_load6 {
+    position: absolute;
+    margin-right: 1em;
+    content: "";
+    height: 1.2em;
+    width: 1.2em;
+    border-radius: 5px;
+    background-color: var(--contract-bg-color);
+    animation: 6s ans_flow6 infinite;
+}
+
+.ans_load7 {
+    position: absolute;
+    margin-right: 1em;
+    content: "";
+    height: 1.2em;
+    width: 1.2em;
+    border-radius: 5px;
+    background-color: var(--contract-bg-color);
+    animation: 6s ans_flow7 infinite;
+}
+
+.ans_load8 {
+    position: absolute;
+    margin-right: 1em;
+    content: "";
+    height: 1.2em;
+    width: 1.2em;
+    border-radius: 5px;
+    background-color: var(--contract-bg-color);
+    animation: 6s ans_flow8 infinite;
+}
+
+.ans_load9 {
+    position: absolute;
+    content: "";
+    height: 1.2em;
+    width: 1.2em;
+    border-radius: 5px;
+    background-color: var(--contract-bg-color);
+    animation: 6s ans_flow9 infinite;
+}
+
+@keyframes ans_flow2 {
+    50% {
+        transform: translateX(3em);
+        box-shadow: 0 1px 7px rgba(0, 0, 0, 0.3);
+    }
+
+    100% {
+        transform: translateX(0em);
+    }
+}
+
+@keyframes ans_flow3 {
+    50% {
+        transform: translateX(-3em);
+        box-shadow: 0 1px 7px rgba(0, 0, 0, 0.3);
+    }
+
+    100% {
+        transform: translateX(0em);
+    }
+}
+
+@keyframes ans_flow4 {
+    50% {
+        transform: translateY(3em);
+        box-shadow: 0 1px 7px rgba(0, 0, 0, 0.3);
+    }
+
+    100% {
+        transform: translateY(0em);
+    }
+}
+
+@keyframes ans_flow5 {
+    50% {
+        transform: translateY(-3em);
+        box-shadow: 0 1px 7px rgba(0, 0, 0, 0.3);
+    }
+
+    100% {
+        transform: translateY(0em);
+    }
+}
+
+@keyframes ans_flow6 {
+    30% {
+        transform: translateX(3em);
+        box-shadow: 0 1px 7px rgba(0, 0, 0, 0.3);
+    }
+
+    60% {
+        transform: translateX(3em) translateY(-3em);
+        box-shadow: 0 1px 7px rgba(0, 0, 0, 0.3);
+    }
+
+    100% {
+        transform: translateX(0em) translateY(0em);
+    }
+}
+
+@keyframes ans_flow7 {
+    30% {
+        transform: translateX(-3em);
+        box-shadow: 0 1px 7px rgba(0, 0, 0, 0.3);
+    }
+
+    60% {
+        transform: translateX(-3em) translateY(3em);
+        box-shadow: 0 1px 7px rgba(0, 0, 0, 0.3);
+    }
+
+    100% {
+        transform: translateX(0em) translateY(0em);
+    }
+}
+
+@keyframes ans_flow8 {
+    30% {
+        transform: translateY(3em);
+        box-shadow: 0 1px 7px rgba(0, 0, 0, 0.3);
+    }
+
+    60% {
+        transform: translateY(3em) translateX(3em);
+        box-shadow: 0 1px 7px rgba(0, 0, 0, 0.3);
+    }
+
+    100% {
+        transform: translateX(0em) translateY(0em);
+    }
+}
+
+@keyframes ans_flow9 {
+    30% {
+        transform: translateY(-3em);
+        box-shadow: 0 1px 7px rgba(0, 0, 0, 0.3);
+    }
+
+    60% {
+        transform: translateY(-3em) translateX(-3em);
+        box-shadow: 0 1px 7px rgba(0, 0, 0, 0.3);
+    }
+
+    100% {
+        transform: translateX(0em) translateY(0em);
+    }
+}

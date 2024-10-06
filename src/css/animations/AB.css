@@ -1,0 +1,68 @@
+.ab_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    height: 200px;
+    margin: 10px;
+}
+
+body {
+    --main-book-border-color: #1e1d1d;
+    --book-line-color: #cabaa9;
+    --book-page-fill: #ffffff74;
+    --book-background-color: #9c9595;
+    --book-shadow-color: rgba(13, 12, 12, 0.137);
+}
+
+body.dark-theme {
+    --main-book-border-color: #e1e2e2;
+    --book-line-color: #93a5b8;
+    --book-page-fill: #0000008b;
+    --book-background-color: #636a6a;
+    --book-shadow-color: rgba(242, 243, 243, 0.137);
+}
+
+.ab_loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ab_book-wrapper {
+    width: 150px;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+}
+
+.ab_book {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(10px 10px 5px var(--book-shadow-color));
+}
+
+.ab_book-wrapper .ab_book-page {
+    width: 50%;
+    height: auto;
+    position: absolute;
+    animation: ab_paging 0.15s linear infinite;
+    transform-origin: left;
+}
+
+@keyframes ab_paging {
+    0% {
+        transform: rotateY(0deg) skewY(0deg);
+    }
+
+    50% {
+        transform: rotateY(90deg) skewY(-20deg);
+    }
+
+    100% {
+        transform: rotateY(180deg) skewY(0deg);
+    }
+}
