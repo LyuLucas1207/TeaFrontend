@@ -38,10 +38,15 @@ function validateStudentId(studentId) {
     return studentIdRegex.test(studentId);
 }
 
+function validatePhoneNumber(phoneNumber) {
+    const regex = /^(?:(?:\+|00)86)?1(?:(?:3[\d])|(?:4[5-79])|(?:5[0-35-9])|(?:6[5-7])|(?:7[0-8])|(?:8[\d])|(?:9[01256789]))\d{8}$/;
+    return regex.test(phoneNumber);
+}
+
 function validateEmailCode(emailcode) {
     // 验证码为 6 位数字
     const emailcodeRegex = /^\d{6}$/;
     return emailcodeRegex.test(emailcode);
 }
 
-export { validateUrl, validateEmail, validatePassword, validateInviteCode, validateStudentId, validateEmailCode };
+export { validateUrl, validateEmail, validatePassword, validateInviteCode, validateStudentId, validateEmailCode, validatePhoneNumber };

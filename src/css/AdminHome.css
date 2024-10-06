@@ -344,7 +344,7 @@ body, html {
 /* 响应式设计 */
 @media (max-width: 768px) {
     .admin-home_sidebar {
-        width: 173.33px;
+        width: 185px;
     }
 
     .admin-home_sidebar-close {
@@ -356,7 +356,7 @@ body, html {
     }
 
     .admin-home_logo-details i {
-        font-size: 20px;
+        font-size: 18px;
         height: 33.33px;
         min-width: 52px;
         line-height: 33.33px;
@@ -377,7 +377,7 @@ body, html {
         font-size: 13.33px;
     }
     .admin-home_link_name {
-        font-size: 14.67px;
+        font-size: 12px;
     }
 
     .admin-home_sub-menu {
@@ -385,7 +385,7 @@ body, html {
         padding: 4px 4px 9.33px 53.33px;
     }
     .admin-home_sub-menu button {
-        font-size: 13px;
+        font-size: 10px;
         padding: 3.33px 0;
     }
 
@@ -424,24 +424,32 @@ body, html {
     }
 
     .admin-home_home-content {
+        width: 50px;
         height: 40px;
     }
 
     .admin-home_home-content .bx-menu,
     .admin-home_home-content {
-        font-size: 23.33px;
+        font-size: 22px;
     }
 
     .admin-home_home-content .bx-menu {
-        margin: 0 10px;
+        margin: 0 5px;
     }
 
     .admin-home_home-content {
-        font-size: 17.33px;
+        font-size: 15px;
     }
 
     .admin-home_infor {
-        padding: 13.33px;
+        padding: 12px;
+    }
+    .admin-home_infor h1 {
+        font-size: 23.33px;
+    }
+
+    .admin-home_infor p {
+        font-size: 15px;
     }
 
     .admin-home_project-grid {

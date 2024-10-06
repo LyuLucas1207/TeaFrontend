@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Switch from '../components/Switch';
 import Tips from '../components/Tips';
 import { useTheme } from '../utility/myUse';
-import { validateEmail, validatePassword, validateStudentId, validateInviteCode, validateEmailCode, validateUrl } from '../utility/validate';
+import { validateEmail, validatePassword, validatePhoneNumber, validateInviteCode, validateEmailCode, validateUrl } from '../utility/validate';
 import { sendSignupRequest, sendEmailVertifyRequest } from '../utility/sendRequest';
 import EarthStar from '../components/EarthStar';
 import '../../css/Signup.css';
@@ -13,7 +13,7 @@ function handleSubmit(event) {
 
     const firstName = event.target.firstName.value;
     const lastName = event.target.lastName.value;
-    const studentId = event.target.studentId.value;
+    const phoneNumber = event.target.phoneNumber.value;
     const email = event.target.email.value;
     const password = event.target.password.value;
     const inviteCode = event.target.inviteCode.value;
@@ -25,8 +25,8 @@ function handleSubmit(event) {
         return;
     }
 
-    if (!validateStudentId(studentId)) {
-        alert("请输入合法的学生号");
+    if (!validatePhoneNumber(phoneNumber)) {
+        alert("请输入合法的中国大陆手机号");
         return;
     }
 
@@ -50,7 +50,7 @@ function handleSubmit(event) {
         return;
     }
 
-    sendSignupRequest(firstName, lastName, studentId, email, password, inviteCode, emailcode)
+    sendSignupRequest(firstName, lastName, phoneNumber, email, password, inviteCode, emailcode)
 }
 
 function Signup() {
@@ -97,8 +97,8 @@ function Signup() {
                         </div>
                     </div>
                     <div className="signup-form_input-group">
-                        <label htmlFor="studentId">Student ID</label>
-                        <input type="text" id="studentId" placeholder="Enter your student ID" />
+                        <label htmlFor="phoneNumber">Phone Number</label>
+                        <input type="text" id="phoneNumber" placeholder="Enter your phone number" />
                     </div>
                     <div className="signup-form_input-group">
                         <label htmlFor="email">Email</label>

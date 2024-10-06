@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import NotFound from './NotFound';
 import TentLoader from '../components/TentLoader';
 import Switch from '../components/Switch';
+import Setting from './Setting';
 
 // 引入工具函数和自定义 Hook
 import { checkIdentity, getDatas } from '../utility/sendRequest';
@@ -35,153 +36,115 @@ function renderSuperAdminPage({ toggleManagerAdminMenu, ManagerAdminOpen, toggle
 function renderAdminPage({ toggleManagerAdminMenu, ManagerAdminOpen, toggleEngineeringMenu, EngineeringOpen, fetchData }) {
     return (
         <>
-            {renderManagerAdminPage({ toggleManagerAdminMenu, ManagerAdminOpen, fetchData })}
-            {renderManagerAdvertisementPage({ fetchData })}
-            {renderManagerArtPage({ fetchData })}
-            {renderManagerBuildingPage({ fetchData })}
-            {renderManagerComputerSciencePage({ fetchData })}
-            {renderManagerEngineeringPage({ toggleEngineeringMenu, EngineeringOpen, fetchData })}
-            {renderManagerHumanResourcesPage({ fetchData })}
-            {renderManagerElectronicsGamePage({ fetchData })}
-            {renderManagerFinancePage({ fetchData })}
+            {renderManagerAdminPage({ toggleManagerAdminMenu, ManagerAdminOpen, toggleEngineeringMenu, EngineeringOpen, fetchData })}
         </>
     );
 }
-function renderManagerAdminPage({ toggleManagerAdminMenu, ManagerAdminOpen, fetchData }) {
+function renderManagerAdminPage({ toggleManagerAdminMenu, ManagerAdminOpen, toggleEngineeringMenu, EngineeringOpen, fetchData }) {
     return (
-        <li>
-            <div className="admin-home_iocn-link">
-                <button onClick={toggleManagerAdminMenu}>
-                    <i className='bx bx-network-chart' ></i>
-                    <span className="admin-home_link_name">ManagerAdmin</span>
-                    <i className={`bx bxs-chevron-down admin-home_arrow ${ManagerAdminOpen ? 'admin-home_rotate' : ''}`}></i>
+        <>
+            <li>
+                <div className="admin-home_iocn-link">
+                    <button onClick={toggleManagerAdminMenu}>
+                        <i className='bx bx-network-chart' ></i>
+                        <span className="admin-home_link_name">ManagerAdmin</span>
+                        <i className={`bx bxs-chevron-down admin-home_arrow ${ManagerAdminOpen ? 'admin-home_rotate' : ''}`}></i>
+                    </button>
+                </div>
+                <ul className="admin-home_sub-menu" style={{ display: ManagerAdminOpen ? 'block' : 'none' }}>
+                    <li><button onClick={() => fetchData('/managerAdvertisement')}>Advertisement</button></li>
+                    <li><button onClick={() => fetchData('/managerArt')}>Art</button></li>
+                    <li><button onClick={() => fetchData('/managerBuilding')}>Building</button></li>
+                    <li><button onClick={() => fetchData('/managerComputerScience')}>ComputerScience</button></li>
+                    <li><button onClick={() => fetchData('/managerEngineering')}>Engineering</button></li>
+                    <li><button onClick={() => fetchData('/managerHumanResources')}>HumanResources</button></li>
+                    <li><button onClick={() => fetchData('/managerElectronicsGame')}>ElectronicsGame</button></li>
+                    <li><button onClick={() => fetchData('/managerFinance')}>Finance</button></li>
+                </ul>
+            </li>
+            <li>
+                <button onClick={() => fetchData('/advertisement')}>
+                    <i className='bx bx-spreadsheet' ></i>
+                    <span className="admin-home_link_name">Advertisement</span>
                 </button>
-            </div>
-            <ul className="admin-home_sub-menu" style={{ display: ManagerAdminOpen ? 'block' : 'none' }}>
-                <li><button onClick={() => fetchData('/managerAdvertisement')}>Advertisement</button></li>
-                <li><button onClick={() => fetchData('/managerArt')}>Art</button></li>
-                <li><button onClick={() => fetchData('/managerBuilding')}>Building</button></li>
-                <li><button onClick={() => fetchData('/managerComputerScience')}>ComputerScience</button></li>
-                <li><button onClick={() => fetchData('/managerEngineering')}>Engineering</button></li>
-                <li><button onClick={() => fetchData('/managerHumanResources')}>HumanResources</button></li>
-                <li><button onClick={() => fetchData('/managerElectronicsGame')}>ElectronicsGame</button></li>
-                <li><button onClick={() => fetchData('/managerFinance')}>Finance</button></li>
-            </ul>
-        </li>
+                <ul className="admin-home_sub-menu admin-home_blank">
+                    <li><button onClick={() => fetchData('/advertisement')}>Advertisement</button></li>
+                </ul>
+            </li>
+            <li>
+                <button onClick={() => fetchData('/art')}>
+                    <i className='bx bxl-netlify' ></i>
+                    <span className="admin-home_link_name">Art</span>
+                </button>
+                <ul className="admin-home_sub-menu admin-home_blank">
+                    <li><button onClick={() => fetchData('/art')}>Art</button></li>
+                </ul>
+            </li>
+            <li>
+                <button onClick={() => fetchData('/building')}>
+                    <i className='bx bx-arch' ></i>
+                    <span className="admin-home_link_name">Architecture</span>
+                </button>
+                <ul className="admin-home_sub-menu admin-home_blank">
+                    <li><button onClick={() => fetchData('/building')}>Architecture</button></li>
+                </ul>
+            </li>
+            <li>
+                <button onClick={() => fetchData('/computerScience')}>
+                    <i className='bx bx-code-block' ></i>
+                    <span className="admin-home_link_name">ComputerScience</span>
+                </button>
+                <ul className="admin-home_sub-menu admin-home_blank">
+                    <li><button onClick={() => fetchData('/computerscience')}>ComputerScience</button></li>
+                </ul>
+            </li>
+            <li>
+                <div className="admin-home_iocn-link">
+                    <button onClick={toggleEngineeringMenu}>
+                        <i className='bx bx-chip'></i>
+                        <span className="admin-home_link_name">Engineer</span>
+                        <i className={`bx bxs-chevron-down admin-home_arrow ${EngineeringOpen ? 'admin-home_rotate' : ''}`}></i>
+                    </button>
+                </div>
+                <ul className="admin-home_sub-menu" style={{ display: EngineeringOpen ? 'block' : 'none' }}>
+                    <li><button onClick={() => fetchData('/computerEngineering')}>CPEN</button></li>
+                    <li><button onClick={() => fetchData('/electricalEngineering')}>ELEN</button></li>
+                    <li><button onClick={() => fetchData('/architectureEngineering')}>AREN</button></li>
+                    <li><button onClick={() => fetchData('/mechanicalEngineering')}>MEEN</button></li>
+                    <li><button onClick={() => fetchData('/manufacturingEngineering')}>MFEN</button></li>
+                </ul>
+            </li>
+            <li>
+                <button onClick={() => fetchData('/humanreSources')}>
+                    <i className='bx bx-user-check' ></i>
+                    <span className="admin-home_link_name">HumanResources</span>
+                </button>
+                <ul className="admin-home_sub-menu admin-home_blank">
+                    <li><button onClick={() => fetchData('/humanresources')}>HumanResources</button></li>
+                </ul>
+            </li>
+            <li>
+                <button onClick={() => fetchData('/electronicsGame')}>
+                    <i className='bx bx-joystick' ></i>
+                    <span className="admin-home_link_name">ElectronicsGame</span>
+                </button>
+                <ul className="admin-home_sub-menu admin-home_blank">
+                    <li><button onClick={() => fetchData('/electronicsgame')}>ElectronicsGame</button></li>
+                </ul>
+            </li>
+            <li>
+                <button onClick={() => fetchData('/finicial')}>
+                    <i className='bx bx-candles' ></i>
+                    <span className="admin-home_link_name">Financier</span>
+                </button>
+                <ul className="admin-home_sub-menu admin-home_blank">
+                    <li><button onClick={() => fetchData('/analytics')}>Financier</button></li>
+                </ul>
+            </li>
+        </>
     );
 }
 function renderUserPage() {
-}
-function renderManagerAdvertisementPage({ fetchData }) {
-    return (
-        <li>
-            <button onClick={() => fetchData('/advertisement')}>
-                <i className='bx bx-spreadsheet' ></i>
-                <span className="admin-home_link_name">Advertisement</span>
-            </button>
-            <ul className="admin-home_sub-menu admin-home_blank">
-                <li><button onClick={() => fetchData('/advertisement')}>Advertisement</button></li>
-            </ul>
-        </li>
-    );
-}
-function renderManagerArtPage({ fetchData }) {
-    return (
-        <li>
-            <button onClick={() => fetchData('/art')}>
-                <i className='bx bxl-netlify' ></i>
-                <span className="admin-home_link_name">Art</span>
-            </button>
-            <ul className="admin-home_sub-menu admin-home_blank">
-                <li><button onClick={() => fetchData('/art')}>Art</button></li>
-            </ul>
-        </li>
-    );
-}
-function renderManagerBuildingPage({ fetchData }) {
-    return (
-        <li>
-            <button onClick={() => fetchData('/building')}>
-                <i className='bx bx-arch' ></i>
-                <span className="admin-home_link_name">Architecture</span>
-            </button>
-            <ul className="admin-home_sub-menu admin-home_blank">
-                <li><button onClick={() => fetchData('/building')}>Architecture</button></li>
-            </ul>
-        </li>
-    );
-}
-function renderManagerComputerSciencePage({ fetchData }) {
-    return (
-        <li>
-            <button onClick={() => fetchData('/computerScience')}>
-                <i className='bx bx-code-block' ></i>
-                <span className="admin-home_link_name">ComputerScience</span>
-            </button>
-            <ul className="admin-home_sub-menu admin-home_blank">
-                <li><button onClick={() => fetchData('/computerscience')}>ComputerScience</button></li>
-            </ul>
-        </li>
-    );
-}
-function renderManagerEngineeringPage({ toggleEngineeringMenu, EngineeringOpen, fetchData }) {
-    return (
-        <li>
-            <div className="admin-home_iocn-link">
-                <button onClick={toggleEngineeringMenu}>
-                    <i className='bx bx-chip'></i>
-                    <span className="admin-home_link_name">Engineer</span>
-                    <i className={`bx bxs-chevron-down admin-home_arrow ${EngineeringOpen ? 'admin-home_rotate' : ''}`}></i>
-                </button>
-            </div>
-            <ul className="admin-home_sub-menu" style={{ display: EngineeringOpen ? 'block' : 'none' }}>
-                <li><button onClick={() => fetchData('/computerEngineering')}>CPEN</button></li>
-                <li><button onClick={() => fetchData('/electricalEngineering')}>ELEN</button></li>
-                <li><button onClick={() => fetchData('/architectureEngineering')}>AREN</button></li>
-                <li><button onClick={() => fetchData('/mechanicalEngineering')}>MEEN</button></li>
-                <li><button onClick={() => fetchData('/manufacturingEngineering')}>MFEN</button></li>
-            </ul>
-        </li>
-    );
-}
-function renderManagerHumanResourcesPage({ fetchData }) {
-    return (
-        <li>
-            <button onClick={() => fetchData('/humanreSources')}>
-                <i className='bx bx-user-check' ></i>
-                <span className="admin-home_link_name">HumanResources</span>
-            </button>
-            <ul className="admin-home_sub-menu admin-home_blank">
-                <li><button onClick={() => fetchData('/humanresources')}>HumanResources</button></li>
-            </ul>
-        </li>
-    );
-}
-function renderManagerElectronicsGamePage({ fetchData }) {
-    return (
-        <li>
-            <button onClick={() => fetchData('/electronicsGame')}>
-                <i className='bx bx-joystick' ></i>
-                <span className="admin-home_link_name">ElectronicsGame</span>
-            </button>
-            <ul className="admin-home_sub-menu admin-home_blank">
-                <li><button onClick={() => fetchData('/electronicsgame')}>ElectronicsGame</button></li>
-            </ul>
-        </li>
-    );
-}
-function renderManagerFinancePage({ fetchData }) {
-    return (
-        <li>
-            <button onClick={() => fetchData('/finicial')}>
-                <i className='bx bx-candles' ></i>
-                <span className="admin-home_link_name">Financier</span>
-            </button>
-            <ul className="admin-home_sub-menu admin-home_blank">
-                <li><button onClick={() => fetchData('/analytics')}>Financier</button></li>
-            </ul>
-        </li>
-    );
 }
 
 function pageSwitch( role, toggleManagerAdminMenu, ManagerAdminOpen, toggleEngineeringMenu, EngineeringOpen, fetchData ) {
@@ -191,31 +154,13 @@ function pageSwitch( role, toggleManagerAdminMenu, ManagerAdminOpen, toggleEngin
         case 'admin':
             return renderAdminPage({ toggleManagerAdminMenu, ManagerAdminOpen, toggleEngineeringMenu, EngineeringOpen, fetchData });
         case 'manager':
-            return renderManagerAdminPage({ toggleManagerAdminMenu, ManagerAdminOpen, fetchData });
+            return renderManagerAdminPage({ toggleManagerAdminMenu, ManagerAdminOpen, toggleEngineeringMenu, EngineeringOpen, fetchData });
         case 'user':
             return renderUserPage();
-        case 'manager_ad':
-            return renderManagerAdvertisementPage({ fetchData });
-        case 'manager_ar':
-            return renderManagerArtPage({ fetchData });
-        case 'manager_bu':
-            return renderManagerBuildingPage({ fetchData });
-        case 'manager_cs':
-            return renderManagerComputerSciencePage({ fetchData });
-        case 'manager_en':
-            return renderManagerEngineeringPage({ toggleEngineeringMenu, EngineeringOpen, fetchData });
-        case 'manager_hr':
-            return renderManagerHumanResourcesPage({ fetchData });
-        case 'manager_eg':
-            return renderManagerElectronicsGamePage({ fetchData });
-        case 'manager_fi':
-            return renderManagerFinancePage({ fetchData });
         default:
             return null;
     }
 }
-
-
 
 const ProjectList = ({ projects, fetchData }) => (
     <div className="admin-home_project-grid">
@@ -324,12 +269,14 @@ const AdminHome = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [status, setStatus] = useState(null);
+    const [currentPage, setCurrentPage] = useState('home');
 
     const [categoryOpen, setCategoryOpen] = useState(false);
     const [ManagerAdminOpen, setManagerAdminOpen] = useState(false);
     const [EngineeringOpen, setEngineeringOpen] = useState(false);
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [isDarkTheme, toggleTheme] = useTheme();
+    
 
     const handleBackLink = () => {
         window.location.href = '/admin.html';
@@ -351,12 +298,16 @@ const AdminHome = () => {
     const fetchData = async (projectUrl) => {
         setLoading(true);
         try {
-            const result = await getDatas(projectUrl);
-            setStatus(result.status);
-            if (result.status !== 200 && !result.data) {
-                setError(`请求失败: ${result.msg}`);
+            if (projectUrl === '/setting') {
+                setCurrentPage('setting'); // 切换到Setting页面
+            } else {
+                const result = await getDatas(projectUrl);
+                setStatus(result.status);
+                if (result.status !== 200 && !result.data) {
+                    setError(`请求失败: ${result.msg}`);
+                }
+                setProjects(result.data);
             }
-            setProjects(result.data);
         } catch (error) {
             setError(`请求出错: ${error.message}`);
         } finally {
@@ -395,7 +346,7 @@ const AdminHome = () => {
                 getRole={getRole}
                 pageSwitch={pageSwitch}
             />
-            <section className="admin-home_home-section">
+            {/* <section className="admin-home_home-section">
                 <button className="admin-home_home-content" onClick={toggleSidebar}>
                     <i className='bx bx-menu'></i>
                     <span>Nagivation SliderBar</span>
@@ -404,6 +355,22 @@ const AdminHome = () => {
                     <h1>项目列表</h1>
                     {loading ? (<TentLoader />) : projects ? (<ProjectList projects={projects} fetchData={fetchData} />) : (<p>没有项目数据。</p>)}
                 </div>
+            </section> */}
+            <section className="admin-home_home-section">
+                <button className="admin-home_home-content" onClick={toggleSidebar}>
+                    <i className='bx bx-menu'></i>
+                    <span>Nagivation SliderBar</span>
+                </button>
+                {currentPage === 'setting' ? (
+                    <Setting />  // 如果当前页面是Setting，显示Setting内容
+                ) : (
+                    <>
+                        <div className="admin-home_infor">
+                            <h1>项目列表</h1>
+                            {loading ? (<TentLoader />) : projects ? (<ProjectList projects={projects} fetchData={fetchData} />) : (<p>没有项目数据。</p>)}
+                        </div>
+                    </>
+                )}
             </section>
         </>
     );

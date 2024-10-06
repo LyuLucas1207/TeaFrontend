@@ -67,7 +67,7 @@ body {
     --content-bg-color: rgba(255, 255, 255, 0.9);
 
     --login-background-color: #f0f2f5;
-    --login-background-inverse-color:#1e1e1e;
+    --login-background-inverse-color: #1e1e1e;
     --login-contract-bg-color: #f5eeeee4;
     --login-text-color: #333;
     --login-subtitle-color: #555;
@@ -99,6 +99,18 @@ body {
     --admin-card-border-color: #ddd;
     --admin-card-text-color: #666;
     --admin-card-shadow: rgba(0, 0, 0, 0.1);
+
+    --admin-setting-bg-color: #e9f7f1;
+    --admin-setting-header-color: #28a745;
+    --admin-setting-title-color: #166b22;
+    --admin-setting-content-bg-color: rgba(255, 255, 255, 0.9);
+    --admin-setting-label-color: #166b22;
+    --admin-setting-value-bg-color: #fff;
+    --admin-setting-border-color: #ccc;
+    --admin-setting-button-bg-color: #28a745;
+    --admin-setting-button-hover-bg-color: #218838;
+    --admin-setting-button-text-color: #fff;
+    --admin-setting-shadow: rgba(0, 0, 0, 0.1);
 }
 
 /* Dark 主题 */
@@ -114,7 +126,7 @@ body.dark-theme {
     --content-bg-color: rgba(50, 50, 50, 0.9);
 
     --login-background-color: #1e1e1e;
-    --login-background-inverse-color:#f0f2f5;
+    --login-background-inverse-color: #f0f2f5;
     --login-contract-bg-color: #fffafab3;
     --login-text-color: #f0f2f5;
     --login-subtitle-color: #ccc;
@@ -137,7 +149,7 @@ body.dark-theme {
     --admin-sidebar-submenu-text-color: #f0f2f5;
     --admin-sidebar-profile-bg-color: #222222;
     --admin-sidebar-profile-text-color: #f0f2f5;
-    
+
     --admin-content-bg-color: #1e1e1e;
 
     --admin-button-bg-color: #8e011f;
@@ -146,6 +158,17 @@ body.dark-theme {
     --admin-card-border-color: #b3afaf;
     --admin-card-text-color: #ccc;
     --admin-card-shadow: rgba(152, 147, 147, 0.2);
+
+    --admin-setting-bg-color: #1f1f1f;
+    --admin-setting-header-color: #8e011f;
+    --admin-setting-title-color: #8e011f;
+    --admin-setting-content-bg-color: rgba(50, 50, 50, 0.9);
+    --admin-setting-label-color: #ff4757;
+    --admin-setting-value-bg-color: #2b2b2b;
+    --admin-setting-border-color: #444;
+    --admin-setting-button-bg-color: #8e011f;
+    --admin-setting-button-hover-bg-color: #ff4757;
+    --admin-setting-button-text-color: #fff;
 }
 
 #admin_home-root,

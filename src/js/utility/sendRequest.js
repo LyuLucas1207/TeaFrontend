@@ -5,9 +5,9 @@ import { classifyCode } from './classifyInformation';
 
 function defineUrl() {
     if (process.env.NODE_ENV === 'development') {
-        return 'https://192.168.1.75:9999';
+        return 'https://192.168.1.75:10002';
     }
-    return 'https://www.lucaslyu.com:9999';
+    return 'https://www.lucaslyu.com:10002';
 }
 
 
@@ -38,6 +38,31 @@ function checkIdentity() {
             }
             return classifyCode(500, 1, { msg: error.message });
         });
+}
+
+async function getUserInfo() {
+    const url = defineUrl();
+    const token = localStorage.getItem('token');
+    if (!token) {
+        return { status: 401, code: 1, data: null, msg: '未登录，请先登录！' };
+    }
+
+    try {
+        const response = await axios.post(url, {
+            action: 'getUserInfo'
+        }, {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            timeout: 5000
+        });
+        return classifyCode(response.status, response.data.code, response.data);
+    } catch (error) {
+        if (error.response) {
+            return classifyCode(error.response.status, error.response.data.code, error.response.data);
+        }
+    }
 }
 
 
@@ -87,13 +112,13 @@ function sendLoginRequest(email, password) {
         });
 }
 
-function sendSignupRequest(firstName, lastName, studentId, email, password, inviteCode, emailcode) {
+function sendSignupRequest(firstName, lastName, phoneNumber, email, password, inviteCode, emailcode) {
     const url = defineUrl();
     return axios.post(url, { // 发送 POST 请求
         action: 'signup', // 定义 action 为 signup
         firstName,
         lastName,
-        studentId,
+        phoneNumber,
         email,
         password,
         inviteCode,
@@ -132,7 +157,7 @@ function sendEmailVertifyRequest(email) {
 }
 
 
-export { checkIdentity, getDatas, sendLoginRequest, sendSignupRequest, sendEmailVertifyRequest };
+export { checkIdentity, getDatas, sendLoginRequest, sendSignupRequest, sendEmailVertifyRequest, getUserInfo };
 
 
 
