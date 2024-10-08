@@ -7,6 +7,10 @@
     width: 90%;
     border-radius: 8px;
     box-shadow: 0 4px 8px var(--admin-setting-shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .setting_title {
@@ -18,6 +22,7 @@
 }
 
 .setting_section {
+    width: 80%;
     font-size: 24px;
     margin-bottom: 24px;
     margin-left: 80px;
@@ -54,42 +59,32 @@
     background-color: var(--admin-setting-button-hover-bg-color);
 }
 
-/* 手机样式 */
-@media (max-width: 768px) {
-    .setting_container {
+@media screen and (max-width: 768px) {
+    .setting_section {
         width: 90%;
-        margin-top: 20px;
-        margin-bottom: 70px;
-        padding: 10px;
-        padding-bottom: 20px;
+        font-size: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
     }
 
     .setting_title {
-        font-size: 2rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .setting_section {
-        padding: 1rem;
-        margin-bottom: 1.5rem;
+        font-size: 36px;
     }
 
     .setting_label {
-        font-size: 1rem;
-        margin-bottom: 0.5rem;
+        font-size: 20px;
     }
 
     .setting_value {
-        padding: 0.5rem;
-        font-size: 0.9rem;
+        padding: 0.5rem 0.75rem;
     }
 
     .setting_button {
-        width: 100%;
-        padding: 0.5rem;
-        font-size: 1rem;
+        padding: 0.5rem 1rem;
     }
+    
 }
+
 
 .login-form_toggle-switch {
     position: relative;
@@ -328,4 +323,19 @@
     font-size: 16px;
     border-radius: 5px;
     box-sizing: border-box;
+}
+
+@media screen and (max-width: 767px) {
+    .setting_email-code-group {
+        flex-direction: column;
+    }
+
+    .setting_send-email-code {
+        width: 100%;
+    }
+
+    .setting_verify-email-code {
+        width: 100%;
+    }
+    
 }
