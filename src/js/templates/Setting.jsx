@@ -83,6 +83,20 @@ const Setting = () => {
         updateUserInfo(userInfo.originalEmail, firstName, lastName, phoneNumber, email, password, emailcode)
             .then(() => {
                 alert('用户信息更新成功');
+
+                // 重新获取用户信息
+                getUserInfo().then((data) => {
+                    const { email, firstName, lastName, phoneNumber, password } = data.data;
+                    setUserInfo({
+                        originalEmail: email,
+                        firstName,
+                        lastName,
+                        phoneNumber,
+                        email,
+                        password,
+                    });
+                });
+
                 setEditMode(false); // 保存后退出编辑模式
             })
             .catch((err) => {

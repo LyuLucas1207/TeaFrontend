@@ -5,7 +5,8 @@ import { classifyCode } from './classifyInformation';
 
 function defineUrl() {
     if (process.env.NODE_ENV === 'development') {
-        return 'https://192.168.1.75:10002';
+        // return 'https://192.168.1.75:10002';
+        return 'https://localhost:10002';
     }
     return 'https://www.lucaslyu.com:10002';
 }
@@ -114,6 +115,7 @@ async function sendLoginRequest(email, password) {
         });
 }
 
+
 async function sendSignupRequest(firstName, lastName, phoneNumber, email, password, inviteCode, emailcode) {
     const url = defineUrl();
     return await axios.post(url, { // 发送 POST 请求
@@ -157,6 +159,7 @@ async function sendEmailVertifyRequest(email) {
             classifyCode(500, 1, { msg: error.message });
         });
 }
+
 
 async function updateUserInfo(originalEmail, firstName, lastName, phoneNumber, email, password, emailcode) {
     const url = defineUrl();
