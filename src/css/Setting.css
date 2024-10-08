@@ -10,15 +10,19 @@
 }
 
 .setting_title {
-    font-size: 2.5rem;
+    font-size: 48px;
     color: var(--admin-setting-title-color);
     text-align: center;
     margin-bottom: 2rem;
+    font-weight: 900;
 }
 
 .setting_section {
-    margin-bottom: 2rem;
-    padding: 1.5rem;
+    font-size: 24px;
+    margin-bottom: 24px;
+    margin-left: 80px;
+    margin-right: 80px;
+    padding: 15px;
     background-color: var(--admin-setting-content-bg-color);
     border: 1px solid var(--admin-setting-border-color);
     border-radius: 8px;
@@ -26,7 +30,6 @@
 
 .setting_label {
     font-weight: bold;
-    color: var(--admin-setting-label-color);
     margin-bottom: 0.5rem;
 }
 
@@ -86,4 +89,243 @@
         padding: 0.5rem;
         font-size: 1rem;
     }
+}
+
+.login-form_toggle-switch {
+    position: relative;
+    width: 60px;
+    /* 调整宽度 */
+    height: 25px;
+    /* 调整高度 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+}
+
+@media screen and (max-width: 1000px) {
+    .login-form_toggle-switch {
+        width: 40px;
+        /* 小屏幕进一步缩小 */
+        height: 18px;
+    }
+}
+
+.login-form_switch-label {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--login-background-inverse-color);
+    border-radius: 20px;
+    /* 缩小后的圆角 */
+    cursor: pointer;
+    border: 3px solid var(--login-background-inverse-color);
+}
+
+@media screen and (max-width: 1000px) {
+    .login-form_switch-label {
+        margin-top: 10px;
+        border: 2px solid var(--login-background-inverse-color);
+        /* 小屏幕时的边框 */
+    }
+}
+
+.login-form_checkbox {
+    display: none;
+    /* 隐藏原始的 checkbox */
+}
+
+.login-form_slider {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    /* 缩小后的圆角 */
+    transition: 0.3s;
+}
+
+@media screen and (max-width: 1000px) {
+    .login-form_slider {
+        border-radius: 15px;
+        /* 小屏幕时的圆角调整 */
+    }
+}
+
+.login-form_slider::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    /* 缩小后的顶部间距 */
+    left: 2px;
+    /* 缩小后的左侧间距 */
+    width: 20px;
+    /* 缩小后的滑块宽度 */
+    height: 20px;
+    /* 缩小后的滑块高度 */
+    border-radius: 50%;
+    box-shadow: inset 8px -3px 0px 0px var(--login-content-bg-color);
+    background-color: var(--login-background-inverse-color);
+    transition: 0.3s;
+}
+
+@media screen and (max-width: 1000px) {
+    .login-form_slider::before {
+        top: 1px;
+        /* 小屏幕时的顶部间距 */
+        left: 1px;
+        /* 小屏幕时的左侧间距 */
+        width: 15px;
+        /* 小屏幕时的滑块宽度 */
+        height: 15px;
+        /* 小屏幕时的滑块高度 */
+        border-radius: 60%;
+        /* 小屏幕时的圆角 */
+    }
+}
+
+.login-form_checkbox:checked~.login-form_slider {
+    background-color: var(--login-content-bg-color);
+}
+
+.login-form_checkbox:checked~.login-form_slider::before {
+    transform: translateX(35px);
+    /* 滑块移动距离，缩小后调整 */
+    background-color: var(--login-background-inverse-color);
+    box-shadow: none;
+}
+
+@media screen and (max-width: 1000px) {
+    .login-form_checkbox:checked~.login-form_slider::before {
+        transform: translateX(20px);
+        /* 小屏幕时的滑块移动距离 */
+    }
+}
+
+/* 通用表单样式 */
+.setting_form {
+    width: 400px;
+    padding: 20px;
+    margin: 0 auto;
+    background-color: var(--admin-setting-content-bg-color);
+    /* 改成使用你定义的变量 */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.setting_info-group {
+    margin-bottom: 20px;
+}
+
+.setting_label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.setting_input {
+    background-color: var(--login-contract-bg-color);
+    box-shadow: inset 2px 2px 4px var(--login-shadow-dark),
+        inset -2px -2px 4px var(--login-shadow-light);
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.setting_button {
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+}
+
+.setting_button:hover {
+    background-color: #45a049;
+}
+
+/* 桌面端样式 */
+@media screen and (min-width: 768px) {
+    .setting_form {
+        width: 500px;
+        /* 表单宽度 */
+    }
+
+    .setting_input {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .setting_label {
+        font-size: 18px;
+    }
+
+    .setting_button {
+        font-size: 18px;
+        padding: 14px;
+    }
+}
+
+/* 移动端样式 */
+@media screen and (max-width: 767px) {
+    .setting_form {
+        width: 90%;
+        /* 表单宽度自适应 */
+        padding: 15px;
+    }
+
+    .setting_input {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .setting_label {
+        font-size: 16px;
+    }
+
+    .setting_button {
+        font-size: 16px;
+        padding: 12px;
+    }
+}
+
+.setting_email-code-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+
+.setting_send-email-code {
+    margin-top: 40px;
+    width: 38%;
+    height: 100%;
+}
+
+.setting_verify-email-code {
+    margin-top: 20px;
+    width: 58%;
+    height: 100%;
+}
+
+.setting_verify-email-code label {
+    display: block;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.setting_verify-email-code input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    box-sizing: border-box;
 }

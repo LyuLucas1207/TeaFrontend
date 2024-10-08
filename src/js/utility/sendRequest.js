@@ -11,14 +11,14 @@ function defineUrl() {
 }
 
 
-function checkIdentity() {
+async function checkIdentity() {
     const url = defineUrl();
     const token = localStorage.getItem('token');
     if (!token) {
         return classifyCode(401, 1, { msg: '未登录，请先登录！' });
     }
 
-    return axios.post(url, {
+    return await axios.post(url, {
         action: 'checkIdentity' // 发送的数据
     }, {
         headers: {
@@ -57,6 +57,8 @@ async function getUserInfo() {
             },
             timeout: 5000
         });
+
+        console.log(response.data);
         return classifyCode(response.status, response.data.code, response.data);
     } catch (error) {
         if (error.response) {
@@ -92,9 +94,9 @@ async function getDatas(action) {
     }
 };
 
-function sendLoginRequest(email, password) {
+async function sendLoginRequest(email, password) {
     const url = defineUrl();
-    return axios.post(url, { // 发送 POST 请求
+    return await axios.post(url, { // 发送 POST 请求
         action: 'login', // 定义 action 为 login
         email,
         password
@@ -112,9 +114,9 @@ function sendLoginRequest(email, password) {
         });
 }
 
-function sendSignupRequest(firstName, lastName, phoneNumber, email, password, inviteCode, emailcode) {
+async function sendSignupRequest(firstName, lastName, phoneNumber, email, password, inviteCode, emailcode) {
     const url = defineUrl();
-    return axios.post(url, { // 发送 POST 请求
+    return await axios.post(url, { // 发送 POST 请求
         action: 'signup', // 定义 action 为 signup
         firstName,
         lastName,
@@ -137,9 +139,9 @@ function sendSignupRequest(firstName, lastName, phoneNumber, email, password, in
         });
 }
 
-function sendEmailVertifyRequest(email) {
+async function sendEmailVertifyRequest(email) {
     const url = defineUrl();
-    return axios.post(url, { // 发送 POST 请求
+    return await axios.post(url, { // 发送 POST 请求
         action: 'emailVertify', // 定义 action 为 emailVertify
         email
     })
@@ -156,52 +158,39 @@ function sendEmailVertifyRequest(email) {
         });
 }
 
+async function updateUserInfo(originalEmail, firstName, lastName, phoneNumber, email, password, emailcode) {
+    const url = defineUrl();
+    const token = localStorage.getItem('token');
+    if (!token) {
+        return { status: 401, code: 1, data: null, msg: '未登录，请先登录！' };
+    }
 
-export { checkIdentity, getDatas, sendLoginRequest, sendSignupRequest, sendEmailVertifyRequest, getUserInfo };
-
-
-
-/*  //!         200 OK    response
-{
-    "status": 401,          // HTTP 状态码
-    "statusText": "Unauthorized", // HTTP 状态描述
-    "headers": {            // 响应头
-        "content-type": "application/json"
-    },
-    "data": {               // 实际的错误响应内容（服务器返回的内容）
-        "code": 1,
-        "msg": "some message"
-        "data": {
-            "token": "wdksdkn...sdf"
-        }
-        or===========
-        "data": null
-        or===========
-        "data": {
-            "ProJ1": {
-                "name": "Project 1",
-                "desc": "This is project 1"
+    try {
+        const response = await axios.post(url, {
+            action: 'updateUserInfo',
+            originalEmail,
+            firstName,
+            lastName,
+            phoneNumber,
+            email,
+            password,
+            emailcode
+        }, {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
             },
-            "ProJ2": {
-                "name": "Project 2",
-                "desc": "This is project 2"
-            }
+            timeout: 5000
+        });
+
+        return classifyCode(response.status, response.data.code, response.data);
+    } catch (error) {
+        if (error.response) {
+            return classifyCode(error.response.status, error.response.data.code, error.response.data);
         }
     }
 }
-*/
-
-/*  //!         Not 200 OK    error.response
-{
-    "status": 500,
-    "statusText": "Internal Server Error",
-    "data": {
-        "code": 1,
-        "msg": "some message"
-        "data": null
-    }
-}
 
 
+export { checkIdentity, getDatas, sendLoginRequest, sendSignupRequest, sendEmailVertifyRequest, getUserInfo, updateUserInfo };
 
-*/

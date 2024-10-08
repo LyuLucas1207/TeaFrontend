@@ -132,6 +132,7 @@ body, html {
 }
 
 .admin-home_sidebar-close .admin-home_link_name {
+    font-size: 0;
     opacity: 0;
     pointer-events: none;
 }
@@ -244,7 +245,7 @@ body, html {
     justify-content: baseline;
     align-items: left;
     background: var(--admin-content-bg-color);
-    height: 100vh;
+    height: max-content;
     left: 280px;
     width: calc(100% - 280px);
     transition: all 0.5s ease;
