@@ -32,6 +32,7 @@ function status_200(code, data) {
             break;
         case 1:
             alert("信息请求成功！" + data.msg);
+            if (data.data && data.data.token) setToken(data.data.token);
             break;
         case 2:
             alert("密码错误，请重试！" + data.msg);

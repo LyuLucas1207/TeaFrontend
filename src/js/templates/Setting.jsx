@@ -48,7 +48,7 @@ const Setting = () => {
     };
 
     // 提交表单
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
         const { firstName, lastName, phoneNumber, email, password } = userInfo;
@@ -80,28 +80,19 @@ const Setting = () => {
         }
 
         // 调用更新用户信息的函数
-        updateUserInfo(userInfo.originalEmail, firstName, lastName, phoneNumber, email, password, emailcode)
-            .then(() => {
-                alert('用户信息更新成功');
-
-                // 重新获取用户信息
-                getUserInfo().then((data) => {
-                    const { email, firstName, lastName, phoneNumber, password } = data.data;
-                    setUserInfo({
-                        originalEmail: email,
-                        firstName,
-                        lastName,
-                        phoneNumber,
-                        email,
-                        password,
-                    });
+        await updateUserInfo(userInfo.originalEmail, firstName, lastName, phoneNumber, email, password, emailcode);
+        
+        await getUserInfo().then((data) => {
+                const { email, firstName, lastName, phoneNumber, password } = data.data;
+                console.log(data);
+                setUserInfo({
+                    originalEmail: email,
+                    firstName,
+                    lastName,
+                    phoneNumber,
+                    email,
+                    password,
                 });
-
-                setEditMode(false); // 保存后退出编辑模式
-            })
-            .catch((err) => {
-                console.error(err);
-                alert('更新用户信息时发生错误');
             });
     };
 

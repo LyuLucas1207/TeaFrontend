@@ -5,8 +5,8 @@ import { classifyCode } from './classifyInformation';
 
 function defineUrl() {
     if (process.env.NODE_ENV === 'development') {
-        // return 'https://192.168.1.75:10002';
-        return 'https://localhost:10002';
+        return 'https://192.168.1.75:10002';
+        // return 'https://localhost:10002';
     }
     return 'https://www.lucaslyu.com:10002';
 }
@@ -170,7 +170,7 @@ async function updateUserInfo(originalEmail, firstName, lastName, phoneNumber, e
 
     try {
         const response = await axios.post(url, {
-            action: 'updateUserInfo',
+            action: 'update',
             originalEmail,
             firstName,
             lastName,
