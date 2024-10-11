@@ -93,15 +93,17 @@ Users can update personal information like first name, last name, email, and pho
 All pages support both light and dark modes. Users can switch between the two modes using a toggle button on each page.
 
 ## Screenshots
-Login Page (Dark Mode)
+### Login Page (Dark Mode)
+![Login Light Mode](preview/login-light.png)
+### Login Page (Light Mode)
+![Login Light Mode](preview/login-dark.png)
+### Settings Page (Dark Mode)
+![Login Light Mode](preview/1.png)
+### Settings Page (Light Mode)
+![Login Light Mode](preview/2.png)
+### Sign Up Page (Dark Mode)
 
-Login Page (Light Mode)
-
-Settings Page (Dark Mode)
-
-Settings Page (Light Mode)
-
-Sign Up Page (Dark Mode)
+![Sign Up Dark Mode](preview/signup-dark-mode.png)
 
 ## Technologies Used
 1. React.js: Frontend library for building user interfaces.
