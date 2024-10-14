@@ -1,0 +1,98 @@
+.resources_all-staff-container {
+    padding: 20px;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    background-color: var(--admin-content-bg-color);
+}
+
+.resources_all-staff-container h1 {
+    margin: 0 0 20px;
+    font-size: 66px;
+    color: var(--title-color);
+}
+
+.resources_all-staff-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.resources_all-staff-card {
+    background-color: var(--admin-card-bg-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px var(--admin-card-shadow);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: left;
+    color: var(--admin-card-text-color);
+}
+
+.resources_all-staff-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px var(--admin-card-shadow);
+}
+
+.resources_all-staff-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.resources_all-staff-info {
+    padding: 15px;
+}
+
+.resources_all-staff-info h2 {
+    margin: 0 0 10px;
+    font-size: 25px;
+    color: var(--title-color);
+}
+
+.resources_all-staff-info p {
+    margin: 5px 0;
+    color: var(--text-color);
+    font-size: 16px;
+}
+
+.resources_all-staff-delete-button {
+    width: 100%;
+    background-color: var(--admin-button-bg-color);
+    color: var(--background-color);
+    border: none;
+    padding: 10px;
+    margin: 0 auto;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    margin-top: 10px;
+}
+
+.resources_all-staff-delete-button:hover {
+    background-color: var(--admin-button-hover-bg-color);
+    transform: scale(1.05);
+}
+
+/* 手机端样式 */
+@media (max-width: 767px) {
+    .resources_all-staff-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 15px;
+    }
+
+    .resources_all-staff-card {
+        font-size: 14px;
+    }
+
+    .resources_all-staff-info h2 {
+        font-size: 18px;
+    }
+
+    .resources_all-staff-info p {
+        font-size: 14px;
+    }
+    .resources_all-staff-delete-button {
+        font-size: 14px;
+    }
+}

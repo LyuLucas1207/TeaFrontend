@@ -53,7 +53,13 @@ function status_200(code, data) {
             alert("验证码发送成功！请查收！" + data.msg);
             break;
         case 7:
-            alert("信息存入成功！" + data.msg);
+            alert("成员信息存入成功！" + data.msg);
+            break;
+        case 8:
+            alert("成员获取信息成功！" + data.msg);
+            break;
+        case 9:
+            alert("成员删除成功！" + data.msg);
             break;
         default:
             alert("未知错误，请重试！" + data.msg);
@@ -104,6 +110,9 @@ function status_400(code, data) {
             break;
         case 4:
             alert("JSON 解析失败！" + data.msg);
+            break;
+        case 5:
+            alert("缺少员工id" + data.msg);
             break;
         default:
             alert("未知错误，请重试！" + data.msg);

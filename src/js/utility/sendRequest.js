@@ -11,44 +11,48 @@ function defineUrl() {
     return 'https://www.lucaslyu.com:10002';
 }
 
-
+let isChecking = false; // 锁变量
 async function checkIdentity() {
-    const url = defineUrl();
-    const token = localStorage.getItem('token');
-    if (!token) {
-        return classifyCode(401, 1, { msg: '未登录，请先登录！' });
-    }
+    if (isChecking) return; // 如果已有请求在进行，直接返回
+    isChecking = true; // 设置锁变量为 true
+    try {
+        console.log("checkIdentity 被调用了");
+        const url = defineUrl();
+        const token = localStorage.getItem('token');
+        if (!token) {
+            return classifyCode(401, 1, { msg: '未登录，请先登录！' });
+        }
 
-    return await axios.post(url, {
-        action: 'checkIdentity' // 发送的数据
-    }, {
-        headers: {
-            'Authorization': `Bearer ${token}`, // 设置请求头
-            'Content-Type': 'application/json'
-        },
-        timeout: 5000
-    })
-        .then((response) => {
-            // 成功请求时处理
-            return classifyCode(response.status, response.data.code, response.data);
-        })
-        .catch((error) => {
-            // 捕获错误时处理
-            if (error.response) {
-                return classifyCode(error.response.status, error.response.data.code, error.response.data);
-            }
-            return classifyCode(500, 1, { msg: error.message });
+        const response = await axios.post(url, { action: 'checkIdentity' }, {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+            timeout: 5000,
         });
+
+        return classifyCode(response.status, response.data.code, response.data);
+    } catch (error) {
+        if (error.response) {
+            return classifyCode(error.response.status, error.response.data.code, error.response.data);
+        }
+        return classifyCode(500, 1, { msg: error.message });
+    } finally {
+        isChecking = false; // 请求完成后释放锁
+    }
 }
 
+let isGettingUserInfo = false; // 锁变量
 async function getUserInfo() {
-    const url = defineUrl();
-    const token = localStorage.getItem('token');
-    if (!token) {
-        return { status: 401, code: 1, data: null, msg: '未登录，请先登录！' };
-    }
+    if (isGettingUserInfo) return; // 如果已有请求在进行，直接返回
+    isGettingUserInfo = true; // 设置锁变量为 true
 
     try {
+        const url = defineUrl();
+        const token = localStorage.getItem('token');
+        if (!token) {
+            return { status: 401, code: 1, data: null, msg: '未登录，请先登录！' };
+        }
         const response = await axios.post(url, {
             action: 'getUserInfo'
         }, {
@@ -65,81 +69,155 @@ async function getUserInfo() {
         if (error.response) {
             return classifyCode(error.response.status, error.response.data.code, error.response.data);
         }
+    } finally {
+        isGettingUserInfo = false; // 请求完成后释放锁
     }
 }
 
+
+let isSendingRequest = false; // 锁变量
 async function sendLoginRequest(email, password) {
-    const url = defineUrl();
-    return await axios.post(url, { // 发送 POST 请求
-        action: 'login', // 定义 action 为 login
-        email,
-        password
-    })
-        .then((response) => {
-            if (response.status === 200) {
-                classifyCode(response.status, response.data.code, response.data);
-            }
-        })
-        .catch((error) => {
-            if (error.response) {
-                classifyCode(error.response.status, error.response.data.code, error.response.data);
-            }
-            classifyCode(500, 1, { msg: error.message });
+    if (isSendingRequest) return; // 如果已有请求在进行，直接返回
+    isSendingRequest = true; // 设置锁变量为 true
+    try {
+        const url = defineUrl();
+        const response = await axios.post(url, { // 发送 POST 请求
+            action: 'login', // 定义 action 为 login
+            email,
+            password
         });
-}
 
-async function sendSignupRequest(firstName, lastName, phoneNumber, email, password, inviteCode, emailcode) {
-    const url = defineUrl();
-    return await axios.post(url, { // 发送 POST 请求
-        action: 'signup', // 定义 action 为 signup
-        firstName,
-        lastName,
-        phoneNumber,
-        email,
-        password,
-        inviteCode,
-        emailcode
-    })
-        .then((response) => {
-            if (response.status === 201) {
-                classifyCode(response.status, response.data.code, response.data);
-            }
-        })
-        .catch((error) => {
-            if (error.response) {
-                classifyCode(error.response.status, error.response.data.code, error.response.data);
-            }
-            classifyCode(500, 1, { msg: error.message });
-        });
-}
-
-async function sendEmailVertifyRequest(email) {
-    const url = defineUrl();
-    return await axios.post(url, { // 发送 POST 请求
-        action: 'emailVertify', // 定义 action 为 emailVertify
-        email
-    })
-        .then((response) => {
-            if (response.status === 200) {
-                classifyCode(response.status, response.data.code, response.data);
-            }
-        })
-        .catch((error) => {
-            if (error.response) {
-                classifyCode(error.response.status, error.response.data.code, error.response.data);
-            }
-            classifyCode(500, 1, { msg: error.message });
-        });
-}
-
-async function updateUserInfo(originalEmail, firstName, lastName, phoneNumber, email, password, emailcode) {
-    const url = defineUrl();
-    const token = localStorage.getItem('token');
-    if (!token) {
-        return { status: 401, code: 1, data: null, msg: '未登录，请先登录！' };
+        return classifyCode(response.status, response.data.code, response.data);
+    } catch (error) {
+        if (error.response) {
+            return classifyCode(error.response.status, error.response.data.code, error.response.data);
+        }
+        return classifyCode(500, 1, { msg: error.message });
+    } finally {
+        isSendingRequest = false; // 请求完成后释放锁
     }
+    
+
+    // const url = defineUrl();
+    // return await axios.post(url, { // 发送 POST 请求
+    //     action: 'login', // 定义 action 为 login
+    //     email,
+    //     password
+    // })
+    //     .then((response) => {
+    //         if (response.status === 200) {
+    //             classifyCode(response.status, response.data.code, response.data);
+    //         }
+    //     })
+    //     .catch((error) => {
+    //         if (error.response) {
+    //             classifyCode(error.response.status, error.response.data.code, error.response.data);
+    //         }
+    //         classifyCode(500, 1, { msg: error.message });
+    //     });
+}
+
+let isSendingSignupRequest = false; // 锁变量
+async function sendSignupRequest(firstName, lastName, phoneNumber, email, password, inviteCode, emailcode) {
+    if (isSendingSignupRequest) return; // 如果已有请求在进行，直接返回
+    isSendingSignupRequest = true; // 设置锁变量为 true
+    try {
+        const url = defineUrl();
+        const response = await axios.post(url, { // 发送 POST 请求
+            action: 'signup', // 定义 action 为 signup
+            firstName,
+            lastName,
+            phoneNumber,
+            email,
+            password,
+            inviteCode,
+            emailcode
+        });
+
+        return classifyCode(response.status, response.data.code, response.data);
+    } catch (error) {
+        if (error.response) {
+            return classifyCode(error.response.status, error.response.data.code, error.response.data);
+        }
+        return classifyCode(500, 1, { msg: error.message });
+    } finally {
+        isSendingSignupRequest = false; // 请求完成后释放锁
+    }
+
+    // const url = defineUrl();
+    // return await axios.post(url, { // 发送 POST 请求
+    //     action: 'signup', // 定义 action 为 signup
+    //     firstName,
+    //     lastName,
+    //     phoneNumber,
+    //     email,
+    //     password,
+    //     inviteCode,
+    //     emailcode
+    // })
+    //     .then((response) => {
+    //         if (response.status === 201) {
+    //             classifyCode(response.status, response.data.code, response.data);
+    //         }
+    //     })
+    //     .catch((error) => {
+    //         if (error.response) {
+    //             classifyCode(error.response.status, error.response.data.code, error.response.data);
+    //         }
+    //         classifyCode(500, 1, { msg: error.message });
+    //     });
+}
+
+let isSendingEmailVertifyRequest = false; // 锁变量
+async function sendEmailVertifyRequest(email) {
+    if (isSendingEmailVertifyRequest) return; // 如果已有请求在进行，直接返回
+    isSendingEmailVertifyRequest = true; // 设置锁变量为 true
+    try {
+        const url = defineUrl();
+        const response = await axios.post(url, { // 发送 POST 请求
+            action: 'emailVertify', // 定义 action 为 emailVertify
+            email
+        });
+
+        return classifyCode(response.status, response.data.code, response.data);
+    } catch (error) {
+        if (error.response) {
+            return classifyCode(error.response.status, error.response.data.code, error.response.data);
+        }
+        return classifyCode(500, 1, { msg: error.message });
+    } finally {
+        isSendingEmailVertifyRequest = false; // 请求完成后释放锁
+    }
+
+    // const url = defineUrl();
+    // return await axios.post(url, { // 发送 POST 请求
+    //     action: 'emailVertify', // 定义 action 为 emailVertify
+    //     email
+    // })
+    //     .then((response) => {
+    //         if (response.status === 200) {
+    //             classifyCode(response.status, response.data.code, response.data);
+    //         }
+    //     })
+    //     .catch((error) => {
+    //         if (error.response) {
+    //             classifyCode(error.response.status, error.response.data.code, error.response.data);
+    //         }
+    //         classifyCode(500, 1, { msg: error.message });
+    //     });
+}
+
+let isUpdatingUserInfo = false; // 锁变量
+async function updateUserInfo(originalEmail, firstName, lastName, phoneNumber, email, password, emailcode) {
+    if (isUpdatingUserInfo) return; // 如果已有请求在进行，直接返回
+    isUpdatingUserInfo = true; // 设置锁变量为 true
 
     try {
+        const url = defineUrl();
+        const token = localStorage.getItem('token');
+        if (!token) {
+            return { status: 401, code: 1, data: null, msg: '未登录，请先登录！' };
+        }
         const response = await axios.post(url, {
             action: 'update',
             originalEmail,
@@ -162,57 +240,66 @@ async function updateUserInfo(originalEmail, firstName, lastName, phoneNumber, e
         if (error.response) {
             return classifyCode(error.response.status, error.response.data.code, error.response.data);
         }
+    } finally {
+        isUpdatingUserInfo = false; // 请求完成后释放锁
     }
 }
 
+let isGettingDatas = false; // 锁变量
 async function getDatas(action, flag) {
-    const url = defineUrl();
-    const token = localStorage.getItem('token');
-    if (!token) {
-        return { status: 401, code: 1, data: null, msg: '未登录，请先登录！' };
-    }
-
+    if (isGettingDatas) return; // 如果已有请求在进行，直接返回
+    isGettingDatas = true; // 设置锁变量为 true
     try {
-        const response = await axios.post(url, {
-            action: action, // 发送的数据 'getProjects'
-            flag: flag
-        }, {
+        const url = defineUrl();
+        const token = localStorage.getItem('token');
+        if (!token) {
+            return { status: 401, code: 1, data: null, msg: '未登录，请先登录！' };
+        }
+
+        const formData = new FormData();
+        formData.append('action', action);
+        formData.append('flag', flag);
+        const response = await axios.post(url,formData , {
             headers: {
                 'Authorization': `Bearer ${token}`, // 设置请求头
-                'Content-Type': 'application/json'
+                'Content-Type': 'multipart/form-data; charset=utf-8',
             },
             timeout: 5000
-        }); // 设置超时时间为 5 秒
+        });
         return classifyCode(response.status, response.data.code, response.data);
     } catch (error) {
         if (error.response) {
             return classifyCode(error.response.status, error.response.data.code, error.response.data);
         }
+    } finally {
+        isGettingDatas = false; // 请求完成后释放锁
     }
 };
 
+let isAddingStaff = false; // 锁变量
 async function addingStaff(staffInfo, flag = 'staff') {
-    const url = defineUrl();
-    const token = localStorage.getItem('token');
-
-    if (!token) {
-        return { status: 401, code: 1, data: null, msg: '未登录，请先登录！' };
-    }
-
-    if (staffInfo.image && staffInfo.image.size > 10 * 1024 * 1024) {
-        return { status: 400, code: 1, msg: '图片大小不能超过 10MB!' };
-    }
-
-    const formData = new FormData();
-    formData.append('action', 'addStaff');
-    formData.append('flag', flag);
-    formData.append('name', staffInfo.name);
-    formData.append('position', staffInfo.position);
-    formData.append('description', staffInfo.description);
-    formData.append('startDate', staffInfo.startDate);
-    formData.append('image', staffInfo.image);
-
+    if (isAddingStaff) return; // 如果已有请求在进行，直接返回
+    isAddingStaff = true; // 设置锁变量为 true
     try {
+        const url = defineUrl();
+        const token = localStorage.getItem('token');
+
+        if (!token) {
+            return { status: 401, code: 1, data: null, msg: '未登录，请先登录！' };
+        }
+
+        if (staffInfo.image && staffInfo.image.size > 10 * 1024 * 1024) {
+            return { status: 400, code: 1, msg: '图片大小不能超过 10MB!' };
+        }
+
+        const formData = new FormData();
+        formData.append('action', 'addStaff');
+        formData.append('flag', flag);
+        formData.append('name', staffInfo.name);
+        formData.append('position', staffInfo.position);
+        formData.append('description', staffInfo.description);
+        formData.append('startDate', staffInfo.startDate);
+        formData.append('image', staffInfo.image);
         const response = await axios.post(url, formData, {
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -227,38 +314,78 @@ async function addingStaff(staffInfo, flag = 'staff') {
             return classifyCode(error.response.status, error.response.data.code, error.response.data);
         }
         return classifyCode(500, 1, { msg: error.message });
+    } finally {
+        isAddingStaff = false; // 请求完成后释放锁
+    }
+}
+
+let isDeletingStaff = false; // 锁变量
+async function deleteStaff(id, flag = 'staff') {
+    if (isDeletingStaff) return; // 如果已有请求在进行，直接返回
+    isDeletingStaff = true; // 设置锁变量为 true
+    try {
+        const url = defineUrl();
+        const token = localStorage.getItem('token');
+
+        if (!token) {
+            return { status: 401, code: 1, data: null, msg: '未登录，请先登录！' };
+        }
+
+        const formData = new FormData();
+        formData.append('action', 'deleteStaff');
+        formData.append('flag', flag);
+        formData.append('id', id);
+        const response = await axios.post(url, formData, {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'multipart/form-data; charset=utf-8',
+            },
+            timeout: 5000,
+        });
+
+        return classifyCode(response.status, response.data.code, response.data);
+    } catch (error) {
+        if (error.response) {
+            return classifyCode(error.response.status, error.response.data.code, error.response.data);
+        }
+        return classifyCode(500, 1, { msg: error.message });
+    } finally {
+        isDeletingStaff = false; // 请求完成后释放锁
     }
 }
 
 
+let isAddingTea = false; // 锁变量
 async function addingTea(teaInfo, flag = 'tea') {
-    const url = defineUrl();
-    const token = localStorage.getItem('token');
-
-    if (!token) {
-        return { status: 401, code: 1, data: null, msg: '未登录，请先登录！' };
-    }
-
-    // 检查图片大小是否超过 10MB
-    if (teaInfo.image && teaInfo.image.size > 10 * 1024 * 1024) {
-        return { status: 400, code: 1, msg: '图片大小不能超过 10MB!' };
-    }
-
-    // 使用 FormData 构建请求数据
-    const formData = new FormData();
-    formData.append('action', 'addTea');
-    formData.append('flag', flag);
-    formData.append('name', teaInfo.name);
-    formData.append('category', teaInfo.category);
-    formData.append('subcategory', teaInfo.subcategory);
-    formData.append('description', teaInfo.description);
-    formData.append('price', teaInfo.price);
-    formData.append('quantity', teaInfo.quantity);
-    if (teaInfo.image) {
-        formData.append('image', teaInfo.image);
-    }
-
+    if (isAddingTea) return; // 如果已有请求在进行，直接返回
+    isAddingTea = true; // 设置锁变量为 true
+    
     try {
+        const url = defineUrl();
+        const token = localStorage.getItem('token');
+
+        if (!token) {
+            return { status: 401, code: 1, data: null, msg: '未登录，请先登录！' };
+        }
+
+        // 检查图片大小是否超过 10MB
+        if (teaInfo.image && teaInfo.image.size > 10 * 1024 * 1024) {
+            return { status: 400, code: 1, msg: '图片大小不能超过 10MB!' };
+        }
+
+        // 使用 FormData 构建请求数据
+        const formData = new FormData();
+        formData.append('action', 'addTea');
+        formData.append('flag', flag);
+        formData.append('name', teaInfo.name);
+        formData.append('category', teaInfo.category);
+        formData.append('subcategory', teaInfo.subcategory);
+        formData.append('description', teaInfo.description);
+        formData.append('price', teaInfo.price);
+        formData.append('quantity', teaInfo.quantity);
+        if (teaInfo.image) {
+            formData.append('image', teaInfo.image);
+        }
         const response = await axios.post(url, formData, {
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -273,6 +400,8 @@ async function addingTea(teaInfo, flag = 'tea') {
             return classifyCode(error.response.status, error.response.data.code, error.response.data);
         }
         return classifyCode(500, 1, { msg: error.message });
+    } finally {
+        isAddingTea = false; // 请求完成后释放锁
     }
 }
 
@@ -287,6 +416,7 @@ export {
     getUserInfo,
     updateUserInfo,
     addingStaff,
+    deleteStaff,
     addingTea
 }; // 导出函数
 

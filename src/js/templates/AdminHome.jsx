@@ -8,6 +8,7 @@ import Switch from '../components/Switch';
 import Setting from './Setting';
 import AddingTea from './AddingTea';
 import AddingStaff from './AddingStaff';
+import { AllStaff } from './Resources';
 
 // 引入工具函数和自定义 Hook
 import { checkIdentity, getDatas } from '../utility/sendRequest';
@@ -283,29 +284,27 @@ function Sidebar({
     );
 };
 
-const renderPage = (currentPage, loading, projects, fetchData) => {
-    const pages = {
-        setting: <Setting />,
-        addingTea: <AddingTea />,
-        addStaff: <AddingStaff />,
-        default: (
-            <>
-                <h1>项目列表</h1>
-                {loading ? (
-                    <TentLoader />
-                ) : projects ? (
-                    <ProjectList projects={projects} fetchData={fetchData} />
-                ) : (
+const renderPage = (currentPage, loading, projects, setProjects, fetchData) => {
+    if (loading) return <TentLoader />;
+
+    switch (currentPage) {
+        case 'setting':
+            return <Setting />;
+        case 'addingTea':
+            return <AddingTea />;
+        case 'addStaff':
+            return <AddingStaff />;
+        case 'allStaff':
+            return <AllStaff staffList={projects} setStaffList={setProjects} />;
+        default:
+            return (
+                <>
+                    <h1>项目列表</h1>
                     <p>没有项目数据。</p>
-                )}
-            </>
-        ),
-    };
-
-    return pages[currentPage] || pages.default;
+                </>
+            );
+    }
 };
-
-
 
 const AdminHome = () => {
     const validPaths = ['/', '/adminhome', '/not-found'];
@@ -340,7 +339,15 @@ const AdminHome = () => {
             if (projectUrl === '/setting') setCurrentPage('setting');
             else if (projectUrl === '/addingTea') setCurrentPage('addingTea');
             else if (projectUrl === '/addStaff') setCurrentPage('addStaff');
-            else {
+            else if (projectUrl === '/AllStaff') {
+                const result = await getDatas(projectUrl, flag);
+                setStatus(result.status);
+                if (result.status !== 200 && !result.data) {
+                    setError(`请求失败: ${result.msg}`);
+                }
+                setProjects(result.data);
+                setCurrentPage('allStaff');
+            }else {
                 const result = await getDatas(projectUrl, flag);
                 setStatus(result.status);
                 if (result.status !== 200 && !result.data) {
@@ -363,7 +370,6 @@ const AdminHome = () => {
     const toggleYellowTeaMenu = () => setYellowTeaOpen(!YellowTeaOpen);
     const toggleBlackTeaMenu = () => setBlackTeaOpen(!BlackTeaOpen);
     const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
-    const toggleFirstLoad = () => setFirstLoad(false);
 
     useEffect(() => {
         const firstLoadFunction = async () => {
@@ -374,7 +380,7 @@ const AdminHome = () => {
                     setError(`请求失败: ${result.msg}`);
                 }
                 setLoading(false);
-                toggleFirstLoad(); 
+                setFirstLoad(false);
             }
         };
         firstLoadFunction();
@@ -429,18 +435,5 @@ const AdminHome = () => {
     );
 };
 
-const ProjectList = ({ projects, fetchData }) => (
-    <div className="admin-home_project-grid">
-        {Object.keys(projects).map((key) => (
-            <div key={key} className="admin-home_project-card">
-                <img src={projects[key].image} alt={projects[key].name} />
-                <h2>{projects[key].name}</h2>
-                <p>{projects[key].description}</p>
-                <p>状态: {projects[key].status}</p>
-                <button onClick={() => fetchData(projects[key].url)}>查看详情</button>
-            </div>
-        ))}
-    </div>
-);
 
 export default validateUrl(AdminHome);
