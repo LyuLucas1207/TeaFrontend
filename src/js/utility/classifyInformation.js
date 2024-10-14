@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { setToken } from './tokenTool';
 
 function classifyCode(status = 999, code = 999, data = null) {
+    if (!data.data) data.data = null;
     switch (status) {
         case 200:
             return status_200(code, data);
@@ -18,6 +19,8 @@ function classifyCode(status = 999, code = 999, data = null) {
             return status_403(code, data);
         case 409:
             return status_409(code, data);
+        case 415:
+            return status_415(code, data);
         default:
             return status_default();
     }
@@ -48,6 +51,9 @@ function status_200(code, data) {
             break;
         case 6:
             alert("验证码发送成功！请查收！" + data.msg);
+            break;
+        case 7:
+            alert("信息存入成功！" + data.msg);
             break;
         default:
             alert("未知错误，请重试！" + data.msg);
@@ -92,6 +98,12 @@ function status_400(code, data) {
             break;
         case 2:
             alert("请求错误，请检查参数！" + data.msg);
+            break;
+        case 3:
+            alert("服务器请求解析失败！" + data.msg);
+            break;
+        case 4:
+            alert("JSON 解析失败！" + data.msg);
             break;
         default:
             alert("未知错误，请重试！" + data.msg);
@@ -144,11 +156,26 @@ function status_409(code, data) {
         case 2:
             alert("错误的邀请码，请检查输入！" + data.msg);
             break;
+        case 3:
+            alert("信息已存在！" + data.msg);
+            break;
         default:
             alert("未知错误，请重试！" + data.msg);
             break;
     }
     return { status: 409, code: code, data: data.data, msg: data.msg };
+}
+
+function status_415(code, data) {
+    switch (code) {
+        case 1:
+            alert("不支持的媒体类型，请检查输入！" + data.msg);
+            break;
+        default:
+            alert("未知错误，请重试！" + data.msg);
+            break;
+    }
+    return { status: 415, code: code, data: data.data, msg: data.msg };
 }
 
 function status_default() {

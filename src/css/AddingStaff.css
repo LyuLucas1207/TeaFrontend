@@ -1,0 +1,134 @@
+.--admin-addingstaff-container {
+    background-color: var(--admin-card-bg-color);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px var(--admin-card-shadow);
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+.--admin-addingstaff-title {
+    color: var(--admin-setting-title-color);
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.--admin-addingstaff-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.--admin-addingstaff-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.--admin-addingstaff-field label {
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.--admin-addingstaff-field input,
+.--admin-addingstaff-field textarea {
+    padding: 0.75rem;
+    border-radius: 4px;
+    background-color: var(--admin-setting-value-bg-color);
+    color: var(--admin-card-text-color);
+    transition: border-color 0.3s ease;
+}
+
+.--admin-addingstaff-field input:focus,
+.--admin-addingstaff-field textarea:focus {
+    border-color: var(--admin-setting-title-color);
+    outline: none;
+}
+
+.--admin-addingstaff-button {
+    background-color: var(--admin-button-bg-color);
+    color: var(--admin-setting-button-text-color);
+    padding: 0.75rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.--admin-addingstaff-button:hover {
+    background-color: var(--admin-button-hover-bg-color);
+    transform: scale(1.02);
+}
+
+.--admin-addingstaff-image-preview {
+    width: 50%;
+    height: auto;
+    margin: 1rem auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.--admin-addingstaff-image-preview:hover {
+    transform: scale(1.05);
+}
+
+/* 桌面端样式 */
+@media (min-width: 768px) {
+    .--admin-addingstaff-container {
+        max-width: 50%;
+    }
+
+    .--admin-addingstaff-title {
+        font-size: 28px;
+    }
+
+    .--admin-addingstaff-field input,
+    .--admin-addingstaff-field textarea {
+        font-size: 18px;
+    }
+
+    .--admin-addingstaff-button {
+        font-size: 20px;
+    }
+}
+
+/* 移动端样式 */
+@media (max-width: 767px) {
+    .--admin-addingstaff-container {
+        padding: 15px;
+        width: 90%;
+    }
+
+    .--admin-addingstaff-title {
+        font-size: 22px;
+    }
+
+    .--admin-addingstaff-field input,
+    .--admin-addingstaff-field textarea {
+        font-size: 14px;
+    }
+
+    .--admin-addingstaff-button {
+        font-size: 16px;
+    }
+}
+
+.--admin-addingstaff-upload-button {
+    background-color: var(--admin-button-bg-color);
+    color: var(--admin-setting-button-text-color);
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    margin-top: 0.5rem;
+    font-size: 16px;
+}
+
+.--admin-addingstaff-upload-button:hover {
+    background-color: var(--admin-button-hover-bg-color);
+    transform: scale(1.05);
+}

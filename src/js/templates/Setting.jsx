@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../../css/Setting.css'; // 引入样式文件
 import { getUserInfo, updateUserInfo, sendEmailVertifyRequest } from '../utility/sendRequest'; // 引入发送验证码的函数
 import { validateEmail, validatePassword, validatePhoneNumber, validateEmailCode } from '../utility/validate';
+import NotFound from './NotFound';
 
 const Setting = () => {
     // 使用useState管理表单输入
@@ -17,6 +18,7 @@ const Setting = () => {
     const [emailcode, setEmailcode] = useState('');
     const [editMode, setEditMode] = useState(false); // 控制是否为编辑模式
     const [showPassword, setShowPassword] = useState(false); // 控制密码可见性
+    const [notfound, setNotfound] = useState(false);
 
     // 切换密码可见性
     const togglePasswordVisibility = () => {
@@ -26,15 +28,19 @@ const Setting = () => {
     // 获取用户信息
     useEffect(() => {
         getUserInfo().then((data) => {
-            const { email, firstName, lastName, phoneNumber, password } = data.data;
-            setUserInfo({
-                originalEmail: email,
-                firstName,
-                lastName,
-                phoneNumber,
-                email,
-                password,
-            });
+            if (data.data) {
+                const { email, firstName, lastName, phoneNumber, password } = data.data;
+                setUserInfo({
+                    originalEmail: email,
+                    firstName,
+                    lastName,
+                    phoneNumber,
+                    email,
+                    password,
+                });
+            } else {
+                setNotfound(true);
+            }
         });
     }, []);
 
@@ -81,10 +87,10 @@ const Setting = () => {
 
         // 调用更新用户信息的函数
         await updateUserInfo(userInfo.originalEmail, firstName, lastName, phoneNumber, email, password, emailcode);
-        
+
         await getUserInfo().then((data) => {
+            if (data.data) {
                 const { email, firstName, lastName, phoneNumber, password } = data.data;
-                console.log(data);
                 setUserInfo({
                     originalEmail: email,
                     firstName,
@@ -93,7 +99,10 @@ const Setting = () => {
                     email,
                     password,
                 });
-            });
+            } else {
+                setNotfound(true);
+            }
+        });
     };
 
     // 发送邮箱验证码
@@ -105,13 +114,14 @@ const Setting = () => {
         }
     };
 
-    return (
+    return notfound ? (
+        <NotFound message="token过期,请重新登录" link="/admin.html" />
+    ) : (
         <div className="setting_container">
             <h1 className="setting_title">Settings</h1>
-
             {!editMode ? (
                 <>
-                    {/* 个人信息区域 */}
+                    {/* Personal Information Section */}
                     <div className="setting_section">
                         <h2>Personal Information</h2>
                         <div className="setting_info-group">
@@ -132,7 +142,7 @@ const Setting = () => {
                         </div>
                     </div>
 
-                    {/* 账户安全区域 */}
+                    {/* Account Security Section */}
                     <div className="setting_section">
                         <h2>Account Security</h2>
                         <div className="setting_info-group">
@@ -140,7 +150,7 @@ const Setting = () => {
                             <div className="setting_value">{showPassword ? userInfo.password : '••••••••••'}</div>
                         </div>
 
-                        {/* 显示/隐藏密码的切换按钮 */}
+                        {/* Toggle Password Visibility */}
                         <div className="login-form_toggle-switch">
                             <label className="login-form_switch-label">
                                 <input
@@ -154,18 +164,17 @@ const Setting = () => {
                         </div>
                     </div>
 
-                    {/* 更改信息按钮 */}
+                    {/* Edit Button */}
                     <button className="setting_button" onClick={() => setEditMode(true)}>
                         更改信息
                     </button>
                 </>
             ) : (
                 <>
-                    {/* 编辑信息表单 */}
+                    {/* Edit Information Form */}
                     <form onSubmit={handleSubmit} className="setting_form">
                         <h2>Edit Information</h2>
 
-                        {/* 原始邮箱展示，无法编辑 */}
                         <div className="setting_info-group">
                             <label className="setting_label">Original Email (用于更新):</label>
                             <div className="setting_value">{userInfo.originalEmail}</div>
@@ -240,12 +249,12 @@ const Setting = () => {
                             />
                         </div>
 
-                        {/* 提交按钮 */}
+                        {/* Submit Button */}
                         <button type="submit" className="setting_button">
                             保存更改
                         </button>
 
-                        {/* 取消编辑按钮 */}
+                        {/* Cancel Button */}
                         <button
                             type="button"
                             className="setting_button"
@@ -259,5 +268,7 @@ const Setting = () => {
         </div>
     );
 };
+
+
 
 export default Setting;

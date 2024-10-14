@@ -6,12 +6,16 @@ import NotFound from './NotFound';
 import TentLoader from '../components/TentLoader';
 import Switch from '../components/Switch';
 import Setting from './Setting';
+import AddingTea from './AddingTea';
+import AddingStaff from './AddingStaff';
 
 // 引入工具函数和自定义 Hook
 import { checkIdentity, getDatas } from '../utility/sendRequest';
 import { useTheme, useValidRoute } from '../utility/myUse';
 
 import { getToken, getFirstName, getLastName, getEmail, getRole } from '../utility/tokenTool';
+
+import { validateUrl } from '../utility/validate';
 
 // 引入样式文件
 import '../../css/AdminHome.css';
@@ -21,21 +25,23 @@ function renderSuperAdminPage({ fetchData }) {
     return (
         <>
             <li>
-                <button onClick={() => fetchData('/AllStaff')}>
+                <button onClick={() => fetchData('/AllStaff', 'staff')}>
                     <i className='bx bxs-user-account'></i>
                     <span className="admin-home_link_name">公司成员</span>
                 </button>
                 <ul className="admin-home_sub-menu admin-home_blank">
-                    <li><button onClick={() => fetchData('/AllStaff')}>公司成员</button></li>
+                    <li><button onClick={() => fetchData('/AllStaff', 'staff')}>公司成员</button></li>
                 </ul>
             </li>
-        </>
-    );
-}
-function renderAdminPage({ fetchData }) {
-    return (
-        <>
-            
+            <li>
+                <button onClick={() => fetchData('/addStaff', 'staff')}>
+                    <i className='bx bx-user-plus'></i>
+                    <span className="admin-home_link_name">添加成员</span>
+                </button>
+                <ul className="admin-home_sub-menu admin-home_blank">
+                    <li><button onClick={() => fetchData('/addStaff', 'staff')}>添加成员</button></li>
+                </ul>
+            </li>
         </>
     );
 }
@@ -46,14 +52,14 @@ function renderManagerAdminPage({ toggleGreenTeaMenu, GreenTeaOpen, toggleRedTea
                 <div className="admin-home_iocn-link">
                     <button onClick={toggleGreenTeaMenu}>
                         <i className='bx bx-spa'></i>
-                        <span className="admin-home_link_name">绿茶</span>
+                        <span className="admin-home_link_name" onClick={() => fetchData('/GreenTea', 'Tea')}>绿茶</span>
                         <i className={`bx bxs-chevron-down admin-home_arrow ${GreenTeaOpen ? 'admin-home_rotate' : ''}`}></i>
                     </button>
                 </div>
                 <ul className="admin-home_sub-menu" style={{ display: GreenTeaOpen ? 'block' : 'none' }}>
-                    <li><button onClick={() => fetchData('/Longjing')}>龙井</button></li>
-                    <li><button onClick={() => fetchData('/Biluochun')}>碧螺春</button></li>
-                    <li><button onClick={() => fetchData('/Maofeng')}>毛峰</button></li>
+                    <li><button onClick={() => fetchData('/Longjing', 'Tea')}>龙井</button></li>
+                    <li><button onClick={() => fetchData('/Biluochun', 'Tea')}>碧螺春</button></li>
+                    <li><button onClick={() => fetchData('/Maofeng', 'Tea')}>毛峰</button></li>
                 </ul>
             </li>
 
@@ -61,14 +67,14 @@ function renderManagerAdminPage({ toggleGreenTeaMenu, GreenTeaOpen, toggleRedTea
                 <div className="admin-home_iocn-link">
                     <button onClick={toggleRedTeaMenu}>
                         <i className='bx bx-coffee'></i>
-                        <span className="admin-home_link_name">红茶</span>
+                        <span className="admin-home_link_name" onClick={() => fetchData('/RedTea', 'Tea')}>红茶</span>
                         <i className={`bx bxs-chevron-down admin-home_arrow ${RedTeaOpen ? 'admin-home_rotate' : ''}`}></i>
                     </button>
                 </div>
                 <ul className="admin-home_sub-menu" style={{ display: RedTeaOpen ? 'block' : 'none' }}>
-                    <li><button onClick={() => fetchData('/Keemun')}>祁门红茶</button></li>
-                    <li><button onClick={() => fetchData('/Dianhong')}>滇红</button></li>
-                    <li><button onClick={() => fetchData('/Lapsang')}>正山小种</button></li>
+                    <li><button onClick={() => fetchData('/Keemun', 'Tea')}>祁门红茶</button></li>
+                    <li><button onClick={() => fetchData('/Dianhong', 'Tea')}>滇红</button></li>
+                    <li><button onClick={() => fetchData('/Lapsang', 'Tea')}>正山小种</button></li>
                 </ul>
             </li>
 
@@ -76,14 +82,14 @@ function renderManagerAdminPage({ toggleGreenTeaMenu, GreenTeaOpen, toggleRedTea
                 <div className="admin-home_iocn-link">
                     <button onClick={toggleWhiteTeaMenu}>
                         <i className='bx bx-leaf'></i>
-                        <span className="admin-home_link_name">白茶</span>
+                        <span className="admin-home_link_name" onClick={() => fetchData('/WhiteTea', 'Tea')}>白茶</span>
                         <i className={`bx bxs-chevron-down admin-home_arrow ${WhiteTeaOpen ? 'admin-home_rotate' : ''}`}></i>
                     </button>
                 </div>
                 <ul className="admin-home_sub-menu" style={{ display: WhiteTeaOpen ? 'block' : 'none' }}>
-                    <li><button onClick={() => fetchData('/SilverNeedle')}>白毫银针</button></li>
-                    <li><button onClick={() => fetchData('/WhitePeony')}>白牡丹</button></li>
-                    <li><button onClick={() => fetchData('/Shoumei')}>寿眉</button></li>
+                    <li><button onClick={() => fetchData('/SilverNeedle', 'Tea')}>白毫银针</button></li>
+                    <li><button onClick={() => fetchData('/WhitePeony', 'Tea')}>白牡丹</button></li>
+                    <li><button onClick={() => fetchData('/Shoumei', 'Tea')}>寿眉</button></li>
                 </ul>
             </li>
 
@@ -91,14 +97,14 @@ function renderManagerAdminPage({ toggleGreenTeaMenu, GreenTeaOpen, toggleRedTea
                 <div className="admin-home_iocn-link">
                     <button onClick={toggleOolongMenu}>
                         <i className='bx bx-wind'></i>
-                        <span className="admin-home_link_name">青茶</span>
+                        <span className="admin-home_link_name" onClick={() => fetchData('/OolongTea', 'Tea')}>青茶</span>
                         <i className={`bx bxs-chevron-down admin-home_arrow ${OolongOpen ? 'admin-home_rotate' : ''}`}></i>
                     </button>
                 </div>
                 <ul className="admin-home_sub-menu" style={{ display: OolongOpen ? 'block' : 'none' }}>
-                    <li><button onClick={() => fetchData('/Tieguanyin')}>铁观音</button></li>
-                    <li><button onClick={() => fetchData('/Dahongpao')}>大红袍</button></li>
-                    <li><button onClick={() => fetchData('/Shuixian')}>水仙</button></li>
+                    <li><button onClick={() => fetchData('/Tieguanyin', 'Tea')}>铁观音</button></li>
+                    <li><button onClick={() => fetchData('/Dahongpao', 'Tea')}>大红袍</button></li>
+                    <li><button onClick={() => fetchData('/Shuixian', 'Tea')}>水仙</button></li>
                 </ul>
             </li>
 
@@ -106,14 +112,14 @@ function renderManagerAdminPage({ toggleGreenTeaMenu, GreenTeaOpen, toggleRedTea
                 <div className="admin-home_iocn-link">
                     <button onClick={toggleYellowTeaMenu}>
                         <i className='bx bx-sun'></i>
-                        <span className="admin-home_link_name">黄茶</span>
+                        <span className="admin-home_link_name" onClick={() => fetchData('/YellowTea', 'Tea')}>黄茶</span>
                         <i className={`bx bxs-chevron-down admin-home_arrow ${YellowTeaOpen ? 'admin-home_rotate' : ''}`}></i>
                     </button>
                 </div>
                 <ul className="admin-home_sub-menu" style={{ display: YellowTeaOpen ? 'block' : 'none' }}>
-                    <li><button onClick={() => fetchData('/Junshan')}>君山银针</button></li>
-                    <li><button onClick={() => fetchData('/Huoshan')}>霍山黄芽</button></li>
-                    <li><button onClick={() => fetchData('/Mogan')}>莫干黄芽</button></li>
+                    <li><button onClick={() => fetchData('/Junshan', 'Tea')}>君山银针</button></li>
+                    <li><button onClick={() => fetchData('/Huoshan', 'Tea')}>霍山黄芽</button></li>
+                    <li><button onClick={() => fetchData('/Mogan', 'Tea')}>莫干黄芽</button></li>
                 </ul>
             </li>
 
@@ -121,14 +127,14 @@ function renderManagerAdminPage({ toggleGreenTeaMenu, GreenTeaOpen, toggleRedTea
                 <div className="admin-home_iocn-link">
                     <button onClick={toggleBlackTeaMenu}>
                         <i className='bx bx-moon'></i>
-                        <span className="admin-home_link_name">黑茶</span>
+                        <span className="admin-home_link_name" onClick={() => fetchData('/DarkTea', 'Tea')}>黑茶</span>
                         <i className={`bx bxs-chevron-down admin-home_arrow ${BlackTeaOpen ? 'admin-home_rotate' : ''}`}></i>
                     </button>
                 </div>
                 <ul className="admin-home_sub-menu" style={{ display: BlackTeaOpen ? 'block' : 'none' }}>
-                    <li><button onClick={() => fetchData('/Puerh')}>普洱茶</button></li>
-                    <li><button onClick={() => fetchData('/Liubao')}>六堡茶</button></li>
-                    <li><button onClick={() => fetchData('/Anhua')}>安化黑茶</button></li>
+                    <li><button onClick={() => fetchData('/Puerh', 'Tea')}>普洱茶</button></li>
+                    <li><button onClick={() => fetchData('/Liubao', 'Tea')}>六堡茶</button></li>
+                    <li><button onClick={() => fetchData('/Anhua', 'Tea')}>安化黑茶</button></li>
                 </ul>
             </li>
         </>
@@ -140,22 +146,21 @@ function renderUserPage(toggleCategoryMenu, categoryOpen, fetchData) {
             <div className="admin-home_iocn-link">
                 <button onClick={toggleCategoryMenu}>
                     <i className='bx bx-collection'></i>
-                    <span className="admin-home_link_name">茶叶分类</span>
+                    <span className="admin-home_link_name" onClick={() => fetchData('/Tea', 'Tea')}>茶叶分类</span>
                     <i className={`bx bxs-chevron-down admin-home_arrow ${categoryOpen ? 'admin-home_rotate' : ''}`}></i>
                 </button>
             </div>
             <ul className="admin-home_sub-menu" style={{ display: categoryOpen ? 'block' : 'none' }}>
-                <li><button onClick={() => fetchData('/GreenTea')}>绿茶</button></li>
-                <li><button onClick={() => fetchData('/RedTea')}>红茶</button></li>
-                <li><button onClick={() => fetchData('/WhiteTea')}>白茶</button></li>
-                <li><button onClick={() => fetchData('/OolongTea')}>青茶</button></li>
-                <li><button onClick={() => fetchData('/YellowTea')}> 黄茶</button></li>
-                <li><button onClick={() => fetchData('/DarkTea')}>黑茶</button></li>
+                <li><button onClick={() => fetchData('/GreenTea', 'Tea')}>绿茶</button></li>
+                <li><button onClick={() => fetchData('/RedTea', 'Tea')}>红茶</button></li>
+                <li><button onClick={() => fetchData('/WhiteTea', 'Tea')}>白茶</button></li>
+                <li><button onClick={() => fetchData('/OolongTea', 'Tea')}>青茶</button></li>
+                <li><button onClick={() => fetchData('/YellowTea', 'Tea')}> 黄茶</button></li>
+                <li><button onClick={() => fetchData('/DarkTea', 'Tea')}>黑茶</button></li>
             </ul>
         </li>
     );
 }
-
 function pageSwitch(role, toggleCategoryMenu, categoryOpen, toggleGreenTeaMenu, GreenTeaOpen, toggleRedTeaMenu, RedTeaOpen, toggleWhiteTeaMenu, WhiteTeaOpen, toggleOolongMenu, OolongOpen, toggleYellowTeaMenu, YellowTeaOpen, toggleBlackTeaMenu, BlackTeaOpen, fetchData) {
     switch (role) {
         case 'superadmin':
@@ -164,15 +169,6 @@ function pageSwitch(role, toggleCategoryMenu, categoryOpen, toggleGreenTeaMenu, 
                     {renderSuperAdminPage({ fetchData })}
                     {renderUserPage(toggleCategoryMenu, categoryOpen, fetchData)}
                     {renderManagerAdminPage({ toggleGreenTeaMenu, GreenTeaOpen, toggleRedTeaMenu, RedTeaOpen, toggleWhiteTeaMenu, WhiteTeaOpen, toggleOolongMenu, OolongOpen, toggleYellowTeaMenu, YellowTeaOpen, toggleBlackTeaMenu, BlackTeaOpen, fetchData })}
-                    {renderAdminPage({ fetchData })}
-                </>
-            )
-        case 'admin':
-            return (
-                <>
-                    {renderUserPage(toggleCategoryMenu, categoryOpen, fetchData)}
-                    {renderManagerAdminPage({ toggleGreenTeaMenu, GreenTeaOpen, toggleRedTeaMenu, RedTeaOpen, toggleWhiteTeaMenu, WhiteTeaOpen, toggleOolongMenu, OolongOpen, toggleYellowTeaMenu, YellowTeaOpen, toggleBlackTeaMenu, BlackTeaOpen, fetchData })}
-                    {renderAdminPage({ fetchData })}
                 </>
             )
         case 'manager':
@@ -192,19 +188,6 @@ function pageSwitch(role, toggleCategoryMenu, categoryOpen, toggleGreenTeaMenu, 
             return null;
     }
 }
-
-const ProjectList = ({ projects, fetchData }) => (
-    <div className="admin-home_project-grid">
-        {Object.keys(projects).map((key) => (
-            <div key={key} className="admin-home_project-card">
-                <h2>{projects[key].name}</h2>
-                <p>{projects[key].description}</p>
-                <p>状态: {projects[key].status}</p>
-                <button onClick={() => fetchData(projects[key].url)}>查看详情</button>
-            </div>
-        ))}
-    </div>
-);
 
 function Sidebar({
     sidebarOpen,
@@ -263,6 +246,16 @@ function Sidebar({
                 {pageSwitch(role, toggleCategoryMenu, categoryOpen, toggleGreenTeaMenu, GreenTeaOpen, toggleRedTeaMenu, RedTeaOpen, toggleWhiteTeaMenu, WhiteTeaOpen, toggleOolongMenu, OolongOpen, toggleYellowTeaMenu, YellowTeaOpen, toggleBlackTeaMenu, BlackTeaOpen, fetchData)}
 
                 <li>
+                    <button onClick={() => fetchData('/addingTea', 'Tea')}>
+                        <i className='bx bx-plus'></i>
+                        <span className="admin-home_link_name">添加茶叶</span>
+                    </button>
+                    <ul className="admin-home_sub-menu admin-home_blank">
+                        <li><button onClick={() => fetchData('/addingTea', 'Tea')}>添加茶叶</button></li>
+                    </ul>
+                </li>
+
+                <li>
                     <button onClick={() => fetchData('/setting')}>
                         <i className='bx bx-cog'></i>
                         <span className="admin-home_link_name">设置</span>
@@ -289,6 +282,29 @@ function Sidebar({
         </div>
     );
 };
+
+const renderPage = (currentPage, loading, projects, fetchData) => {
+    const pages = {
+        setting: <Setting />,
+        addingTea: <AddingTea />,
+        addStaff: <AddingStaff />,
+        default: (
+            <>
+                <h1>项目列表</h1>
+                {loading ? (
+                    <TentLoader />
+                ) : projects ? (
+                    <ProjectList projects={projects} fetchData={fetchData} />
+                ) : (
+                    <p>没有项目数据。</p>
+                )}
+            </>
+        ),
+    };
+
+    return pages[currentPage] || pages.default;
+};
+
 
 
 const AdminHome = () => {
@@ -318,13 +334,14 @@ const AdminHome = () => {
         window.location.replace('/admin.html');
     };
 
-    const fetchData = async (projectUrl) => {
+    const fetchData = async (projectUrl, flag) => {
         setLoading(true);
         try {
-            if (projectUrl === '/setting') {
-                setCurrentPage('setting'); // 切换到Setting页面
-            } else {
-                const result = await getDatas(projectUrl);
+            if (projectUrl === '/setting') setCurrentPage('setting');
+            else if (projectUrl === '/addingTea') setCurrentPage('addingTea');
+            else if (projectUrl === '/addStaff') setCurrentPage('addStaff');
+            else {
+                const result = await getDatas(projectUrl, flag);
                 setStatus(result.status);
                 if (result.status !== 200 && !result.data) {
                     setError(`请求失败: ${result.msg}`);
@@ -403,19 +420,27 @@ const AdminHome = () => {
                     <i className='bx bx-menu'></i>
                     <span>Nagivation SliderBar</span>
                 </button>
-                {currentPage === 'setting' ? (
-                    <Setting />  // 如果当前页面是Setting，显示Setting内容
-                ) : (
-                    <>
-                        <div className="admin-home_infor">
-                            <h1>项目列表</h1>
-                            {loading ? (<TentLoader />) : projects ? (<ProjectList projects={projects} fetchData={fetchData} />) : (<p>没有项目数据。</p>)}
-                        </div>
-                    </>
-                )}
+                <div className="admin-home_infor">
+                    {renderPage(currentPage, loading, projects, fetchData)}
+                </div>
+                
             </section>
         </>
     );
 };
 
-export default AdminHome;
+const ProjectList = ({ projects, fetchData }) => (
+    <div className="admin-home_project-grid">
+        {Object.keys(projects).map((key) => (
+            <div key={key} className="admin-home_project-card">
+                <img src={projects[key].image} alt={projects[key].name} />
+                <h2>{projects[key].name}</h2>
+                <p>{projects[key].description}</p>
+                <p>状态: {projects[key].status}</p>
+                <button onClick={() => fetchData(projects[key].url)}>查看详情</button>
+            </div>
+        ))}
+    </div>
+);
+
+export default validateUrl(AdminHome);
