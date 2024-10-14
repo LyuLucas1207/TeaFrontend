@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../css/Resources.css'; // 引入样式文件
-import { deleteStaff } from '../utility/sendRequest';
+import { deleteStaff, getDatas } from '../utility/sendRequest';
+import NotFound from './NotFound';
 
 function defineUrl() {
     if (process.env.NODE_ENV === 'development') {
@@ -9,12 +10,34 @@ function defineUrl() {
     return 'https://www.lucaslyu.com:10002';
 }
 
-const AllStaff = ({ staffList, setStaffList }) => {
-    if (!staffList || Object.keys(staffList).length === 0) {
-        return <p>没有员工数据。</p>;
-    }
+const AllStaff = () => {
+    const [staffList, setStaffList] = useState(null);
+    const [notfound, setNotfound] = useState(false);
+    const token = localStorage.getItem('token'); // 获取 token
 
-    // 删除员工的处理函数
+    useEffect(() => {
+        if (!token) {
+            setNotfound(true); // 如果没有 token，显示 NotFound
+            return;
+        }
+
+        const fetchStaff = async () => {
+            const result = await getDatas('/AllStaff', 'staff');
+            console.log(result);
+
+            if (result.status === 403) {
+                console.log('token过期');
+                setNotfound(true); // token 过期时显示 NotFound
+            } else if (!result.data || Object.keys(result.data).length === 0) {
+                setStaffList([]); // 没有数据时设置空数组
+            } else {
+                setStaffList(result.data);
+            }
+        };
+
+        fetchStaff();
+    }, [token]); // token 作为依赖项
+
     const handleDelete = async (id) => {
         const confirmDelete = window.confirm('确定要删除该员工吗？');
         if (!confirmDelete) return;
@@ -24,7 +47,9 @@ const AllStaff = ({ staffList, setStaffList }) => {
             if (result.status === 200) {
                 const updatedList = { ...staffList };
                 delete updatedList[id];
-                setStaffList(updatedList); // 更新前端显示的员工列表
+                setStaffList(updatedList); // 更新员工列表
+            } else if (result.status === 403) {
+                setNotfound(true); // token 过期时显示 NotFound
             } else {
                 alert(`删除失败: ${result.msg}`);
             }
@@ -32,6 +57,19 @@ const AllStaff = ({ staffList, setStaffList }) => {
             alert(`请求出错: ${error.message}`);
         }
     };
+
+    if (notfound) {
+        return <NotFound message="token过期,请重新登录" link="/admin.html" />;
+    }
+
+    if (!staffList || staffList.length === 0) {
+        return (
+            <div className="resources_all-staff-container">
+                <h1>公司成员</h1>
+                <p>暂无员工信息</p>
+            </div>
+        );
+    }
 
     return (
         <div className="resources_all-staff-container">
@@ -64,4 +102,3 @@ const AllStaff = ({ staffList, setStaffList }) => {
 };
 
 export { AllStaff };
-

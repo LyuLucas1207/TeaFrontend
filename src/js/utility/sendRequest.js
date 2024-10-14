@@ -11,10 +11,8 @@ function defineUrl() {
     return 'https://www.lucaslyu.com:10002';
 }
 
-let isChecking = false; // 锁变量
+
 async function checkIdentity() {
-    if (isChecking) return; // 如果已有请求在进行，直接返回
-    isChecking = true; // 设置锁变量为 true
     try {
         console.log("checkIdentity 被调用了");
         const url = defineUrl();
@@ -37,15 +35,11 @@ async function checkIdentity() {
             return classifyCode(error.response.status, error.response.data.code, error.response.data);
         }
         return classifyCode(500, 1, { msg: error.message });
-    } finally {
-        isChecking = false; // 请求完成后释放锁
-    }
+    } 
 }
 
-let isGettingUserInfo = false; // 锁变量
+
 async function getUserInfo() {
-    if (isGettingUserInfo) return; // 如果已有请求在进行，直接返回
-    isGettingUserInfo = true; // 设置锁变量为 true
 
     try {
         const url = defineUrl();
@@ -69,9 +63,7 @@ async function getUserInfo() {
         if (error.response) {
             return classifyCode(error.response.status, error.response.data.code, error.response.data);
         }
-    } finally {
-        isGettingUserInfo = false; // 请求完成后释放锁
-    }
+    } 
 }
 
 
@@ -96,25 +88,7 @@ async function sendLoginRequest(email, password) {
     } finally {
         isSendingRequest = false; // 请求完成后释放锁
     }
-    
 
-    // const url = defineUrl();
-    // return await axios.post(url, { // 发送 POST 请求
-    //     action: 'login', // 定义 action 为 login
-    //     email,
-    //     password
-    // })
-    //     .then((response) => {
-    //         if (response.status === 200) {
-    //             classifyCode(response.status, response.data.code, response.data);
-    //         }
-    //     })
-    //     .catch((error) => {
-    //         if (error.response) {
-    //             classifyCode(error.response.status, error.response.data.code, error.response.data);
-    //         }
-    //         classifyCode(500, 1, { msg: error.message });
-    //     });
 }
 
 let isSendingSignupRequest = false; // 锁变量
@@ -143,29 +117,6 @@ async function sendSignupRequest(firstName, lastName, phoneNumber, email, passwo
     } finally {
         isSendingSignupRequest = false; // 请求完成后释放锁
     }
-
-    // const url = defineUrl();
-    // return await axios.post(url, { // 发送 POST 请求
-    //     action: 'signup', // 定义 action 为 signup
-    //     firstName,
-    //     lastName,
-    //     phoneNumber,
-    //     email,
-    //     password,
-    //     inviteCode,
-    //     emailcode
-    // })
-    //     .then((response) => {
-    //         if (response.status === 201) {
-    //             classifyCode(response.status, response.data.code, response.data);
-    //         }
-    //     })
-    //     .catch((error) => {
-    //         if (error.response) {
-    //             classifyCode(error.response.status, error.response.data.code, error.response.data);
-    //         }
-    //         classifyCode(500, 1, { msg: error.message });
-    //     });
 }
 
 let isSendingEmailVertifyRequest = false; // 锁变量
@@ -245,10 +196,7 @@ async function updateUserInfo(originalEmail, firstName, lastName, phoneNumber, e
     }
 }
 
-let isGettingDatas = false; // 锁变量
 async function getDatas(action, flag) {
-    if (isGettingDatas) return; // 如果已有请求在进行，直接返回
-    isGettingDatas = true; // 设置锁变量为 true
     try {
         const url = defineUrl();
         const token = localStorage.getItem('token');
@@ -271,8 +219,6 @@ async function getDatas(action, flag) {
         if (error.response) {
             return classifyCode(error.response.status, error.response.data.code, error.response.data);
         }
-    } finally {
-        isGettingDatas = false; // 请求完成后释放锁
     }
 };
 

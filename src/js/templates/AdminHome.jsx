@@ -11,7 +11,7 @@ import AddingStaff from './AddingStaff';
 import { AllStaff } from './Resources';
 
 // 引入工具函数和自定义 Hook
-import { checkIdentity, getDatas } from '../utility/sendRequest';
+import { checkIdentity } from '../utility/sendRequest';
 import { useTheme, useValidRoute } from '../utility/myUse';
 
 import { getToken, getFirstName, getLastName, getEmail, getRole } from '../utility/tokenTool';
@@ -284,7 +284,7 @@ function Sidebar({
     );
 };
 
-const renderPage = (currentPage, loading, projects, setProjects, fetchData) => {
+const renderPage = (currentPage, loading) => {
     if (loading) return <TentLoader />;
 
     switch (currentPage) {
@@ -295,7 +295,7 @@ const renderPage = (currentPage, loading, projects, setProjects, fetchData) => {
         case 'addStaff':
             return <AddingStaff />;
         case 'allStaff':
-            return <AllStaff staffList={projects} setStaffList={setProjects} />;
+            return <AllStaff />;
         default:
             return (
                 <>
@@ -309,11 +309,10 @@ const renderPage = (currentPage, loading, projects, setProjects, fetchData) => {
 const AdminHome = () => {
     const validPaths = ['/', '/adminhome', '/not-found'];
     useValidRoute(validPaths, 'admin_home.html#/not-found');
-    const [projects, setProjects] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [status, setStatus] = useState(null);
-    const [currentPage, setCurrentPage] = useState('home');
+    const [currentPage, setCurrentPage] = useState('allStaff');
 
     const [categoryOpen, setCategoryOpen] = useState(false);
     const [GreenTeaOpen, setEngineeringOpen] = useState(false);
@@ -333,27 +332,16 @@ const AdminHome = () => {
         window.location.replace('/admin.html');
     };
 
-    const fetchData = async (projectUrl, flag) => {
+    const fetchData = async (projectUrl) => {
         setLoading(true);
         try {
             if (projectUrl === '/setting') setCurrentPage('setting');
             else if (projectUrl === '/addingTea') setCurrentPage('addingTea');
             else if (projectUrl === '/addStaff') setCurrentPage('addStaff');
-            else if (projectUrl === '/AllStaff') {
-                const result = await getDatas(projectUrl, flag);
-                setStatus(result.status);
-                if (result.status !== 200 && !result.data) {
-                    setError(`请求失败: ${result.msg}`);
-                }
-                setProjects(result.data);
-                setCurrentPage('allStaff');
-            }else {
-                const result = await getDatas(projectUrl, flag);
-                setStatus(result.status);
-                if (result.status !== 200 && !result.data) {
-                    setError(`请求失败: ${result.msg}`);
-                }
-                setProjects(result.data);
+            else if (projectUrl === '/AllStaff') setCurrentPage('allStaff');
+            else {
+                setStatus(404);
+                return;
             }
         } catch (error) {
             setError(`请求出错: ${error.message}`);
@@ -427,7 +415,7 @@ const AdminHome = () => {
                     <span>Nagivation SliderBar</span>
                 </button>
                 <div className="admin-home_infor">
-                    {renderPage(currentPage, loading, projects, fetchData)}
+                    {renderPage(currentPage, loading)}
                 </div>
                 
             </section>

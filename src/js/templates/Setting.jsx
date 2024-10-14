@@ -27,22 +27,34 @@ const Setting = () => {
 
     // 获取用户信息
     useEffect(() => {
-        getUserInfo().then((data) => {
-            if (data.data) {
-                const { email, firstName, lastName, phoneNumber, password } = data.data;
-                setUserInfo({
-                    originalEmail: email,
-                    firstName,
-                    lastName,
-                    phoneNumber,
-                    email,
-                    password,
-                });
-            } else {
+        const fetchUserInfo = async () => {
+            try {
+                const result = await getUserInfo();
+                console.log('Fetched user info:', result); // 打印调试信息
+
+                if (result && result.data) {
+                    const { email, firstName, lastName, phoneNumber, password } = result.data;
+                    setUserInfo({
+                        originalEmail: email,
+                        firstName,
+                        lastName,
+                        phoneNumber,
+                        email,
+                        password,
+                    });
+                } else {
+                    console.warn('No user info found:', result); // 打印警告信息
+                    setNotfound(true);
+                }
+            } catch (error) {
+                console.error('Error fetching user info:', error); // 打印错误信息
                 setNotfound(true);
             }
-        });
+        };
+
+        fetchUserInfo();
     }, []);
+
 
     // 表单输入变化时的处理函数
     const handleInputChange = (event) => {
@@ -86,11 +98,11 @@ const Setting = () => {
         }
 
         // 调用更新用户信息的函数
-        await updateUserInfo(userInfo.originalEmail, firstName, lastName, phoneNumber, email, password, emailcode);
-
-        await getUserInfo().then((data) => {
-            if (data.data) {
-                const { email, firstName, lastName, phoneNumber, password } = data.data;
+        try {
+            await updateUserInfo(userInfo.originalEmail, firstName, lastName, phoneNumber, email, password, emailcode);
+            const result = await getUserInfo();
+            if (result?.data) {
+                const { email, firstName, lastName, phoneNumber, password } = result.data;
                 setUserInfo({
                     originalEmail: email,
                     firstName,
@@ -99,10 +111,11 @@ const Setting = () => {
                     email,
                     password,
                 });
-            } else {
-                setNotfound(true);
+                setEditMode(false); // 成功后退出编辑模式
             }
-        });
+        } catch (error) {
+            alert(`更新失败: ${error.message}`);
+        }
     };
 
     // 发送邮箱验证码
