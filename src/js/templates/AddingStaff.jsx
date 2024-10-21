@@ -1,17 +1,24 @@
-// AddingStaff.js
 import React, { useState } from 'react';
 import '../../css/AddingStaff.css';
 import { addingStaff } from '../utility/sendRequest';
 import NotFound from './NotFound';
 const DEFAULT_IMAGE = '/glask.png'; // 默认图片路径
 
-
 const AddingStaff = () => {
+    // 获取当前日期并格式化为 YYYY-MM-DD
+    const getCurrentDate = () => {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0'); // 月份从0开始，所以要加1
+        const day = String(today.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    };
+
     const [staffInfo, setStaffInfo] = useState({
         name: '',
         position: '',
         description: '',
-        startDate: '',
+        startDate: getCurrentDate(), // 默认值为当前日期
         image: null,
     });
 
@@ -38,7 +45,6 @@ const AddingStaff = () => {
         setImagePreview(DEFAULT_IMAGE); // 图片加载失败时使用默认图片
     };
 
-
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -64,7 +70,6 @@ const AddingStaff = () => {
         }
     };
 
-
     return notfound ? (
         <NotFound message="token过期,请重新登录" link="/admin.html" />
     ) : (
@@ -73,6 +78,12 @@ const AddingStaff = () => {
             <form className="--admin-addingstaff-form" onSubmit={handleSubmit}>
                 <div className="--admin-addingstaff-field --admin-addingstaff-image-field">
                     <label htmlFor="image">员工图片:</label>
+                    <img
+                        src={imagePreview}
+                        alt="员工预览"
+                        className="--admin-addingstaff-image-preview"
+                        onError={handleImageError}
+                    />
                     <input
                         type="file"
                         id="image"
@@ -87,12 +98,6 @@ const AddingStaff = () => {
                     >
                         选择图片
                     </button>
-                    <img
-                        src={imagePreview}
-                        alt="员工预览"
-                        className="--admin-addingstaff-image-preview"
-                        onError={handleImageError}
-                    />
                 </div>
                 <div className="--admin-addingstaff-field">
                     <label htmlFor="name">员工姓名:</label>

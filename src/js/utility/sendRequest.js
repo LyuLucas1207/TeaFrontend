@@ -196,7 +196,7 @@ async function updateUserInfo(originalEmail, firstName, lastName, phoneNumber, e
     }
 }
 
-async function getDatas(action, flag) {
+async function getDatas(action, flag, obj = null) {
     try {
         const url = defineUrl();
         const token = localStorage.getItem('token');
@@ -207,6 +207,10 @@ async function getDatas(action, flag) {
         const formData = new FormData();
         formData.append('action', action);
         formData.append('flag', flag);
+        if (obj !== null) {
+            console.log(obj);
+            formData.append('name', obj.name);
+        }
         const response = await axios.post(url,formData , {
             headers: {
                 'Authorization': `Bearer ${token}`, // 设置请求头
@@ -266,7 +270,7 @@ async function addingStaff(staffInfo, flag = 'staff') {
 }
 
 let isDeletingStaff = false; // 锁变量
-async function deleteStaff(id, flag = 'staff') {
+async function deleteStaff(id) {
     if (isDeletingStaff) return; // 如果已有请求在进行，直接返回
     isDeletingStaff = true; // 设置锁变量为 true
     try {
@@ -279,7 +283,7 @@ async function deleteStaff(id, flag = 'staff') {
 
         const formData = new FormData();
         formData.append('action', 'deleteStaff');
-        formData.append('flag', flag);
+        formData.append('flag', 'staff');
         formData.append('id', id);
         const response = await axios.post(url, formData, {
             headers: {
@@ -351,7 +355,42 @@ async function addingTea(teaInfo, flag = 'tea') {
     }
 }
 
+let isDeletingTea = false; // 锁变量
+async function deleteTea(id, category, subcategory) {
+    if (isDeletingTea) return; // 如果已有请求在进行，直接返回
+    isDeletingTea = true; // 设置锁变量为 true
+    try {
+        const url = defineUrl();
+        const token = localStorage.getItem('token');
 
+        if (!token) {
+            return { status: 401, code: 1, data: null, msg: '未登录，请先登录！' };
+        }
+
+        const formData = new FormData();
+        formData.append('action', 'deleteTea');
+        formData.append('flag', 'tea');
+        formData.append('category', category);
+        formData.append('subcategory', subcategory);
+        formData.append('id', id);
+        const response = await axios.post(url, formData, {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'multipart/form-data; charset=utf-8',
+            },
+            timeout: 5000,
+        });
+
+        return classifyCode(response.status, response.data.code, response.data);
+    } catch (error) {
+        if (error.response) {
+            return classifyCode(error.response.status, error.response.data.code, error.response.data);
+        }
+        return classifyCode(500, 1, { msg: error.message });
+    } finally {
+        isDeletingTea = false; // 请求完成后释放锁
+    }
+}
 
 export {
     checkIdentity,
@@ -363,6 +402,7 @@ export {
     updateUserInfo,
     addingStaff,
     deleteStaff,
-    addingTea
+    addingTea,
+    deleteTea
 }; // 导出函数
 

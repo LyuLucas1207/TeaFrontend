@@ -34,7 +34,7 @@ function status_200(code, data) {
             window.location.href = '/admin_home.html';
             break;
         case 1:
-            alert("信息请求成功！" + data.msg);
+            //alert("信息请求成功！" + data.msg);
             if (data.data && data.data.token) setToken(data.data.token);
             break;
         case 2:
@@ -53,13 +53,16 @@ function status_200(code, data) {
             alert("验证码发送成功！请查收！" + data.msg);
             break;
         case 7:
-            alert("成员信息存入成功！" + data.msg);
+            alert("信息存入成功！" + data.msg);
             break;
         case 8:
-            alert("成员获取信息成功！" + data.msg);
+            //alert("获取信息成功！" + data.msg);
             break;
         case 9:
             alert("成员删除成功！" + data.msg);
+            break;
+        case 10:
+            alert("茶叶删除成功！" + data.msg);
             break;
         default:
             alert("未知错误，请重试！" + data.msg);

@@ -1,3 +1,5 @@
+/*====================================AllStaff==========================================*/
+
 .resources_all-staff-container {
     padding: 20px;
     width: 90%;
@@ -14,11 +16,13 @@
 
 .resources_all-staff-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
 }
 
+
 .resources_all-staff-card {
+    height: 430px;
     background-color: var(--admin-card-bg-color);
     border-radius: 8px;
     box-shadow: 0 4px 8px var(--admin-card-shadow);
@@ -26,7 +30,13 @@
     transition: transform 0.3s, box-shadow 0.3s;
     text-align: left;
     color: var(--admin-card-text-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
 }
+
 
 .resources_all-staff-card:hover {
     transform: scale(1.05);
@@ -36,26 +46,184 @@
 .resources_all-staff-image {
     width: 100%;
     height: 200px;
-    object-fit: cover;
+    object-fit:cover;
+    margin: 0 auto;
+}
+.resources_all-staff-info-header {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    width: 100%;
+    padding: 5px;
+    background-color: var(--admin-card-bg-color);
+    color: var(--admin-card-text-color);
 }
 
 .resources_all-staff-info {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
     padding: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /*align-items: center;*/
 }
 
 .resources_all-staff-info h2 {
+    margin: 0 0 10px;
+    font-size:30px;
+    color: var(--title-color);
+}
+
+.resources_all-staff-info-p {
+    margin: 5px 0;
+    color: var(--text-color);
+    font-size: 18px;
+}
+
+.resources_all-staff-delete-button {
+    width: 20%;
+    background-color: var(--admin-button-bg-color);
+    color: white;
+    border: none;
+    padding: 10px;
+    margin: 0 auto;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.resources_all-staff-delete-button:hover {
+    background-color: var(--admin-button-hover-bg-color);
+    transform: scale(1.05);
+}
+
+@media (max-width: 767px) {
+    .resources_all-staff-container {
+        padding: 15px;
+        width: 95%;
+    }
+
+    .resources_all-staff-container h1 {
+        font-size: 36px;
+        /* 标题字体减小 */
+    }
+
+    .resources_all-staff-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        /* 卡片宽度减小 */
+        gap: 15px;
+        /* 卡片之间的间距缩小 */
+    }
+
+    .resources_all-staff-card {
+        height: max-content;
+        min-height: 230px;
+        box-shadow: 0 3px 6px var(--admin-card-shadow);
+        justify-content: flex-start;
+        /* 使内容靠上对齐 */
+    }
+
+    .resources_all-staff-image {
+        width: 100%;
+        height: 120px;
+        
+    }
+
+    .resources_all-staff-info {
+        padding: 10px;
+        flex-direction: column;
+        /* 垂直排列内容 */
+        justify-content: flex-start;
+    }
+
+    .resources_all-staff-info h2 {
+        font-size: 16px;
+        padding: 0;
+        margin: 0;
+        /* 副标题字体减小 */
+    }
+
+    .resources_all-staff-info-p {
+        font-size: 12px;
+        padding: 0;
+        margin: 0;
+    }
+
+    .resources_all-staff-delete-button {
+        width: 100%;
+        font-size: 12px;
+    }
+
+    .resources_all-staff-delete-button:hover {
+        transform: scale(1.02);
+    }
+}
+
+
+/*====================================AllTea==========================================*/
+.resources_all-tea-container {
+    padding: 20px;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    background-color: var(--admin-content-bg-color);
+}
+
+.resources_all-tea-container h1 {
+    margin: 0 0 20px;
+    font-size: 66px;
+    color: var(--title-color);
+}
+
+.resources_all-tea-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+}
+
+.resources_all-tea-card {
+    background-color: var(--admin-card-bg-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px var(--admin-card-shadow);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: left;
+    color: var(--admin-card-text-color);
+}
+
+.resources_all-tea-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px var(--admin-card-shadow);
+}
+
+.resources_all-tea-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.resources_all-tea-info {
+    padding: 15px;
+}
+
+.resources_all-tea-info h2 {
     margin: 0 0 10px;
     font-size: 25px;
     color: var(--title-color);
 }
 
-.resources_all-staff-info p {
+.resources_all-tea-info p {
     margin: 5px 0;
     color: var(--text-color);
     font-size: 16px;
 }
 
-.resources_all-staff-delete-button {
+.resources_all-tea-delete-button {
     width: 100%;
     background-color: var(--admin-button-bg-color);
     color: var(--background-color);
@@ -69,30 +237,31 @@
     margin-top: 10px;
 }
 
-.resources_all-staff-delete-button:hover {
+.resources_all-tea-delete-button:hover {
     background-color: var(--admin-button-hover-bg-color);
     transform: scale(1.05);
 }
 
 /* 手机端样式 */
 @media (max-width: 767px) {
-    .resources_all-staff-grid {
+    .resources_all-tea-grid {
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
         gap: 15px;
     }
 
-    .resources_all-staff-card {
+    .resources_all-tea-card {
         font-size: 14px;
     }
 
-    .resources_all-staff-info h2 {
+    .resources_all-tea-info h2 {
         font-size: 18px;
     }
 
-    .resources_all-staff-info p {
+    .resources_all-tea-info p {
         font-size: 14px;
     }
-    .resources_all-staff-delete-button {
+
+    .resources_all-tea-delete-button {
         font-size: 14px;
     }
 }

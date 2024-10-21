@@ -292,6 +292,8 @@ body, html {
 
 /* 项目卡片样式 */
 .admin-home_infor {
+    box-sizing: border-box;
+    width: 100%;
     min-height: 100vh;
     padding: 20px;
     display: flex;
@@ -396,7 +398,7 @@ body, html {
         padding: 4px 4px 9.33px 53.33px;
     }
     .admin-home_sub-menu button {
-        font-size: 10px;
+        font-size: 15px;
         padding: 3.33px 0;
     }
 

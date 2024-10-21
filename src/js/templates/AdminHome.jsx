@@ -8,7 +8,7 @@ import Switch from '../components/Switch';
 import Setting from './Setting';
 import AddingTea from './AddingTea';
 import AddingStaff from './AddingStaff';
-import { AllStaff } from './Resources';
+import { AllStaff, AllTea, GetTea } from './Resources';
 
 // 引入工具函数和自定义 Hook
 import { checkIdentity } from '../utility/sendRequest';
@@ -119,7 +119,7 @@ function renderManagerAdminPage({ toggleGreenTeaMenu, GreenTeaOpen, toggleRedTea
                 </div>
                 <ul className="admin-home_sub-menu" style={{ display: YellowTeaOpen ? 'block' : 'none' }}>
                     <li><button onClick={() => fetchData('/Junshan', 'Tea')}>君山银针</button></li>
-                    <li><button onClick={() => fetchData('/Huoshan', 'Tea')}>霍山黄芽</button></li>
+                    <li><button onClick={() => fetchData('/Huangshan', 'Tea')}>霍山黄芽</button></li>
                     <li><button onClick={() => fetchData('/Mogan', 'Tea')}>莫干黄芽</button></li>
                 </ul>
             </li>
@@ -147,7 +147,7 @@ function renderUserPage(toggleCategoryMenu, categoryOpen, fetchData) {
             <div className="admin-home_iocn-link">
                 <button onClick={toggleCategoryMenu}>
                     <i className='bx bx-collection'></i>
-                    <span className="admin-home_link_name" onClick={() => fetchData('/Tea', 'Tea')}>茶叶分类</span>
+                    <span className="admin-home_link_name" onClick={() => fetchData('/AllTea', 'Tea')}>茶叶分类</span>
                     <i className={`bx bxs-chevron-down admin-home_arrow ${categoryOpen ? 'admin-home_rotate' : ''}`}></i>
                 </button>
             </div>
@@ -288,21 +288,12 @@ const renderPage = (currentPage, loading) => {
     if (loading) return <TentLoader />;
 
     switch (currentPage) {
-        case 'setting':
-            return <Setting />;
-        case 'addingTea':
-            return <AddingTea />;
-        case 'addStaff':
-            return <AddingStaff />;
-        case 'allStaff':
-            return <AllStaff />;
-        default:
-            return (
-                <>
-                    <h1>项目列表</h1>
-                    <p>没有项目数据。</p>
-                </>
-            );
+        case 'setting': return <Setting />;
+        case 'addingTea': return <AddingTea />;
+        case 'addStaff': return <AddingStaff />;
+        case 'allStaff': return <AllStaff />;
+        case 'allTea': return <AllTea />;
+        default: return <GetTea name={currentPage} />;
     }
 };
 
@@ -335,13 +326,37 @@ const AdminHome = () => {
     const fetchData = async (projectUrl) => {
         setLoading(true);
         try {
-            if (projectUrl === '/setting') setCurrentPage('setting');
-            else if (projectUrl === '/addingTea') setCurrentPage('addingTea');
-            else if (projectUrl === '/addStaff') setCurrentPage('addStaff');
-            else if (projectUrl === '/AllStaff') setCurrentPage('allStaff');
-            else {
-                setStatus(404);
-                return;
+            switch (projectUrl) {
+                case '/setting': setCurrentPage('setting'); break;
+                case '/addingTea': setCurrentPage('addingTea'); break;
+                case '/addStaff': setCurrentPage('addStaff'); break;
+                case '/AllStaff': setCurrentPage('allStaff'); break;
+                case '/AllTea': setCurrentPage('allTea'); break;
+                case '/GreenTea': setCurrentPage('GreenTea'); break;
+                case '/RedTea': setCurrentPage('RedTea'); break;
+                case '/WhiteTea': setCurrentPage('WhiteTea'); break;
+                case '/OolongTea': setCurrentPage('OolongTea'); break;
+                case '/YellowTea': setCurrentPage('YellowTea'); break;
+                case '/DarkTea': setCurrentPage('DarkTea'); break;
+                case '/Longjing': setCurrentPage('Longjing'); break;
+                case '/Biluochun': setCurrentPage('Biluochun'); break;
+                case '/Maofeng': setCurrentPage('Maofeng'); break;
+                case '/Keemun': setCurrentPage('Keemun'); break;
+                case '/Dianhong': setCurrentPage('Dianhong'); break;
+                case '/Lapsang': setCurrentPage('Lapsang'); break;
+                case '/SilverNeedle': setCurrentPage('SilverNeedle'); break;
+                case '/WhitePeony': setCurrentPage('WhitePeony'); break;
+                case '/Shoumei': setCurrentPage('Shoumei'); break;
+                case '/Tieguanyin': setCurrentPage('Tieguanyin'); break;
+                case '/Dahongpao': setCurrentPage('Dahongpao'); break;
+                case '/Shuixian': setCurrentPage('Shuixian'); break;
+                case '/Junshan': setCurrentPage('Junshan'); break;
+                case '/Huangshan': setCurrentPage('Huangshan'); break;
+                case '/Mogan': setCurrentPage('Mogan'); break;
+                case '/Puerh': setCurrentPage('Puerh'); break;
+                case '/Liubao': setCurrentPage('Liubao'); break;
+                case '/Anhua': setCurrentPage('Anhua'); break;
+                default: setStatus(404); break;
             }
         } catch (error) {
             setError(`请求出错: ${error.message}`);
