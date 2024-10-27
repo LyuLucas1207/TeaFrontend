@@ -111,6 +111,12 @@ body {
     --admin-setting-button-hover-bg-color: #218838;
     --admin-setting-button-text-color: #fff;
     --admin-setting-shadow: rgba(0, 0, 0, 0.1);
+
+
+    --app-bg-color: #ffffff;
+    --app-text-color: #2d572c;
+    --app-primary-color: #043d06;
+    --app-secondary-color: #81c784;
 }
 
 /* Dark 主题 */
@@ -169,6 +175,12 @@ body.dark-theme {
     --admin-setting-button-bg-color: #8e011f;
     --admin-setting-button-hover-bg-color: #ff4757;
     --admin-setting-button-text-color: #fff;
+
+
+    --app-bg-color: #1a1a1a;
+    --app-text-color: #d4af37;
+    --app-primary-color: #f2b809;
+    --app-secondary-colo: #ffeb3b;
 }
 
 #admin_home-root,

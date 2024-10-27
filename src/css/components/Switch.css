@@ -25,8 +25,9 @@
 
 @media screen and (max-width: 768px) {
   .switch-theme_container {
-    top: 8px;
+    top: 68px;
     right: 8px;
+    transform: scale(0.8);
   }
 
   .switch-theme_container,
