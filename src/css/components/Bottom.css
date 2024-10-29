@@ -10,7 +10,7 @@
     height: max-content;
     min-height: 300px;
     background-color: var(--app-primary-color);
-    
+
 }
 
 .bottom-inner-container {
@@ -39,6 +39,12 @@
     height: auto;
     filter: brightness(1);
     opacity: 1;
+}
+
+@media screen and (max-width: 768px) {
+    .bottom-icon img {
+        width: 100px;
+    }
 }
 
 .bottom-text-container,
@@ -96,6 +102,16 @@
     padding: 0px;
 }
 
+/* 手机端样式调整 */
+@media (max-width: 768px) {
+
+    .bottom-text-container p,
+    .bottom-tea-container p,
+    .bottom-tea-container ul li,
+    .sub-title {
+        font-size: 15px;
+    }
+}
 
 
 
