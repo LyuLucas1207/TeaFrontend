@@ -34,7 +34,7 @@
 .afq_loading_center {
     display: inline-block;
     position: absolute;
-    background: #ff0000;
+    background:var(--app-primary-color);
     /* Center cube color */
     height: 56px;
     width: 56px;
@@ -62,7 +62,7 @@
     width: 19px;
     display: block;
     top: 0;
-    background: #ff5252;
+    background: var(--app-secondary-color);
     /* Cube color */
     border-radius: 6px;
 }

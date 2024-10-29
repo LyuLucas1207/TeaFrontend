@@ -18,7 +18,18 @@
 }
 
 
-
+.app_inner-container{
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    min-height: 100vh;
+}
 
 
 

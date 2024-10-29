@@ -56,7 +56,8 @@ body {
 
 /* 默认的 light 主题 */
 body {
-    --background-color: #f0f2f5;
+    --background-color: #efefd6;
+    --navbar-bg-color: #efefd6;
     --contract-bg-color: #050505;
     --text-color: #333;
     --subtitle-color: #555;
@@ -112,16 +113,27 @@ body {
     --admin-setting-button-text-color: #fff;
     --admin-setting-shadow: rgba(0, 0, 0, 0.1);
 
+    --green-color: rgba(0, 100, 0, 1); /* 更深的绿色 */
+    --green-color-light1: rgba(0, 100, 0, 0.2); /* 较浅的深绿色 */
+    --green-color-light2: rgba(0, 100, 0, 0.4); /* 更浅的深绿色 */
+    --green-color-light3: rgba(0, 100, 0, 0.6); /* 最浅的深绿色 */
+
+
 
     --app-bg-color: #ffffff;
     --app-text-color: #2d572c;
     --app-primary-color: #043d06;
+    --app-primary-color-hover: #043d06;
     --app-secondary-color: #81c784;
+    
+    --header-h1-color: #333;
+    --header-p-color: #666;
 }
 
 /* Dark 主题 */
 body.dark-theme {
-    --background-color: #0f0f0f;
+    --background-color: #171717;
+    --navbar-bg-color: #171717;
     --contract-bg-color: #f3ecec;
     --text-color: #f0f2f5;
     --subtitle-color: #ccc;
@@ -176,11 +188,20 @@ body.dark-theme {
     --admin-setting-button-hover-bg-color: #ff4757;
     --admin-setting-button-text-color: #fff;
 
+    --green-color: rgba(255, 215, 0, 1); /* 主金色 */
+    --green-color-light1: rgba(255, 215, 0, 0.2); /* 较浅的金色 */
+    --green-color-light2: rgba(255, 215, 0, 0.4); /* 更浅的金色 */
+    --green-color-light3: rgba(255, 215, 0, 0.6); /* 最浅的金色 */
+
 
     --app-bg-color: #1a1a1a;
     --app-text-color: #d4af37;
     --app-primary-color: #f2b809;
+    --app-primary-color-hover: #f2b809;
     --app-secondary-colo: #ffeb3b;
+
+    --header-h1-color: #f0f2f5;
+    --header-p-color: #ccc;
 }
 
 #admin_home-root,

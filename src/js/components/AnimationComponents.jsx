@@ -23,7 +23,7 @@ function AnimationEffectLight() {
                 <div className="ael_l2 ael_color"></div>
                 <div className="ael_e1 ael_color ael_animation-effect-light"></div>
                 <div className="ael_e2 ael_color ael_animation-effect-light-d"></div>
-                <div className="ael_e3 ael_animation-effect-rot">ProjectHub</div>
+                <div className="ael_e3 ael_animation-effect-rot">双江古寨</div>
                 <div className="ael_e4 ael_color ael_animation-effect-light"></div>
                 <div className="ael_e5 ael_color ael_animation-effect-light-d"></div>
                 <div className="ael_e6 ael_animation-effect-scale">*</div>

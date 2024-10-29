@@ -3,6 +3,12 @@ import { Navigate } from "react-router-dom";
 import App from "../js/templates/App";
 import NotFound from "../js/templates/NotFound";
 
+import Products from "../js/templates/Products";
+import About from "../js/templates/About";
+import Contact from "../js/templates/Contact";
+import News from "../js/templates/News";
+
+
 
 const router = createHashRouter([
     {
@@ -13,6 +19,22 @@ const router = createHashRouter([
         path: "/index",
         element: <App />,
         children: [
+            {
+                path: "products",
+                element: <Products />,
+            },
+            {
+                path: "about",
+                element: <About />,
+            },
+            {
+                path: "news",
+                element: <News />,
+            },
+            {
+                path: "contact",
+                element: <Contact />,
+            },
             {
                 path: "*",
                 element: <Navigate to="/index" replace />
