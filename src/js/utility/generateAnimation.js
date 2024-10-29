@@ -173,24 +173,37 @@ function getRandomPosition(num, unit, range) {
     }
     return position;
 }
-
-function createStar(StarClass) {
+function createStar(StarClass)
+{
     if (!(StarClass instanceof Star)) {
         return;
     }
-    document.querySelectorAll(StarClass.Selector).forEach((sectionBanner) => {
+    document.querySelectorAll(StarClass.Selector).forEach((sectionBanner) =>
+    {
         if (!sectionBanner) {
             return;
         }
         let unit = window.innerWidth > 1300 ? 'vw' : 'vh';
         let position = getRandomPosition(StarClass.num, unit, StarClass.Range);
+
         for (let i = 0; i < StarClass.num; i++) {
+            // 创建容器并获取容器的宽高
+            let starDivContainer = createElementWithClass('div', 'starDiv');
+            // let containerWidth = sectionBanner.clientWidth;
+            // let containerHeight = sectionBanner.clientHeight;
+
+            // // 生成位置并检查是否在范围内
+            // let left = parseFloat(position[i].left);
+            // let top = parseFloat(position[i].top);
+
+            // if (left < 0 || left > containerWidth || top < 0 || top > containerHeight) {
+            //     continue; // 如果位置超出容器范围则跳过
+            // }
+
             let starDiv = document.createElement('div');
             starDiv.id = `star-${i}`;
             starDiv.style.position = 'absolute';
             starDiv.style.transform = `translate(-50%, -50%)`;
-            starDiv.style.left = position[i].left;// Fallback values
-            starDiv.style.top = position[i].top;
             starDiv.style.left = `calc(50% + ${position[i].left})`;
             starDiv.style.top = `calc(50% + ${position[i].top})`;
             starDiv.style.animation = `twinkling ${Math.floor(Math.random() * 5 + 1)}s infinite`;
@@ -208,10 +221,12 @@ function createStar(StarClass) {
             star_down.appendChild(star_down_left);
             starDiv.appendChild(star_down);
             starDiv.appendChild(star_up);
-            sectionBanner.appendChild(starDiv);
+            starDivContainer.appendChild(starDiv);
+            sectionBanner.appendChild(starDivContainer);
         }
     });
 }
+
 function generateStar(StarClass) {
     if (!(StarClass instanceof Star)) {
         return;

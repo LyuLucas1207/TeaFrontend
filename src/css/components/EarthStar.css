@@ -1,3 +1,11 @@
+
+.earth-star-ES{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
 .section-banner {
     height: 10vw;
     width: 10vw;
