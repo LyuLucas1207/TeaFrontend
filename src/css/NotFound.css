@@ -6,13 +6,11 @@ html{
     box-sizing: border-box;
     background-color: var(--background-color, #f0f2f5);
     overflow-x: hidden;
-    min-height: 100vh;
-    min-width: 100vw;
 }
-.notfound_container * {
+/* .notfound_container * {
     box-sizing: border-box;
     overflow-x: hidden;
-}
+} */
 
 .notfound_container {
     display: flex;
