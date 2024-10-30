@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './../../css/components/Bottom.css';
-import companyLogo from './../../sjgz/logo4.png';
-import companyLogo2 from './../../sjgz/logo6.png';
+import companyLogo from './../../sjgz/HorizonLogo.png';
+import companyLogo2 from './../../sjgz/HorizonLogoB.png';
 import { Link } from 'react-router-dom';
 
 function Bottom({ isDarkTheme }) {

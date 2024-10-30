@@ -51,7 +51,6 @@ function useStarEffect(selector, starCount, animationDuration) {
     }, [selector, starCount, animationDuration]); // 当这三个参数变化时重新生成效果
 }
 
-// 自定义 Hook，用于处理烟花效果
 function useFireworkEffect (canvasRef) {
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -77,4 +76,83 @@ function useFireworkEffect (canvasRef) {
     }, [canvasRef]);
 };
 
-export { useTheme , useValidRoute, useStarEffect, useFireworkEffect };
+function useVisibilityIn(ref, threshold = 0.3) {
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                    observer.disconnect();
+                }
+            },
+            {
+                threshold: threshold,
+            }
+        );
+
+        if (ref.current) {
+            observer.observe(ref.current);
+        }
+
+        return () => observer.disconnect();
+    }, [ref, threshold]);
+
+    return isVisible;
+}
+
+function useVisibilityOut(ref, threshold = 0.3) {
+    const [isVisible, setIsVisible] = useState(true);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (!entry.isIntersecting) {
+                    setIsVisible(false);
+                    observer.disconnect();
+                }
+            },
+            {
+                threshold: threshold,
+            }
+        );
+
+        if (ref.current) {
+            observer.observe(ref.current);
+        }
+
+        return () => observer.disconnect();
+    }, [ref, threshold]);
+
+    return isVisible;
+}
+
+function useVisibilityInOut(ref, thresholdin = 0.4, thresholdout = 0.3) {
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.intersectionRatio >= thresholdin) {
+                    setIsVisible(true);
+                } else if (entry.intersectionRatio <= thresholdout) {
+                    setIsVisible(false);
+                }
+            },
+            {
+                threshold: [thresholdout, thresholdin],
+            }
+        );
+
+        if (ref.current) {
+            observer.observe(ref.current);
+        }
+
+        return () => observer.disconnect();
+    }, [ref, thresholdin, thresholdout]);
+
+    return isVisible;
+}
+
+export { useTheme, useValidRoute, useStarEffect, useFireworkEffect, useVisibilityIn, useVisibilityOut, useVisibilityInOut };

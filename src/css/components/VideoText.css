@@ -1,0 +1,195 @@
+.video-text-container {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    padding: 30px;
+    margin: 20px;
+    gap: 60px;
+    width: 100%;
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+@media screen and (max-width: 768px) {
+    .video-text-container {
+        flex-direction: column;
+        margin: 0px;
+        margin-top: 100px;
+        margin-bottom: 50px;
+        padding: 10px;
+        gap: 20px;
+    }
+
+    /* 当 flag 为 false 且屏幕宽度小于 768px 时使用 column-reverse */
+    .flag {
+        flex-direction: column-reverse;
+    }
+}
+
+.video-text-video,
+.video-text-text {
+    box-sizing: border-box;
+    width: 50%;
+    flex: 1;
+    overflow: hidden;
+    opacity: 0;
+}
+
+@media screen and (max-width: 768px) {
+
+    .video-text-video,
+    .video-text-text {
+        width: 100%;
+    }
+
+}
+
+.video-text-video {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .video-text-video {
+        margin: 10px;
+    }
+}
+
+.video-text-video {
+    transform: translateX(-100%);
+}
+
+.video-text-text {
+    transform: translateX(100%);
+}
+
+.slide-in-left {
+    animation: slideInFromLeft 1s ease-out forwards;
+    opacity: 1;
+}
+
+@keyframes slideInFromLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.slide-in-right {
+    animation: slideInFromRight 1s ease-out forwards;
+    opacity: 1;
+}
+
+@keyframes slideInFromRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.slide-out-left {
+    animation: slideOutToLeft 1s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes slideOutToLeft {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+.slide-out-right {
+    animation: slideOutToRight 1s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes slideOutToRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+.video-text-video video {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+@media screen and (max-width: 768px) {
+    .video-text-video video {
+        border-radius: 2px;
+    }
+}
+
+.video-text-text {
+    box-sizing: border-box;
+    padding: 20px;
+    color: var(--app-text-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+    .video-text-text {
+        padding: 10px;
+    }
+}
+
+.video-text-text p {
+    font-size: 30px;
+    margin: 0;
+    text-align: justify;
+    line-height: 1.2;
+    vertical-align: middle;
+}
+
+@media screen and (max-width: 768px) {
+    .video-text-text p {
+        font-size: 14px;
+    }
+}
+
+.video-text-text p span {
+    font-size: 50px;
+    font-weight: 800 !important;
+    font-family: 'HongLeiXingShuJianTi', sans-serif;
+    padding: 0;
+    margin: 0;
+    line-height: 0.6;
+
+}
+
+@media screen and (max-width: 768px) {
+    .video-text-text p span {
+        font-size: 20px;
+    }
+}

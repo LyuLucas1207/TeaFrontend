@@ -1,9 +1,10 @@
 import React from 'react';
 import './../../css/components/Header.css';
-import teaImage from './../../images/tea2_1920.jpg';
-import teaImage2 from './../../images/tea3_1920.jpg';
-import companyLogo from './../../sjgz/logo1.png';
-import companyLogo2 from './../../sjgz/logo3.png';
+import teaImage from './../../images/tea2_1280.jpg';
+import teaImage2 from './../../images/tea3_1280.jpg';
+import companyLogo2 from './../../sjgz/logo_text_dred.png';
+import companyLogo from './../../sjgz/logo_text_gold.png';
+
 import { Link } from 'react-router-dom';
 
 function Header({ isDarkTheme }) {
@@ -13,7 +14,6 @@ function Header({ isDarkTheme }) {
                 <div className="header-text">
                     <h1>双江古寨</h1>
                     <p>源自云南的纯正古茶，带您领略千年茶文化的魅力。</p>
-
                     <div className="header-image header-outer-image">
                         <img src={isDarkTheme ? teaImage2 : teaImage} alt="Tea" />
                     </div>

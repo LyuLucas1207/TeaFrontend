@@ -36,11 +36,11 @@
 }
 
 .nav_navbar-logo.light {
-    background-image: url("../../sjgz/logo6.png");
+    background-image: url("../../sjgz/HorizonLogo.png");
 }
 
 .nav_navbar-logo.dark {
-    background-image: url("../../sjgz/logo4.png");
+    background-image: url("../../sjgz/HorizonLogoY.png");
 }
 
 .nav_navbar-logo a {
@@ -99,11 +99,13 @@
     }
 
     .nav_navbar-logo.light {
-        background-image: url("../../sjgz/logo4.png");
+        /* background-image: url("../../sjgz/logo4.png"); */
+        background-image: url("../../sjgz/HorizonLogo.png");
     }
 
     .nav_navbar-logo.dark {
-        background-image: url("../../sjgz/logo4.png");
+        /* background-image: url("../../sjgz/logo4.png"); */
+        background-image: url("../../sjgz/HorizonLogoW.png");
     }
 
     .nav_navbar {

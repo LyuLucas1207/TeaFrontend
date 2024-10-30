@@ -19,8 +19,8 @@ const Navigation = ({ isDarkTheme }) => {
                 <div className={`nav_navbar-links ${isMobileMenuOpen ? 'nav_mobile-menu-open' : ''}`}>
                     <Link to="/index">首&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;页</Link>
                     <Link to="/index/products">产&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;品</Link>
-                    <Link to="/index/about">关&nbsp;于&nbsp;我&nbsp;们</Link>
-                    <Link to="/index/news">新&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;闻</Link>
+                    <Link to="/index/news">茶&nbsp;叶&nbsp;文&nbsp;化</Link>
+                    <Link to="/index/about">更&nbsp;多&nbsp;信&nbsp;息</Link>
                     <Link to="/index/contact">联&nbsp;系&nbsp;我&nbsp;们</Link>
                 </div>
 
