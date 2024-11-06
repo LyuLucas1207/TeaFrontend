@@ -9,9 +9,10 @@ const TEA_CATEGORIES = [
 
 const TEA_SUBCATEGORIES = {
     GreenTea: [
-        { label: '龙井', value: 'Longjing' },
-        { label: '碧螺春', value: 'Biluochun' },
-        { label: '毛峰', value: 'Maofeng' },
+        // { label: '龙井', value: 'Longjing' },
+        // { label: '碧螺春', value: 'Biluochun' },
+        // { label: '毛峰', value: 'Maofeng' },
+        {label: '未有子分类', value: 'None'},
     ],
     RedTea: [
         { label: '祁门红茶', value: 'Keemun' },
@@ -24,14 +25,16 @@ const TEA_SUBCATEGORIES = {
         { label: '寿眉', value: 'Shoumei' },
     ],
     OolongTea: [
-        { label: '铁观音', value: 'Tieguanyin' },
-        { label: '大红袍', value: 'Dahongpao' },
-        { label: '水仙', value: 'Shuixian' },
+        // { label: '铁观音', value: 'Tieguanyin' },
+        // { label: '大红袍', value: 'Dahongpao' },
+        // { label: '水仙', value: 'Shuixian' },
+        {label: '未有子分类', value: 'None'},
     ],
     YellowTea: [
-        { label: '君山银针', value: 'Junshan' },
-        { label: '黄山毛峰', value: 'Huangshan' },
-        { label: '莫干黄芽', value: 'Mogan' },
+        // { label: '君山银针', value: 'Junshan' },
+        // { label: '黄山毛峰', value: 'Huangshan' },
+        // { label: '莫干黄芽', value: 'Mogan' },
+        {label: '未有子分类', value: 'None'},
     ],
     DarkTea: [
         { label: '普洱茶', value: 'Puerh' },

@@ -20,10 +20,10 @@ function Header({ isDarkTheme }) {
                     <p className="header-text-last-p">每一片茶叶，<br />源于自然与匠心的完美结合。<br />感受双江古寨的宁静与悠远，<br />品味茶香之中的历史与传承。</p>
                     <div className="header-button-container">
                         <div className="header-button">
-                            <Link to="/contact">联&nbsp;系&nbsp;我&nbsp;们 &gt;</Link>
+                            <Link to="/index/contact">联&nbsp;系&nbsp;我&nbsp;们 &gt;</Link>
                         </div>
                         <div className="header-button">
-                            <Link to="/products">浏&nbsp;览&nbsp;产&nbsp;品 &gt;</Link>
+                            <Link to="/index/products">浏&nbsp;览&nbsp;产&nbsp;品 &gt;</Link>
                         </div>
                     </div>
                 </div>

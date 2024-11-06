@@ -28,6 +28,7 @@ body {
     align-items: center;
     user-select: none;
     transition: box-shadow 0.3s ease;
+    z-index: 100;
 }
 
 .login-form_card:hover {

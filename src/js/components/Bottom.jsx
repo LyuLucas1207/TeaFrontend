@@ -26,7 +26,8 @@ function Bottom({ isDarkTheme }) {
 
                 </div>
                 <div className="bottom-text-container">
-                    <div className="sub-title">联系我们:</div>
+                    {/* <div className="sub-title">联系我们:</div> */}
+                    <Link to="/index/contact" className="sub-title" style={{ textDecoration: 'none' }}>联系我们:</Link>                                
                     <p onClick={() => handleContactClick("电话号码: 123-456-7890")}>电话 &gt;</p>
                     <p onClick={() => handleContactClick("邮箱: example@tea.com")}>邮箱 &gt;</p>
                     <p onClick={() => handleContactClick("微信: tea_wechat_id")}>微信 &gt;</p>

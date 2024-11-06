@@ -5,8 +5,7 @@ import { useState } from 'react';
 import Switch from '../components/Switch';
 import Tips from '../components/Tips';
 
-// 引入路由和导航相关
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 // 引入工具函数、自定义 Hook 和验证函数
 import { useTheme, useValidRoute } from '../utility/myUse';
@@ -44,11 +43,11 @@ function Login() {
     const validPaths = ['/', '/not-found', '/login', '/signup'];
     useValidRoute(validPaths, 'admin.html#/not-found');
     const [isDarkTheme, toggleTheme] = useTheme(); // 使用自定义 Hook
-    const navigate = useNavigate(); // 路由跳转
+    // const navigate = useNavigate(); // 路由跳转
 
-    const handleSignupClick = () => {
-        navigate('/signup'); // 跳转到 /signup
-    };
+    // const handleSignupClick = () => {
+    //     navigate('/signup'); // 跳转到 /signup
+    // };
 
     // 密码可见性切换状态
     const [isChecked, setIsChecked] = useState(false);
@@ -98,7 +97,7 @@ function Login() {
                 </form>
                 <p className="login-form_signup-text">
                     Don't have an account?
-                    <span className="login-form_signup-link" onClick={handleSignupClick}>Sign up</span>
+                    <Link className="login-form_signup-link" to="/signup">Sign up</Link>
                 </p>
             </div>
         </div>
