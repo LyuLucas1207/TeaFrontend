@@ -49,7 +49,7 @@ function renderSuperAdminPage({ fetchData }) {
 function renderManagerAdminPage({ toggleGreenTeaMenu, GreenTeaOpen, toggleRedTeaMenu, RedTeaOpen, toggleWhiteTeaMenu, WhiteTeaOpen, toggleOolongMenu, OolongOpen, toggleYellowTeaMenu, YellowTeaOpen, toggleBlackTeaMenu, BlackTeaOpen, fetchData }) {
     return (
         <>
-            <li>
+            {/* <li>
                 <div className="admin-home_iocn-link">
                     <button onClick={toggleGreenTeaMenu}>
                         <i className='bx bx-spa'></i>
@@ -62,7 +62,7 @@ function renderManagerAdminPage({ toggleGreenTeaMenu, GreenTeaOpen, toggleRedTea
                     <li><button onClick={() => fetchData('/Biluochun', 'Tea')}>碧螺春</button></li>
                     <li><button onClick={() => fetchData('/Maofeng', 'Tea')}>毛峰</button></li>
                 </ul>
-            </li>
+            </li> */}
 
             <li>
                 <div className="admin-home_iocn-link">
@@ -73,9 +73,7 @@ function renderManagerAdminPage({ toggleGreenTeaMenu, GreenTeaOpen, toggleRedTea
                     </button>
                 </div>
                 <ul className="admin-home_sub-menu" style={{ display: RedTeaOpen ? 'block' : 'none' }}>
-                    <li><button onClick={() => fetchData('/Keemun', 'Tea')}>祁门红茶</button></li>
-                    <li><button onClick={() => fetchData('/Dianhong', 'Tea')}>滇红</button></li>
-                    <li><button onClick={() => fetchData('/Lapsang', 'Tea')}>正山小种</button></li>
+                    <li><button onClick={() => fetchData('/Gushu_red', 'Tea')}>古树红茶</button></li>
                 </ul>
             </li>
 
@@ -88,13 +86,11 @@ function renderManagerAdminPage({ toggleGreenTeaMenu, GreenTeaOpen, toggleRedTea
                     </button>
                 </div>
                 <ul className="admin-home_sub-menu" style={{ display: WhiteTeaOpen ? 'block' : 'none' }}>
-                    <li><button onClick={() => fetchData('/SilverNeedle', 'Tea')}>白毫银针</button></li>
-                    <li><button onClick={() => fetchData('/WhitePeony', 'Tea')}>白牡丹</button></li>
-                    <li><button onClick={() => fetchData('/Shoumei', 'Tea')}>寿眉</button></li>
+                    <li><button onClick={() => fetchData('/Gushu_white', 'Tea')}>古树白茶</button></li>
                 </ul>
             </li>
 
-            <li>
+            {/* <li>
                 <div className="admin-home_iocn-link">
                     <button onClick={toggleOolongMenu}>
                         <i className='bx bx-wind'></i>
@@ -107,9 +103,9 @@ function renderManagerAdminPage({ toggleGreenTeaMenu, GreenTeaOpen, toggleRedTea
                     <li><button onClick={() => fetchData('/Dahongpao', 'Tea')}>大红袍</button></li>
                     <li><button onClick={() => fetchData('/Shuixian', 'Tea')}>水仙</button></li>
                 </ul>
-            </li>
+            </li> */}
 
-            <li>
+            {/* <li>
                 <div className="admin-home_iocn-link">
                     <button onClick={toggleYellowTeaMenu}>
                         <i className='bx bx-sun'></i>
@@ -122,7 +118,7 @@ function renderManagerAdminPage({ toggleGreenTeaMenu, GreenTeaOpen, toggleRedTea
                     <li><button onClick={() => fetchData('/Huangshan', 'Tea')}>霍山黄芽</button></li>
                     <li><button onClick={() => fetchData('/Mogan', 'Tea')}>莫干黄芽</button></li>
                 </ul>
-            </li>
+            </li> */}
 
             <li>
                 <div className="admin-home_iocn-link">
@@ -133,9 +129,8 @@ function renderManagerAdminPage({ toggleGreenTeaMenu, GreenTeaOpen, toggleRedTea
                     </button>
                 </div>
                 <ul className="admin-home_sub-menu" style={{ display: BlackTeaOpen ? 'block' : 'none' }}>
-                    <li><button onClick={() => fetchData('/Puerh', 'Tea')}>普洱茶</button></li>
-                    <li><button onClick={() => fetchData('/Liubao', 'Tea')}>六堡茶</button></li>
-                    <li><button onClick={() => fetchData('/Anhua', 'Tea')}>安化黑茶</button></li>
+                    <li><button onClick={() => fetchData('/Puerh_raw', 'Tea')}>普洱茶（生茶）</button></li>
+                    <li><button onClick={() => fetchData('/Puerh_ripe', 'Tea')}>普洱茶（熟茶）</button></li>
                 </ul>
             </li>
         </>
@@ -152,11 +147,11 @@ function renderUserPage(toggleCategoryMenu, categoryOpen, fetchData) {
                 </button>
             </div>
             <ul className="admin-home_sub-menu" style={{ display: categoryOpen ? 'block' : 'none' }}>
-                <li><button onClick={() => fetchData('/GreenTea', 'Tea')}>绿茶</button></li>
+                {/* <li><button onClick={() => fetchData('/GreenTea', 'Tea')}>绿茶</button></li> */}
                 <li><button onClick={() => fetchData('/RedTea', 'Tea')}>红茶</button></li>
                 <li><button onClick={() => fetchData('/WhiteTea', 'Tea')}>白茶</button></li>
-                <li><button onClick={() => fetchData('/OolongTea', 'Tea')}>青茶</button></li>
-                <li><button onClick={() => fetchData('/YellowTea', 'Tea')}> 黄茶</button></li>
+                {/* <li><button onClick={() => fetchData('/OolongTea', 'Tea')}>青茶</button></li>
+                <li><button onClick={() => fetchData('/YellowTea', 'Tea')}> 黄茶</button></li> */}
                 <li><button onClick={() => fetchData('/DarkTea', 'Tea')}>黑茶</button></li>
             </ul>
         </li>
@@ -332,30 +327,36 @@ const AdminHome = () => {
                 case '/addStaff': setCurrentPage('addStaff'); break;
                 case '/AllStaff': setCurrentPage('allStaff'); break;
                 case '/AllTea': setCurrentPage('allTea'); break;
-                case '/GreenTea': setCurrentPage('GreenTea'); break;
+                // case '/GreenTea': setCurrentPage('GreenTea'); break;
                 case '/RedTea': setCurrentPage('RedTea'); break;
                 case '/WhiteTea': setCurrentPage('WhiteTea'); break;
-                case '/OolongTea': setCurrentPage('OolongTea'); break;
-                case '/YellowTea': setCurrentPage('YellowTea'); break;
+                // case '/OolongTea': setCurrentPage('OolongTea'); break;
+                // case '/YellowTea': setCurrentPage('YellowTea'); break;
                 case '/DarkTea': setCurrentPage('DarkTea'); break;
-                case '/Longjing': setCurrentPage('Longjing'); break;
-                case '/Biluochun': setCurrentPage('Biluochun'); break;
-                case '/Maofeng': setCurrentPage('Maofeng'); break;
-                case '/Keemun': setCurrentPage('Keemun'); break;
-                case '/Dianhong': setCurrentPage('Dianhong'); break;
-                case '/Lapsang': setCurrentPage('Lapsang'); break;
-                case '/SilverNeedle': setCurrentPage('SilverNeedle'); break;
-                case '/WhitePeony': setCurrentPage('WhitePeony'); break;
-                case '/Shoumei': setCurrentPage('Shoumei'); break;
-                case '/Tieguanyin': setCurrentPage('Tieguanyin'); break;
-                case '/Dahongpao': setCurrentPage('Dahongpao'); break;
-                case '/Shuixian': setCurrentPage('Shuixian'); break;
-                case '/Junshan': setCurrentPage('Junshan'); break;
-                case '/Huangshan': setCurrentPage('Huangshan'); break;
-                case '/Mogan': setCurrentPage('Mogan'); break;
-                case '/Puerh': setCurrentPage('Puerh'); break;
-                case '/Liubao': setCurrentPage('Liubao'); break;
-                case '/Anhua': setCurrentPage('Anhua'); break;
+                case '/Gushu_red': setCurrentPage('Gushu_red'); break;
+                case '/Gushu_white': setCurrentPage('Gushu_white'); break;
+                case '/Puerh_raw': setCurrentPage('Puerh_raw'); break;
+                case '/Puerh_ripe': setCurrentPage('Puerh_ripe'); break;
+
+
+                // case '/Longjing': setCurrentPage('Longjing'); break;
+                // case '/Biluochun': setCurrentPage('Biluochun'); break;
+                // case '/Maofeng': setCurrentPage('Maofeng'); break;
+                // case '/Keemun': setCurrentPage('Keemun'); break;
+                // case '/Dianhong': setCurrentPage('Dianhong'); break;
+                // case '/Lapsang': setCurrentPage('Lapsang'); break;
+                // case '/SilverNeedle': setCurrentPage('SilverNeedle'); break;
+                // case '/WhitePeony': setCurrentPage('WhitePeony'); break;
+                // case '/Shoumei': setCurrentPage('Shoumei'); break;
+                // case '/Tieguanyin': setCurrentPage('Tieguanyin'); break;
+                // case '/Dahongpao': setCurrentPage('Dahongpao'); break;
+                // case '/Shuixian': setCurrentPage('Shuixian'); break;
+                // case '/Junshan': setCurrentPage('Junshan'); break;
+                // case '/Huangshan': setCurrentPage('Huangshan'); break;
+                // case '/Mogan': setCurrentPage('Mogan'); break;
+                // case '/Puerh': setCurrentPage('Puerh'); break;
+                // case '/Liubao': setCurrentPage('Liubao'); break;
+                // case '/Anhua': setCurrentPage('Anhua'); break;
                 default: setStatus(404); break;
             }
         } catch (error) {
