@@ -57,6 +57,7 @@ body {
 /* 默认的 light 主题 */
 body {
     --background-color: #efefd6;
+    --background-slighly-deeper-color: #d9d9c36f;
     --navbar-bg-color: #efefd6;
     --contract-bg-color: #050505;
     --text-color: #333;
@@ -133,6 +134,7 @@ body {
 /* Dark 主题 */
 body.dark-theme {
     --background-color: #171717;
+    --background-slighly-deeper-color: #1a1a1a;
     --navbar-bg-color: #171717;
     --contract-bg-color: #f3ecec;
     --text-color: #f0f2f5;

@@ -5,7 +5,7 @@ import { classifyCode } from './classifyInformation';
 
 function defineUrl() {
     if (process.env.NODE_ENV === 'development') {
-        return 'https://192.168.1.75:10002';
+        return 'https://192.168.1.64:10002';
         // return 'https://localhost:10002';
     }
     return 'https://www.lucaslyu.com:10002';
@@ -199,10 +199,19 @@ async function updateUserInfo(originalEmail, firstName, lastName, phoneNumber, e
 async function getDatas(action, flag, obj = null) {
     try {
         const url = defineUrl();
-        const token = localStorage.getItem('token');
-        if (!token) {
-            return { status: 401, code: 1, data: null, msg: '未登录，请先登录！' };
+        // const token = localStorage.getItem('token');
+        // if (!token) {
+        //     return { status: 401, code: 1, data: null, msg: '未登录，请先登录！' };
+        // }
+
+        let token = null;
+        if (action === '/AllStaff') {
+            token = localStorage.getItem('token');
+            if (!token) {
+                return { status: 401, code: 1, data: null, msg: '未登录，请先登录！' };
+            }
         }
+
 
         const formData = new FormData();
         formData.append('action', action);
@@ -213,7 +222,7 @@ async function getDatas(action, flag, obj = null) {
         }
         const response = await axios.post(url,formData , {
             headers: {
-                'Authorization': `Bearer ${token}`, // 设置请求头
+                'Authorization': `Bearer ${token}`, // 不需要 token
                 'Content-Type': 'multipart/form-data; charset=utf-8',
             },
             timeout: 5000

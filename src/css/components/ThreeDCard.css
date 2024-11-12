@@ -177,7 +177,7 @@
     transform: translate3d(0%, -30%, 100px);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
     .threedcard-card-container {
         display: grid;
         grid-template-columns: 1fr 1fr;

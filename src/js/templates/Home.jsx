@@ -3,6 +3,7 @@ import React from 'react';
 import Header from '../components/Header';
 import VideoText from '../components/VideoText';
 import ThreeDCard from '../components/ThreeDCard';
+import ProductCards from '../components/ProductCards';
 
 import village2_1280 from './../../videos/village2_1280.mp4';
 import village2_960 from './../../videos/village2_960.mp4';
@@ -25,6 +26,8 @@ function Home({ isDarkTheme }) {
                 light2={village_1920}
                 light3={village_2560} />
             <ThreeDCard />
+            <ProductCards />
+
         </div>
     );
 }

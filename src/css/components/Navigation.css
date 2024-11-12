@@ -67,7 +67,7 @@
     padding: 10px;
     text-decoration: none;
     color: var(--contract-bg-color);
-    font-size: 15px;
+    font-size: 20px;
     font-family: "YouSheYuFeiTeJianKangTi";
     border-radius: 25px;
     margin-left: 20px;
@@ -89,7 +89,7 @@
 }
 
 /* 手机样式 */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
 
     .nav_navbar {
         background: var(--background-color);
@@ -162,6 +162,7 @@
         width: 90%;
         text-align: center;
         padding: 10px;
+        font-size: 15px;
         color: var(--link-text-color);
         transition: color 0.3s ease;
     }

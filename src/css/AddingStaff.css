@@ -76,7 +76,7 @@
 }
 
 /* 桌面端样式 */
-@media (min-width: 768px) {
+@media (min-width: 1001px) {
     .--admin-addingstaff-container {
         max-width: 50%;
     }
@@ -96,7 +96,7 @@
 }
 
 /* 移动端样式 */
-@media (max-width: 767px) {
+@media (max-width: 1000px) {
     .--admin-addingstaff-container {
         padding: 15px;
         width: 90%;

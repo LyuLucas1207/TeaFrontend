@@ -163,7 +163,7 @@
 }
 
 /* 移动端样式 */
-@media (max-width: 767px) {
+@media (max-width: 1000px) {
     .admin-addingtea-container form {
         width: 80%;
     }

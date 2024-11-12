@@ -12,7 +12,7 @@
     margin-bottom: 50px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
     .video-text-container {
         flex-direction: column;
         margin: 0px;
@@ -22,7 +22,7 @@
         gap: 20px;
     }
 
-    /* 当 flag 为 false 且屏幕宽度小于 768px 时使用 column-reverse */
+    /* 当 flag 为 false 且屏幕宽度小于 1000px 时使用 column-reverse */
     .flag {
         flex-direction: column-reverse;
     }
@@ -37,7 +37,7 @@
     opacity: 0;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
 
     .video-text-video,
     .video-text-text {
@@ -54,7 +54,7 @@
     margin: 20px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
     .video-text-video {
         margin: 10px;
     }
@@ -142,7 +142,7 @@
     border-radius: 8px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
     .video-text-video video {
         border-radius: 2px;
     }
@@ -158,7 +158,7 @@
     align-items: center;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
     .video-text-text {
         padding: 10px;
     }
@@ -172,7 +172,7 @@
     vertical-align: middle;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
     .video-text-text p {
         font-size: 14px;
     }
@@ -188,7 +188,7 @@
 
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
     .video-text-text p span {
         font-size: 20px;
     }

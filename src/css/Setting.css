@@ -59,7 +59,7 @@
     background-color: var(--admin-setting-button-hover-bg-color);
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
     .setting_section {
         width: 90%;
         font-size: 20px;
@@ -247,7 +247,7 @@
 }
 
 /* 桌面端样式 */
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1000px) {
     .setting_form {
         width: 500px;
         /* 表单宽度 */
@@ -269,7 +269,7 @@
 }
 
 /* 移动端样式 */
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 1000px) {
     .setting_form {
         width: 90%;
         /* 表单宽度自适应 */
@@ -325,7 +325,7 @@
     box-sizing: border-box;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 1000px) {
     .setting_email-code-group {
         flex-direction: column;
     }

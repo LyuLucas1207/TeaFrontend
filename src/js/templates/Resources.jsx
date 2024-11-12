@@ -6,7 +6,7 @@ import NotFound from './NotFound';
 
 function defineUrl() {
     if (process.env.NODE_ENV === 'development') {
-        return 'https://192.168.1.75:10002';
+        return 'https://192.168.1.64:10002';
     }
     return 'https://www.lucaslyu.com:10002';
 }

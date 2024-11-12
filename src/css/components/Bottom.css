@@ -41,7 +41,7 @@
     opacity: 1;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
     .bottom-icon img {
         width: 100px;
     }
@@ -68,42 +68,30 @@
     transform: scale(1.1);
 }
 
-.bottom-tea-container ul {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start;
-    gap: 10px;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.bottom-tea-container ul li {
-    cursor: pointer;
-    color: var(--app-bg-color);
-    font-size: 25px;
-    padding: 0px;
-}
-
-.bottom-tea-container ul li a {
+.bottom-tea-container p a {
     color: var(--app-bg-color);
     text-decoration: none;
 }
 
-.bottom-tea-container ul li:hover {
+.bottom-tea-container p:hover {
     transform: scale(1.1);
 }
 
 .sub-title {
     color: var(--app-bg-color);
-    margin: 0px 0;
+    margin: 0px 0px 10px 0px;
     font-size: 30px;
     padding: 0px;
+    text-decoration: none;
+
+}
+
+.sub-title:hover {
+    transform: scale(1.1);
 }
 
 /* 手机端样式调整 */
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
 
     .bottom-text-container p,
     .bottom-tea-container p,
@@ -161,4 +149,21 @@
 .modal-content button:hover {
     transform: scale(1.1);
     transition: transform 0.1s ease;
+}
+
+
+@media screen and (max-width: 1000px) {
+    .modal-content {
+        min-width: 300px;
+        min-height: 200px;
+    }
+
+    .modal-content p {
+        font-size: 15px;
+    }
+
+    .modal-content button {
+        padding: 4px 8px;
+    }
+    
 }

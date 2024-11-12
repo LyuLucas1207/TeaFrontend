@@ -1,0 +1,196 @@
+/* 产品卡片的总体容器样式 */
+.product_cards-container {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 16px; /* 卡片之间的间距 */
+    padding: 16px;
+    background-color: transparent;
+}
+
+
+
+.product_cards-header {
+    font-family: "HongLeiXingShuJianTi", "AlimamaFangYuan", "SmileySans", sans-serif;
+    font-size: 50px; /* 标题大小 */
+    font-weight: 900;
+    margin: 0;
+    color: var(--app-text-color);
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 1000px) {
+    .product_cards-header {
+        font-size: 30px;
+    }
+}
+
+.product_cards-containers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 16px; /* 卡片之间的间距 */
+    padding: 16px;
+    background-color: transparent;
+    width: 100%;
+}
+
+@media screen and (max-width: 1000px) {
+    .product_cards-containers {
+        flex-wrap: wrap;
+    }
+}
+
+/* 单个产品卡片 */
+.product_cards-card {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 500px; /* 卡片宽度 */
+    height: 650px; /* 卡片高度 */
+    background-color: var(--background-slighly-deeper-color); /* 使用主题应用背景色 */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px var(--admin-card-shadow);
+    padding: 16px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+@media screen and (max-width: 1000px) {
+    .product_cards-card {
+        width: 45%;
+        height: 280px;
+        padding: 6px;
+    }
+}
+
+/* 卡片悬停效果 */
+.product_cards-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 16px var(--admin-card-shadow);
+}
+
+/* 产品图片样式 */
+.product_cards-image {
+    width: 100%; /* 图片宽度 */
+    height: 300px; /* 限制图片高度 */
+    border-radius: 8px;
+    object-fit: cover;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+@media screen and (max-width: 1000px) {
+    .product_cards-image {
+        height: 130px;
+        margin-top: 1px;
+        margin-bottom: 1px;
+    }
+    
+}
+
+/* 产品信息的容器 */
+.product_cards-info {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    margin-top: 8px;
+    text-align: center;
+    color: var(--app-text-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media screen and (max-width: 1000px) {
+    .product_cards-info {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
+
+/* 产品标题 */
+.product_cards-title {
+    font-family: 'AlimamaFangYuan', sans-serif;
+    font-size: 35px; /* 标题大小 */
+    font-weight: 900;
+    margin: 0;
+    color: var(--app-text-color);
+    width: 100%;
+    
+}
+
+@media screen and (max-width: 1000px) {
+    .product_cards-title {
+        font-size: 18px;
+    }
+}
+
+/* 产品描述 */
+.product_cards-description {
+    font-family: 'YouSheYuFeiTeJianKangTi', sans-serif;
+    margin: 10px 0;
+    color: var(--app-text-color);
+    text-align: left; /* 文字靠左 */
+    overflow: hidden; /* 隐藏超出内容 */
+    text-overflow: ellipsis; /* 超出显示省略号 */
+    display: -webkit-box; /* 为多行文本截断定义盒模型 */
+    -webkit-line-clamp: 3; /* 显示三行文本，超出部分用省略号 */
+    -webkit-box-orient: vertical; /* 设置文本方向为垂直 */
+    line-height: 1.5; /* 行高 */
+    height: 100%; /* 高度占满父容器 */
+    width: 100%; /* 宽度占满父容器 */
+    box-sizing: border-box; /* 包括内边距和边框 */
+    text-align: justify; /* 两端对齐 */
+}
+
+.product_cards-description span:first-child {
+    font-size: 30px; /* 描述文字大小 */
+    color: var(--app-text-color);
+}
+
+.product_cards-description span:last-child {
+    display: block;
+    font-size: 20px; /* 描述文字大小 */
+    text-indent: 2em; /* 首行缩进 */
+}
+
+@media screen and (max-width: 1000px) {
+    .product_cards-description span:first-child {
+        font-size: 15px;
+    }
+
+    .product_cards-description span:last-child {
+        font-size: 10px;
+    }
+    
+}
+
+/* 产品价格 */
+.product_cards-price {
+    font-family: 'YouSheYuFeiTeJianKangTi', sans-serif;
+    font-size: 20px; /* 价格文字大小 */
+    margin: 0;
+    color: var(--app-text-color);
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+@media screen and (max-width: 1000px) {
+    .product_cards-price {
+        font-size: 12px;
+        margin-bottom: 12px;
+    }
+}

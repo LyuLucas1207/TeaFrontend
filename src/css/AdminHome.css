@@ -309,7 +309,7 @@ body, html {
     gap: 20px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
     .admin-home_project-grid {
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     }
@@ -355,7 +355,7 @@ body, html {
 }
 
 /* 响应式设计 */
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
     .admin-home_sidebar {
         width: 185px;
     }

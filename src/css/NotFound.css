@@ -24,9 +24,10 @@ html{
     text-align: center;
     padding: 40px;
     margin-top: 100px;
+    z-index: 1000;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 1000px) {
     .notfound_container {
         margin-top: 50px;
     }
@@ -46,9 +47,10 @@ html{
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     height: 80%;
     max-height: 850px;
+    z-index: 1000;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 1000px) {
     .notfound_content {
         padding: 20px;
         height: 65%;
@@ -65,7 +67,7 @@ html{
     animation: bounce 0.5s infinite alternate;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 1000px) {
     .notfound_title {
         font-size: 5rem;
     }
@@ -78,7 +80,7 @@ html{
     margin-bottom: 20px;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 1000px) {
     .notfound_subtitle {
         font-size: 1rem;
     }
@@ -92,7 +94,7 @@ html{
     line-height: 1.6;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 1000px) {
     .notfound_message {
         font-size: 0.8rem;
     }
@@ -123,7 +125,7 @@ html{
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 1000px) {
     .notfound_link {
         font-size: 0.8rem;
     }
@@ -145,7 +147,7 @@ html{
     }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 1000px) {
     @keyframes bounce {
         from {
             transform: translateY(0);
