@@ -1,5 +1,5 @@
 # Frontend Project - Multi-Page Application with Dark and Light Mode
-### This is a multi-page frontend application built with React.js. The project includes various user interface components such as login, signup, and settings pages, along with animated effects and theme switching functionality between light and dark modes. Each page is statically served via HTML files with dynamic rendering through React Router.
+### This is a multi-page frontend application built with React.js. The project includes various user interface components such as login, signup, and settings pages, along with animated effects and theme switching functionality between light and dark modes. Each page is statically served via HTML files with dynamic rendering through React Router. By the way, you can browse: www.lucaslyu.com (Not completed)
 
 ## Features
 1. Multi-Page Structure: Unlike a single-page application (SPA), this project features multiple HTML pages (admin_home.html, admin.html, index.html), each with its own route and distinct React components.
@@ -93,6 +93,13 @@ Users can update personal information like first name, last name, email, and pho
 All pages support both light and dark modes. Users can switch between the two modes using a toggle button on each page.
 
 ## Screenshots
+### Fronted
+![Home Light](preview/deskl.png)
+![Home Dark](preview/deskd.png)
+
+![Home Light phone](preview/phonel.png)
+![Home Dark phone](preview/phoned.png)
+
 ### Login Page (Dark Mode)
 ![Login Light Mode](preview/login-light.png)
 ### Login Page (Light Mode)
