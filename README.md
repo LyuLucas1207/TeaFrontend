@@ -10,7 +10,7 @@
 6. Responsive Design: The interface is fully responsive and optimized for various screen sizes, including mobile, tablet, and desktop.
 7. Token-based Authentication: JWT (JSON Web Token) is used to manage user sessions securely.
 
-## [GO TO Web Site](https://www.sjgztea.com)
+## [GO TO This WebSite](https://www.sjgztea.com)
 
 
 ## Project Structure
@@ -117,19 +117,3 @@ All pages support both light and dark modes. Users can switch between the two mo
 
 ![Sign Up Dark Mode](preview/signup-dark-mode.png)
 
-## Technologies Used
-1. React.js: Frontend library for building user interfaces.
-
-2. Axios: For making HTTP requests to the backend.
-
-3. React Router: To manage the application's routes.
-
-4. CSS3: Styling with both animations and responsive design.
-
-5. JWT: Used for secure user authentication and session management.
-
-6. HTML5: Markup for static pages.
-
-7. Canvas API: For rendering animations like fireworks and stars.
-
-8. Node.js: For the development and dependency management.
