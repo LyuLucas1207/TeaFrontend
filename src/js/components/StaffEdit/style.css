@@ -1,0 +1,144 @@
+.Staff-Edit-section {
+    margin-bottom: 60px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.Staff-Edit-title {
+    font-size: 38px;
+    color: var(--app-primary-color);
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: "AlimamaFangYuan", "SmileySans", sans-serif;
+    font-weight: 900;
+}
+
+@media screen and (max-width: 1000px) {
+    .Staff-Edit-title {
+        font-size: 24px; 
+        margin-bottom: 16px;
+    }
+}
+
+.Staff-Edit-containers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 16px; 
+    padding: 16px;
+    background-color: transparent;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 600px) {
+    .Staff-Edit-containers {
+        flex-direction: column; /* 设置为纵向排列 */
+        gap: 12px; /* 调整间距 */
+        padding: 8px;
+    }
+}
+
+.Staff-Edit-card {
+    box-sizing: border-box;
+    display: flex;
+    width: 400px;
+    height: 300px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-slighly-deeper-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px var(--admin-card-shadow);
+    padding: 16px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1000px) {
+    .Staff-Edit-card {
+        width: 100%;
+        height: 280px;
+        padding: 6px;
+    }
+}
+
+.Staff-Edit-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 16px var(--admin-card-shadow);
+}
+
+.Staff-Edit-image-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Staff-Edit-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 16px;
+}
+
+.Staff-Edit-info {
+    text-align: center;
+    color: var(--app-text-color);
+}
+
+.Staff-Edit-name {
+    font-family: 'AlimamaFangYuan', sans-serif;
+    font-size: 24px; /* 调整字体大小 */
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+@media screen and (max-width: 1000px) {
+    .Staff-Edit-name {
+        font-size: 16px;
+    }
+}
+
+.Staff-Edit-role {
+    font-size: 20px; /* 调整字体大小 */
+    margin-bottom: 8px;
+    color: var(--app-secondary-color);
+}
+
+@media screen and (max-width: 1000px) {
+    .Staff-Edit-role {
+        font-size: 14px;
+    }
+}
+
+.Staff-Edit-contact,
+.Staff-Edit-email {
+    font-size: 16px; /* 调整字体大小 */
+    margin-bottom: 4px;
+    color: var(--app-text-color-light);
+}
+
+@media screen and (max-width: 1000px) {
+    .Staff-Edit-contact,
+    .Staff-Edit-email {
+        font-size: 12px;
+    }
+}
+
+.Staff-Edit-not {
+    font-family: "HongLeiXingShuJianTi", "AlimamaFangYuan", "SmileySans", sans-serif;
+    font-size: 20px; /* 调整字体大小 */
+    color: var(--app-text-color);
+    text-align: center;
+    margin: 0;
+}
+
+@media screen and (max-width: 1000px) {
+    .Staff-Edit-not {
+        font-size: 16px;
+    }
+}

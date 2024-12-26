@@ -1,34 +1,34 @@
 @font-face {
     font-family: 'AlimamaFangYuan';
-    src: url('../fonts/AlimamaFangYuanTiVF-Thin-2.ttf') format('truetype');
+    src: url('../assets/fonts/AlimamaFangYuanTiVF-Thin-2.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'HongLeiXingShuJianTi';
-    src: url('../fonts/HongLeiXingShuJianTi-2.otf') format('opentype');
+    src: url('../assets/fonts/HongLeiXingShuJianTi-2.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'MaoKenWangXingYuan';
-    src: url('../fonts/MaoKenWangXingYuan-2.ttf') format('truetype');
+    src: url('../assets/fonts/MaoKenWangXingYuan-2.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'SmileySans';
-    src: url('../fonts/SmileySans-Oblique-2.ttf') format('truetype');
+    src: url('../assets/fonts/SmileySans-Oblique-2.ttf') format('truetype');
     font-weight: normal;
     font-style: oblique;
 }
 
 @font-face {
     font-family: 'YouSheYuFeiTeJianKangTi';
-    src: url('../fonts/YouSheYuFeiTeJianKangTi-2.ttf') format('truetype');
+    src: url('../assets/fonts/YouSheYuFeiTeJianKangTi-2.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -67,6 +67,8 @@ body {
     --link-hover-bg-color: #0056b3;
     --link-text-color: #fff;
     --content-bg-color: rgba(255, 255, 255, 0.9);
+    --filter-image-color: rgba(179, 175, 175, 0.801);
+    --standard-text-color: #000000;
 
     --login-background-color: #f0f2f5;
     --login-background-inverse-color: #1e1e1e;
@@ -129,6 +131,7 @@ body {
     
     --header-h1-color: #333;
     --header-p-color: #666;
+
 }
 
 /* Dark 主题 */
@@ -144,6 +147,8 @@ body.dark-theme {
     --link-hover-bg-color: #ff4757;
     --link-text-color: #fff;
     --content-bg-color: rgba(50, 50, 50, 0.9);
+    --filter-image-color: rgba(15, 15, 15, 0.445);
+    --standard-text-color: #ffffff;
 
     --login-background-color: #1e1e1e;
     --login-background-inverse-color: #f0f2f5;
@@ -200,7 +205,7 @@ body.dark-theme {
     --app-text-color: #d4af37;
     --app-primary-color: #f2b809;
     --app-primary-color-hover: #f2b809;
-    --app-secondary-colo: #ffeb3b;
+    --app-secondary-color: #ffeb3b;
 
     --header-h1-color: #f0f2f5;
     --header-p-color: #ccc;
@@ -211,4 +216,8 @@ body.dark-theme {
 #root {
     width: 100vw;
     height: 100vh;
+}
+
+#root * {
+    box-sizing: border-box;
 }

@@ -1,7 +1,5 @@
 import { createHashRouter, Navigate } from "react-router-dom";
-import Login from "../js/templates/Login";
-import SignUp from "../js/templates/SignUp";
-import NotFound from "../js/templates/NotFound";
+import Screens from "../js/screens/screens";
 
 const adminRouter = createHashRouter([
     {
@@ -10,7 +8,7 @@ const adminRouter = createHashRouter([
     },
     {
         path: "/login",
-        element: <Login />,
+        element: <Screens.Login />, // 从 Screens 对象中获取 Login
         children: [
             {
                 path: "*",
@@ -19,7 +17,7 @@ const adminRouter = createHashRouter([
     },
     {
         path: "/signup",
-        element: <SignUp />,
+        element: <Screens.Signup />, // 从 Screens 对象中获取 Signup
         children: [
             {
                 path: "*",
@@ -28,12 +26,25 @@ const adminRouter = createHashRouter([
     },
     {
         path: "/not-found",
-        element: <NotFound message={null} link="/login" />,
+        element: <Screens.NotFound message={null} link="/login" />,
     },
     {
         path: "*",
-        element: <NotFound message={null} link="/login" />,
+        element: <Screens.NotFound message={null} link="/login" />,
     }
-]);
+],
+{
+    // 添加 future 配置项
+    future: {
+        v7_startTransition: true, // 提前启用 startTransition 封装
+        v7_relativeSplatPath: true, // 改变带 * 的路径解析
+        v7_fetcherPersist: true, // 启用 fetcher 的持久化行为
+        v7_normalizeFormMethod: true, // 表单方法大小写规范化
+        v7_partialHydration: true, // 改进 RouterProvider 的 hydration 行为
+        v7_skipActionErrorRevalidation: true, // 跳过 action 错误的 revalidation
+    },
+}
+
+);
 
 export default adminRouter;

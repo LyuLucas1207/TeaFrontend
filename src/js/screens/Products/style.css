@@ -1,0 +1,39 @@
+.products_page-container {
+    box-sizing: border-box;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 26px; 
+    padding: 16px;
+    background-color: transparent;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 1000px) {
+    .products_page-container {
+        gap: 8px;
+        padding: 8px;
+        width: 100%;
+    }
+}
+
+.products_page-header {
+    font-family: "HongLeiXingShuJianTi", "AlimamaFangYuan", "SmileySans", sans-serif;
+    font-size: 66px;
+    font-weight: 900;
+    margin: 0;
+    color: var(--app-primary-color-hover);
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 40px;
+}
+
+@media screen and (max-width: 1000px) {
+    .products_page-header {
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+}

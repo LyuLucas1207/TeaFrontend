@@ -1,0 +1,135 @@
+/* 入场动画 */
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* 出场动画 */
+@keyframes slideOutLeft {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+@keyframes slideOutUp {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+}
+
+@keyframes slideOutDown {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+}
+
+/* 初始定位类，用于将元素移出视野 */
+.SlidingBox-Left {
+    box-sizing: border-box;
+    transform: translateX(-100%);
+}
+.SlidingBox-Right {
+    box-sizing: border-box;
+    transform: translateX(100%);
+}
+.SlidingBox-Up {
+    box-sizing: border-box;
+    transform: translateY(100%);
+}
+.SlidingBox-Down {
+    box-sizing: border-box;
+    transform: translateY(-100%);
+}
+
+/* 入场动画类 */
+.SlidingBox-SlideInLeft {
+    animation: slideInLeft 1s forwards;
+}
+.SlidingBox-SlideInRight {
+    animation: slideInRight 1s forwards;
+}
+.SlidingBox-SlideInUp {
+    animation: slideInUp 1s forwards;
+}
+.SlidingBox-SlideInDown {
+    animation: slideInDown 1s forwards;
+}
+
+/* 出场动画类 */
+.SlidingBox-SlideOutLeft {
+    animation: slideOutLeft 1s forwards;
+}
+.SlidingBox-SlideOutRight {
+    animation: slideOutRight 1s forwards;
+}
+.SlidingBox-SlideOutUp {
+    animation: slideOutUp 1s forwards;
+}
+.SlidingBox-SlideOutDown {
+    animation: slideOutDown 1s forwards;
+}

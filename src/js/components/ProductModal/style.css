@@ -1,0 +1,190 @@
+
+/* 模态框 */
+.products_modal-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 12999;
+}
+
+.products_modal-modal-content {
+    background: var(--background-color);
+    padding: 50px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 1200px;
+    width: 90%;
+    position: relative;
+    animation: fadeIn 0.3s ease-in-out;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 1000px) {
+    .products_modal-modal-content {
+        padding: 12px;
+        border-radius: 12px;
+        max-width: 80%;
+    }
+}
+
+.products_modal-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--app-text-color);
+    cursor: pointer;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 1001;
+    transition: transform 0.3s ease;
+}
+
+.products_modal-close:hover {
+    transform: scale(1.2);
+}
+
+.products_modal-modal-body {
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    text-align: left;
+}
+
+.products_modal-modal-image {
+    max-width: 45%;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+@media screen and (max-width: 1000px) {
+    .products_modal-modal-body {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0;
+    }
+
+    .products_modal-modal-image {
+        max-height: 300px;
+        object-fit: contain;
+        margin: 12px 0;
+    }
+}
+
+.products_modal-modal-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+@media screen and (max-width: 1000px) {
+    .products_modal-modal-details {
+        align-items: center;
+        text-align: center;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+}
+
+.products_modal-modal-title {
+    font-family: 'AlimamaFangYuan', sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+    color: var(--app-text-color);
+    margin-bottom: 12px;
+}
+
+@media screen and (max-width: 1000px) {
+    .products_modal-modal-title {
+        font-size: 22px;
+    }
+}
+
+.products_modal-modal-description {
+    font-size: 24px;
+    color: var(--app-text-color);
+    text-align: justify;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+@media screen and (max-width: 1000px) {
+    .products_modal-modal-description {
+        font-size: 14px;
+    }
+}
+
+.products_modal-modal-price {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--app-text-color);
+    margin-bottom: 16px;
+}
+
+@media screen and (max-width: 1000px) {
+    .products_modal-modal-price {
+        font-size: 16px;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.products_modal-left-button,
+.products_modal-right-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    transition: background 0.3s ease;
+}
+
+.products_modal-left-button {
+    left: 10px;
+}
+
+.products_modal-right-button {
+    right: 10px;
+}
+
+.products_modal-left-button:hover,
+.products_modal-right-button:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.products_modal-left-button:disabled,
+.products_modal-right-button:disabled {
+    background: rgba(0, 0, 0, 0.3);
+    cursor: not-allowed;
+}

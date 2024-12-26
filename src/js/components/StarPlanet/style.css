@@ -1,0 +1,23 @@
+.animation-container {
+    position: fixed; /* 固定位置 */
+    top: 0;
+    left: 0;
+    width: 100%; /* 覆盖整个视口 */
+    height: 100vh;
+    background-color: transparent; /* 透明背景 */
+    z-index: 10000; /* 确保动画在内容下方 */
+    pointer-events: none; /* 让事件穿透，用户可以与页面其他元素互动 */
+    overflow: visible; /* 允许动画溢出容器 */
+}
+
+.animation-container canvas {
+    overflow: visible; /* 允许动画溢出容器 */
+    
+}
+
+/* 可选：响应式调整容器大小 */
+@media (max-width: 1000px) {
+    .animation-container {
+        transform: translateY(-300px);
+    }
+}

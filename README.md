@@ -10,6 +10,9 @@
 6. Responsive Design: The interface is fully responsive and optimized for various screen sizes, including mobile, tablet, and desktop.
 7. Token-based Authentication: JWT (JSON Web Token) is used to manage user sessions securely.
 
+## [GO TO Web Site](https://www.sjgztea.com)
+
+
 ## Project Structure
 ```
 ├── config/
@@ -96,6 +99,8 @@ All pages support both light and dark modes. Users can switch between the two mo
 ### Fronted
 ![Home Light](preview/deskl.png)
 ![Home Dark](preview/deskd.png)
+![Home Star](preview/star.png)
+![Home Long](preview/long.png)
 
 ![Home Light phone](preview/phonel.png)
 ![Home Dark phone](preview/phoned.png)

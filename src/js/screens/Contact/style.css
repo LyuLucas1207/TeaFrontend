@@ -1,0 +1,177 @@
+/* General Page Styles */
+.contact-page-container {
+    font-family: var(--app-text-font, 'Arial, sans-serif');
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px 0;
+    color: var(--text-color);
+}
+
+.contact-page-container * {
+    font-family: "AlimamaFangYuan", sans-serif;
+}
+
+.contact-page-title {
+    font-size: 48px;
+    margin-bottom: 40px;
+    text-align: center;
+    color: var(--header-h1-color);
+}
+
+/* Layout */
+.contact-layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: space-between;
+    min-height: 60vh;
+}
+
+.contact-left, .contact-right {
+    flex: 1;
+    min-width: 300px;
+    background: var(--content-bg-color);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2), -1px -1px 15px rgba(255, 255, 255, 0.7);
+    display: flex;
+    flex-direction: column; /* Aligns content vertically within the box */
+    align-items: center; /* Centers content horizontally */
+    justify-content: center; /* Centers content vertically */
+}
+
+/* Contact Items */
+.contact-item {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.contact-item h2 {
+    font-size: 38px;
+    margin-bottom: 10px;
+    color: var(--header-h2-color);
+}
+
+.contact-item p {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+/* Actions */
+.contact-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.contact-action, .contact-button {
+    padding: 10px 20px;
+    font-size: 26px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+    background: var(--app-primary-color);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2), -1px -1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.contact-action:hover, .contact-button:hover {
+    background: var(--app-primary-color-hover);
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3), -3px -3px 10px rgba(255, 255, 255, 0.6);
+}
+
+/* QR Code */
+.contact-qrcode-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.contact-qrcode {
+    margin: 10px;
+    width: 300px;
+    min-height: 300px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2), -3px -3px 10px rgba(255, 255, 255, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.contact-qrcode:hover {
+    transform: scale(1.1);
+}
+
+/* Mobile Styles for Contact Page */
+@media (max-width: 1000px) {
+    /* General Layout Adjustments */
+    .contact-page-container {
+        width: 90%;
+        padding: 10px 0;
+    }
+
+    .contact-page-title {
+        font-size: 32px;
+        margin-bottom: 20px;
+    }
+
+    .contact-layout {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center; /* Center the sections */
+    }
+
+    .contact-left, .contact-right {
+        width: 100%;
+        padding: 15px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1), -2px -2px 5px rgba(255, 255, 255, 0.6);
+    }
+
+    /* Contact Items */
+    .contact-item {
+        margin-bottom: 15px;
+    }
+
+    .contact-item h2 {
+        font-size: 24px;
+        margin-bottom: 5px;
+    }
+
+    .contact-item p {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    /* Actions */
+    .contact-actions {
+        gap: 10px;
+    }
+
+    .contact-action, .contact-button {
+        padding: 8px 15px;
+        font-size: 14px;
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1), -1px -1px 3px rgba(255, 255, 255, 0.4);
+    }
+
+    .contact-action:hover, .contact-button:hover {
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2), -2px -2px 5px rgba(255, 255, 255, 0.5);
+    }
+
+    /* QR Code */
+    .contact-qrcode-container {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .contact-qrcode {
+        width: 80%;
+        margin: 15px 0;
+        box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1), -2px -2px 6px rgba(255, 255, 255, 0.4);
+    }
+
+    .contact-qrcode:hover {
+        transform: scale(1.05);
+    }
+}

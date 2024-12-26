@@ -1,0 +1,369 @@
+/* 产品卡片的总体容器样式 */
+.product_cards-container {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 16px; /* 卡片之间的间距 */
+    padding: 16px;
+    background-color: transparent;
+}
+
+.product_cards-not {
+    font-family: "HongLeiXingShuJianTi", "AlimamaFangYuan", "SmileySans", sans-serif;
+    font-size: 50px; /* 标题大小 */
+    font-weight: 900;
+    margin: 0;
+    color: var(--app-text-color);
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+}
+
+
+
+.product_cards-header {
+    font-family: "HongLeiXingShuJianTi", "AlimamaFangYuan", "SmileySans", sans-serif;
+    font-size: 50px; /* 标题大小 */
+    font-weight: 900;
+    margin: 0;
+    color: var(--app-text-color);
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 1000px) {
+    .product_cards-header {
+        font-size: 30px;
+    }
+}
+
+.product_cards-containers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 16px; /* 卡片之间的间距 */
+    padding: 16px;
+    background-color: transparent;
+    width: 100%;
+}
+
+@media screen and (max-width: 1000px) {
+    .product_cards-containers {
+        flex-wrap: wrap;
+    }
+}
+
+/* 单个产品卡片 */
+.product_cards-card {
+    box-sizing: border-box;
+    display: flex;
+    width: 400px;
+    height: 600px;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--background-slighly-deeper-color); /* 使用主题应用背景色 */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px var(--admin-card-shadow);
+    padding: 16px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+@media screen and (max-width: 1000px) {
+    .product_cards-card {
+        width: 45%;
+        height: 280px;
+        padding: 6px;
+    }
+}
+
+/* 卡片悬停效果 */
+.product_cards-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 16px var(--admin-card-shadow);
+}
+
+/* 产品图片样式 */
+.product_cards-image {
+    width: 100%; /* 图片宽度 */
+    height: 300px; /* 限制图片高度 */
+    border-radius: 8px;
+    object-fit: cover;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+@media screen and (max-width: 1000px) {
+    .product_cards-image {
+        height: 130px;
+        margin-top: 1px;
+        margin-bottom: 1px;
+    }
+    
+}
+
+/* 产品信息的容器 */
+.product_cards-info {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    margin-top: 8px;
+    text-align: center;
+    color: var(--app-text-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media screen and (max-width: 1000px) {
+    .product_cards-info {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
+
+/* 产品标题 */
+.product_cards-title {
+    font-family: 'AlimamaFangYuan', sans-serif;
+    font-size: 32px; /* 标题大小 */
+    font-weight: 900;
+    margin: 0;
+    color: var(--app-text-color);
+    width: 100%;
+    
+}
+
+@media screen and (max-width: 1000px) {
+    .product_cards-title {
+        font-size: 11px;
+    }
+}
+
+/* 产品描述 */
+.product_cards-description {
+    font-family: 'YouSheYuFeiTeJianKangTi', sans-serif;
+    margin: 10px 0;
+    color: var(--app-text-color);
+    text-align: left; /* 文字靠左 */
+    overflow: hidden; /* 隐藏超出内容 */
+    text-overflow: ellipsis; /* 超出显示省略号 */
+    display: -webkit-box; /* 为多行文本截断定义盒模型 */
+    -webkit-line-clamp: 3; /* 显示三行文本，超出部分用省略号 */
+    -webkit-box-orient: vertical; /* 设置文本方向为垂直 */
+    line-height: 1.5; /* 行高 */
+    height: 100%; /* 高度占满父容器 */
+    width: 100%; /* 宽度占满父容器 */
+    box-sizing: border-box; /* 包括内边距和边框 */
+    text-align: justify; /* 两端对齐 */
+}
+
+.product_cards-description span:first-child {
+    font-size: 30px; /* 描述文字大小 */
+    color: var(--app-text-color);
+}
+
+.product_cards-description span:last-child {
+    display: block;
+    font-size: 20px; /* 描述文字大小 */
+    text-indent: 2em; /* 首行缩进 */
+}
+
+@media screen and (max-width: 1000px) {
+    .product_cards-description span:first-child {
+        font-size: 10px;
+    }
+
+    .product_cards-description span:last-child {
+        font-size: 9px;
+    }
+    
+}
+
+/* 产品价格 */
+.product_cards-price {
+    font-family: 'YouSheYuFeiTeJianKangTi', sans-serif;
+    font-size: 20px; /* 价格文字大小 */
+    margin: 0;
+    color: var(--app-text-color);
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+@media screen and (max-width: 1000px) {
+    .product_cards-price {
+        font-size: 10px;
+        margin-bottom: 12px;
+    }
+} 
+
+.product_cards-info {
+    text-align: center;
+    color: var(--app-text-color);
+}
+
+
+/* 产品卡片的模态框 */
+.product_cards-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+    background: rgba(0, 0, 0, 0.7); /* 统一背景透明色 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 12999;
+}
+
+.product_cards-modal-content {
+    background: var(--background-color); /* 使用统一的背景颜色 */
+    padding: 50px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 1200px;
+    width: 90%;
+    position: relative; /* 让关闭按钮绝对定位 */
+    animation: fadeIn 0.3s ease-in-out; /* 添加淡入动画 */
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 1000px) {
+    .product_cards-modal-content {
+        padding: 12px;
+        border-radius: 12px;
+        max-width: 80%;
+    }
+}
+
+.product_cards-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--app-text-color); /* 使用统一的文本颜色 */
+    cursor: pointer;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 1001;
+    transition: transform 0.3s ease;
+}
+
+.product_cards-close:hover {
+    transform: scale(1.2); /* 鼠标悬停时放大 */
+}
+
+.product_cards-modal-body {
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    text-align: left;
+}
+
+.product_cards-modal-image {
+    max-width: 45%;
+    border-radius: 12px;
+    object-fit: cover; /* 确保图片按比例填充 */
+}
+
+@media screen and (max-width: 1000px) {
+    .product_cards-modal-image {
+        max-height: 300px;
+        object-fit: contain;
+    }
+    
+}
+
+.product_cards-modal-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.product_cards-modal-title {
+    font-family: 'AlimamaFangYuan', sans-serif;
+    font-size: 40px; /* 标题大小 */
+    font-weight: bold;
+    color: var(--app-text-color); /* 使用统一的文本颜色 */
+    margin-bottom: 12px;
+}
+
+.product_cards-modal-description {
+    font-size: 24px;
+    color: var(--app-text-color);
+    text-align: justify;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.product_cards-modal-price {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--app-text-color);
+    margin-bottom: 16px;
+}
+
+/* 针对手机屏幕优化 */
+@media screen and (max-width: 1000px) {
+    .product_cards-modal-body {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0;
+    }
+
+    .product_cards-modal-details {
+        align-items: center;
+        text-align: center;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .product_cards-modal-title {
+        font-size: 22px;
+    }
+
+    .product_cards-modal-description {
+        font-size: 14px;
+    }
+
+    .product_cards-modal-price {
+        font-size: 12px;
+    }
+
+    .product_cards-close {
+        font-size: 20px;
+    }
+
+    .product_cards-modal-image {
+        margin: 12px 0;
+    }
+}
+
+/* 模态框淡入动画 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

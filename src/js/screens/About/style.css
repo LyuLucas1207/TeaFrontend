@@ -1,0 +1,238 @@
+/* src/about.css */
+
+/* 通用样式 */
+.about-container {
+    font-family: 'Arial, sans-serif';
+    color: #333;
+    line-height: 1.6;
+    width: 100%;
+    padding-top: 10px;
+}
+
+@media screen and (max-width: 1000px) {
+    .about-container {
+        padding-top: 0px;
+    }
+}
+
+/* about_banner Section */
+.about-about_banner {
+    position: relative;
+    width: 100%;
+    height: 60vh;
+    overflow: hidden;
+}
+
+.about_banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(70%);
+}
+
+.about_banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about_banner-title {
+    color: #fff;
+    font-family:   "HongLeiXingShuJianTi", "AlimamaFangYuan", sans-serif;
+    font-size: 128px;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+    mix-blend-mode:hard-light;
+}
+
+/* Introduction Section */
+.about-introduction {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 50px 10%;
+}
+
+.introduction-text {
+    flex: 1;
+    min-width: 300px;
+    padding: 20px;
+}
+
+.introduction-text h2 {
+    font-size: 62px;
+    font-family: "HongLeiXingShuJianTi", "AlimamaFangYuan", sans-serif;
+    margin-bottom: 20px;
+    color: var(--contract-bg-color);
+}
+
+.introduction-text p {
+    font-family: "HongLeiXingShuJianTi", "AlimamaFangYuan", sans-serif;
+    font-size: 38px;
+    color: var(--text-color);
+}
+
+.introduction-image {
+    flex: 1;
+    min-width: 300px;
+    padding: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.introduction-image img {
+    width: 900px;
+    height: 800px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Additional Content Section */
+.about-additional {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 50px 10%;
+}
+
+.additional-image {
+    flex: 1;
+    min-width: 300px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.additional-image img {
+    width: 900px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.additional-text {
+    flex: 1;
+    min-width: 300px;
+    padding: 20px;
+}
+
+.additional-text p {
+    font-family: "HongLeiXingShuJianTi", "AlimamaFangYuan", sans-serif;
+    font-size: 38px;
+    color: var(--text-color);
+}
+
+/* Final Image Section */
+.about-final {
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.final-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* 响应式设计 */
+/* Mobile styles for screens with a width of 600px or less */
+@media (max-width: 1000px) {
+
+    /* General adjustments */
+    .about-container {
+        padding-top: 0;
+        font-size: 14px;
+    }
+
+    /* about_banner Section */
+    .about-about_banner {
+        height: 40vh;
+    }
+
+    .about_banner-image {
+        object-fit: cover;
+    }
+
+    .about_banner-title {
+        font-size: 20px;
+        padding: 0 10px;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Introduction Section */
+    .about-introduction {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .introduction-text,
+    .introduction-image {
+        padding: 10px 0;
+        text-align: center;
+    }
+
+    .introduction-text h2 {
+        font-size: 20px;
+    }
+
+    .introduction-text p {
+        font-size: 14px;
+    }
+
+    .introduction-image img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Additional Content Section */
+    .about-additional {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .additional-image,
+    .additional-text {
+        padding: 10px 0;
+        text-align: center;
+    }
+
+    .additional-image img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .additional-text p {
+        font-size: 14px;
+    }
+
+    /* Final Image Section */
+    .about-final {
+        padding-top: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .final-image {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+}

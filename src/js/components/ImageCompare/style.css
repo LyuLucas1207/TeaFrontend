@@ -1,0 +1,60 @@
+/* CompareSlider.css */
+.compare {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.before,
+.after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.before img,
+.after img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.before {
+    clip-path: inset(0 calc(100% - var(--pos, 50%)) 0 0);
+}
+
+.after {
+    clip-path: inset(0 0 0 var(--pos, 50%));
+}
+
+#range {
+    z-index: 10;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#range::-webkit-slider-thumb {
+    appearance: none;
+    width: 2px;
+    height: 450px;
+    background-image: linear-gradient(
+        to bottom,
+        #91defe,
+        #99c0f9,
+        #bdb6ec,
+        #d7b3e3,
+        #efb3d5,
+        #f9bccc
+    );
+}

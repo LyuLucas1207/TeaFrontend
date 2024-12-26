@@ -1,0 +1,187 @@
+.edit-tea-container {
+    padding: 20px;
+    width: 90%; /* 限制宽度 */
+    margin: 0 auto; /* 居中显示 */
+    background: var(--background-color);
+    color: var(--text-color);
+    font-family: "AlimamaFangYuan", sans-serif;
+    box-shadow: 0 2px 8px var(--admin-card-shadow);
+    border-radius: 8px;
+}
+
+.edit-tea-container * {
+    box-sizing: border-box;
+}
+
+.edit-tea-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 24px;
+    color: var(--title-color);
+}
+
+.edit-tea-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.edit-tea-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%; /* 确保输入框不会超出范围 */
+}
+
+.edit-tea-field label {
+    font-weight: bold;
+    font-size: 16px;
+    color: var(--text-color);
+}
+
+.edit-tea-field input,
+.edit-tea-field textarea {
+    width: 100%; /* 确保输入框占满可用宽度 */
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid var(--admin-card-border-color);
+    border-radius: 4px;
+    background: var(--admin-card-bg-color);
+    color: var(--text-color);
+    box-shadow: inset 0 1px 3px var(--admin-card-shadow);
+}
+
+.edit-tea-field textarea {
+    resize: none;
+    height: 120px; /* 默认高度 */
+}
+
+.edit-tea-field select {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid var(--admin-card-border-color);
+    border-radius: 4px;
+    background: var(--admin-card-bg-color);
+    color: var(--text-color);
+    box-shadow: inset 0 1px 3px var(--admin-card-shadow);
+}
+
+.edit-tea-images {
+    margin-top: 16px;
+}
+
+.image-preview-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 16px;
+}
+
+.image-preview {
+    position: relative;
+    border: 1px solid var(--admin-card-border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--admin-card-bg-color);
+    box-shadow: 0 2px 5px var(--admin-card-shadow);
+}
+
+.image-preview img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.remove-image-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: var(--admin-button-bg-color);
+    color: var(--login-link-text-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.remove-image-button:hover {
+    background: var(--admin-button-hover-bg-color);
+}
+
+.add-image-input {
+    display: block;
+    margin-top: 12px;
+    font-size: 14px;
+    padding: 8px;
+    background: var(--admin-setting-bg-color);
+    border: 1px solid var(--admin-card-border-color);
+    border-radius: 4px;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.edit-tea-submit {
+    padding: 12px 24px;
+    background: var(--app-primary-color);
+    color: var(--app-bg-color);
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: fit-content;
+    align-self: center; /* 按钮居中 */
+}
+
+.edit-tea-submit:hover {
+    background: var(--app-primary-color-hover);
+}
+
+/* 响应式优化 */
+@media screen and (max-width: 768px) {
+    .edit-tea-container {
+        padding: 16px;
+        max-width: 100%; /* 在手机端占满可用宽度 */
+    }
+
+    .edit-tea-title {
+        font-size: 24px;
+    }
+
+    .edit-tea-form {
+        gap: 16px;
+    }
+
+    .image-preview-container {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 12px;
+    }
+
+    .image-preview img {
+        height: 120px;
+    }
+
+    .remove-image-button {
+        width: 20px;
+        height: 20px;
+        font-size: 12px;
+    }
+
+    .add-image-input {
+        font-size: 12px;
+        padding: 6px;
+    }
+
+    .edit-tea-submit {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+}

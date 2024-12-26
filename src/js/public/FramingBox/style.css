@@ -1,0 +1,107 @@
+.FramingBox-PureContentBox {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    overflow: hidden;
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 0;
+    gap: 0;
+    box-sizing: border-box;
+}
+
+.FramingBox-PureFlexBox {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 0;
+    gap: 0;
+    box-sizing: border-box;
+}
+
+.FramingBox-PureFixedBox {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    overflow: hidden;
+    position: fixed;
+    z-index: 0;
+    gap: 0;
+    box-sizing: border-box;
+}
+
+.FramingBox-PureAbsoluteBox {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: 0;
+    gap: 0;
+    box-sizing: border-box;
+}
+
+.FramingBox-FlexColumnMiddleBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 0;
+    gap: 0;
+    box-sizing: border-box;
+}
+
+.FramingBox-FlexRowMiddleBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 0;
+    gap: 0;
+    box-sizing: border-box;
+}

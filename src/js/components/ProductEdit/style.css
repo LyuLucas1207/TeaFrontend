@@ -1,0 +1,270 @@
+.Product-Edit-section {
+    margin-bottom: 60px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.Product-Edit-category-title {
+    font-size: 38px;
+    color: var(--app-primary-color);
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: "AlimamaFangYuan", "SmileySans", sans-serif;
+    font-weight: 900;
+}
+
+@media screen and (max-width: 1000px) {
+    .Product-Edit-category-title {
+        font-size: 24px; 
+        margin-bottom: 36px;
+    }
+}
+
+.Product-Edit-containers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 16px; 
+    padding: 16px;
+    background-color: transparent;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 1000px) {
+    .Product-Edit-containers {
+        gap: 8px;
+        padding: 2px;
+    }
+}
+
+.Product-Edit-card {
+    box-sizing: border-box;
+    display: flex;
+    width: 400px;
+    height: 800px;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--background-slighly-deeper-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px var(--admin-card-shadow);
+    padding: 16px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1000px) {
+    .Product-Edit-card {
+        width: 48%;
+        margin: 0;
+        min-width: 145px;
+        height: 340px;
+        padding: 10px;
+    }
+}
+
+.Product-Edit-card:last-child {
+    margin-bottom: 16px;
+}
+
+@media screen and (max-width: 1000px) {
+    .Product-Edit-card:last-child {
+        margin-bottom: 0;
+    }
+    
+}
+
+.Product-Edit-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 16px var(--admin-card-shadow);
+}
+
+.Product-Edit-image-container {
+    width: 100%;
+}
+
+.Product-Edit-image {
+    width: 100%;
+    height: 400px;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+@media screen and (max-width: 1000px) {
+    .Product-Edit-image {
+        height: 130px;
+        margin-top: 1px;
+        margin-bottom: 1px;
+    }
+}
+
+.Product-Edit-info {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    margin-top: 8px;
+    text-align: center;
+    color: var(--app-text-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media screen and (max-width: 1000px) {
+    .Product-Edit-info {
+        padding: 0;
+    }
+}
+
+.Product-Edit-title {
+    font-family: 'AlimamaFangYuan', sans-serif;
+    font-size: 32px;
+    font-weight: 900;
+    margin: 0;
+    color: var(--app-text-color);
+    width: 100%;
+    margin-bottom: 2px;
+}
+
+@media screen and (max-width: 1000px) {
+    .Product-Edit-title {
+        font-size: 16px;
+    }
+}
+
+.Product-Edit-description {
+    font-family: 'YouSheYuFeiTeJianKangTi', sans-serif;
+    margin: 5px 0;
+    color: var(--app-text-color);
+    text-align: left; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    display: -webkit-box; 
+    -webkit-line-clamp: 3; 
+    -webkit-box-orient: vertical; 
+    line-height: 1.5; 
+    width: 100%;
+    box-sizing: border-box; 
+    text-align: justify; 
+}
+
+.Product-Edit-description span:first-child {
+    font-size: 30px;
+    color: var(--app-text-color);
+}
+
+.Product-Edit-description span:last-child {
+    display: block;
+    font-size: 20px;
+    text-indent: 2em;
+}
+
+@media screen and (max-width: 1000px) {
+    .Product-Edit-description span:first-child {
+        font-size: 12px;
+    }
+
+    .Product-Edit-description span:last-child {
+        font-size: 11px;
+    }
+}
+
+.Product-Edit-marks{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+
+.Product-Edit-price,
+.Product-Edit-category {
+    width: 50%;
+    font-family: 'YouSheYuFeiTeJianKangTi', sans-serif;
+    font-size: 22px;
+    margin: 0;
+    color: var(--app-text-color);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 9px;
+}
+
+@media screen and (max-width: 1000px) {
+    .Product-Edit-price,
+    .Product-Edit-category {
+        font-size: 12px;
+        margin-bottom: 12px;
+    }
+}
+
+.Product-Edit-not {
+    font-family: "HongLeiXingShuJianTi", "AlimamaFangYuan", "SmileySans", sans-serif;
+    font-size: 50px;
+    font-weight: 900;
+    margin: 0;
+    color: var(--app-text-color);
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+}
+
+.Product-Edit-button-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 16px;
+    gap: 16px;
+}
+
+@media screen and (max-width: 1000px) {
+    .Product-Edit-button-container {
+        gap: 8px;
+        margin-bottom: 4px;
+    }
+    
+}
+
+.Product-Edit-button {
+    display: block;
+    width: 45%;
+    font-family: 'YouSheYuFeiTeJianKangTi', sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--background-color);
+    background-color: var(--app-primary-color);
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.Product-Edit-button:nth-last-child(1) {
+    background-color: var(--login-link-bg-color);
+    color : var(--contract-bg-color);
+}
+
+.Product-Edit-button:hover {
+    background-color: var(--background-color);
+    color: var(--app-primary-color);
+    transform: scale(1.1);
+    transition: transform 0.3s;
+}
+
+@media screen and (max-width: 1000px) {
+    .Product-Edit-button {
+        font-size: 12px;
+        padding: 4px 8px;
+    }
+}

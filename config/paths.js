@@ -58,13 +58,13 @@ module.exports = {
   appPublic: resolveApp('public'),
   //! index.html is home page
   appHtml: resolveApp('public/pages/index.html'),
-  appIndexJs: resolveModule(resolveApp, 'src/js/index'),
+  appIndexJs: resolveModule(resolveApp, 'src/index'),
   //! admin.html is admin home page, need to login
   adminHtml: resolveApp('public/pages/admin.html'),
-  adminIndexJs: resolveModule(resolveApp, 'src/js/admin'),
+  adminIndexJs: resolveModule(resolveApp, 'src/admin'),
   //! admin_home.html is admin home page, After login\
   adminHomeHtml: resolveApp('public/pages/admin_home.html'),
-  adminHomeIndexJs: resolveModule(resolveApp, 'src/js/admin_home'),
+  adminHomeIndexJs: resolveModule(resolveApp, 'src/admin_home'),
 
 
   appPackageJson: resolveApp('package.json'),

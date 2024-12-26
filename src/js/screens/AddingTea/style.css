@@ -1,0 +1,209 @@
+.admin-addingtea-outer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.admin-addingtea-container {
+    background-color: var(--admin-card-bg-color);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px var(--admin-card-shadow);
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.admin-addingtea-title {
+    font-size: 32px;
+    color: var(--admin-setting-title-color);
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    width: 100%;
+}
+
+.admin-addingtea-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.admin-addingtea-box-outer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    flex-direction: row;
+}
+
+.admin-addingtea-box-container {
+    border-radius: 8px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.admin-addingtea-field {
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+
+}
+
+.admin-addingtea-field label {
+    color: var(--text-color);
+    margin-bottom: 10px;
+    font-weight: 500;
+    border: none;
+}
+
+.admin-addingtea-field input{
+    font-size: 18px;
+    padding: 0.75rem;
+    border-radius: 4px;
+    background-color: var(--admin-setting-value-bg-color);
+    color: var(--admin-card-text-color);
+    transition: border-color 0.3s ease;
+    border-color: var(--admin-setting-value-bg-color);
+}
+.admin-addingtea-field textarea {
+    font-size: 18px;
+    padding: 0.75rem;
+    border-radius: 4px;
+    color: var(--admin-card-text-color);
+    transition: border-color 0.3s ease;
+    background-color: var(--admin-setting-value-bg-color);
+}
+
+
+.admin-addingtea-field input:focus,
+.admin-addingtea-field textarea:focus {
+    border-color: var(--admin-setting-title-color);
+    outline: none;
+}
+
+
+.admin-addingtea-button {
+    font-size: 20px;
+    background-color: var(--admin-button-bg-color);
+    color: var(--admin-setting-button-text-color);
+    padding: 0.75rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.admin-addingtea-button:hover {
+    background-color: var(--admin-button-hover-bg-color);
+    transform: scale(1.02);
+}
+
+.admin-addingtea-image-preview {
+    width: 280px;
+    height: 200px;
+    margin: 1rem auto;
+    border-radius: 8px;
+    box-shadow: 10px 14px 8px var(--admin-card-shadow);
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    margin: 5px;
+    box-sizing: border-box;
+}
+
+.admin-addingtea-image-preview:hover {
+    transform: scale(1.05);
+}
+
+.admin-addingtea-upload-button {
+    background-color: var(--admin-button-bg-color);
+    color: var(--admin-setting-button-text-color);
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    margin-top: 0.5rem;
+    font-size: 16px;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.admin-addingtea-upload-button:hover {
+    background-color: var(--admin-button-hover-bg-color);
+    transform: scale(1.05);
+}
+
+/* 茶叶类别选择下拉框 */
+.admin-addingtea-field select {
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: var(--admin-setting-value-bg-color);
+    color: var(--admin-card-text-color);
+    transition: border-color 0.3s ease;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+}
+
+/* 鼠标悬停和焦点样式 */
+.admin-addingtea-field select:hover,
+.admin-addingtea-field select:focus {
+    border-color: var(--admin-setting-title-color);
+    outline: none;
+}
+
+/* 移动端样式 */
+@media (max-width: 1000px) {
+    .admin-addingtea-container form {
+        width: 80%;
+    }
+    .admin-addingtea-box-outer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        flex-direction: column;
+    }
+    .admin-addingtea-upload-button {
+        width: 100%;
+    }
+    .admin-addingtea-image-preview {
+        width: 100%;
+        height: width;
+    }
+
+    .admin-addingtea-field select {
+        font-size: 14px;
+    }
+    .admin-addingtea-container {
+        flex-direction: column;
+        padding: 15px;
+        width: 90%;
+    }
+
+    .admin-addingtea-title {
+        font-size: 22px;
+    }
+
+    .admin-addingtea-field input,
+    .admin-addingtea-field textarea {
+        font-size: 14px;
+    }
+
+    .admin-addingtea-button {
+        font-size: 16px;
+    }
+}

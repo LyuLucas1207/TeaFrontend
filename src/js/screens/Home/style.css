@@ -1,0 +1,35 @@
+.video-text-text-container {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+}
+
+.video-text-text-container p {
+    font-size: 30px;
+    margin: 0;
+    text-align: justify;
+    line-height: 1.2;
+    vertical-align: middle;
+}
+
+@media screen and (max-width: 1000px) {
+    .video-text-text-container p {
+        font-size: 14px;
+    }
+}
+
+.video-text-text-container p span {
+    font-size: 50px;
+    font-weight: 800 !important;
+    font-family: 'HongLeiXingShuJianTi', sans-serif;
+    padding: 0;
+    margin: 0;
+    line-height: 0.6;
+
+}
+
+@media screen and (max-width: 1000px) {
+    .video-text-text-container p span {
+        font-size: 20px;
+    }
+}

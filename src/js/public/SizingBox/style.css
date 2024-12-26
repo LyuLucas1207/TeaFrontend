@@ -1,0 +1,29 @@
+/* SizingBox.css */
+
+/* 通用样式 */
+.SizingBox {
+    display: flex; /* 可根据需求设置布局 */
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+}
+
+/* 各种 SizingBox-sizing 类型 */
+.border-SizingBox {
+    box-sizing: border-box;
+}
+
+.content-SizingBox {
+    box-sizing: content-box;
+}
+
+.padding-SizingBox {
+    box-sizing: padding-box; /* padding-box 仅适配特定场景，现代浏览器中很少用 */
+}
+
+.margin-SizingBox {
+    box-sizing: margin-box; /* margin-box 仅适配特定场景，现代浏览器中很少用 */
+}
+
+
+
+
